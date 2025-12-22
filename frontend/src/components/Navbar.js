@@ -6,7 +6,8 @@ import "../styles/Navbar.css";
 const Navbar = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
-  const role = localStorage.getItem("role"); // ✅ role set at login
+  const role = localStorage.getItem("role"); // student | parent | consultant | admin
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProfileOpen, setMobileProfileOpen] = useState(false);
@@ -47,7 +48,9 @@ const Navbar = () => {
         </NavLink>
       </div>
 
-      {/* Desktop Links */}
+      {/* =========================
+          DESKTOP LINKS
+      ========================= */}
       <ul className="navbar-links desktop">
         <li>
           <NavLink to="/" end>
@@ -55,21 +58,28 @@ const Navbar = () => {
           </NavLink>
         </li>
 
-        {/* User only */}
-        {role === "user" && (
+        {/* STUDENT */}
+        {role === "student" && (
           <li>
             <NavLink to="/services">Services</NavLink>
           </li>
         )}
 
-        {/* Consultant only */}
+        {/* PARENT */}
+        {role === "parent" && (
+          <li>
+            <NavLink to="/parent-dashboard">Dashboard</NavLink>
+          </li>
+        )}
+
+        {/* CONSULTANT */}
         {role === "consultant" && (
           <li>
             <NavLink to="/consultant-dashboard">Dashboard</NavLink>
           </li>
         )}
 
-        {/* Admin only */}
+        {/* ADMIN */}
         {role === "admin" && (
           <li>
             <NavLink to="/admin-dashboard">Admin Dashboard</NavLink>
@@ -77,22 +87,13 @@ const Navbar = () => {
         )}
       </ul>
 
-      {/* Desktop Profile */}
+      {/* =========================
+          DESKTOP PROFILE
+      ========================= */}
       <div className="navbar-auth desktop" ref={profileRef}>
         <div className="flex flex-row items-center gap-2 text-white text-lg font-medium">
-          {/* Contact numbers */}
-          <a
-            href="tel:+918657869659"
-            className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-200"
-          >
-            +91 9619901999
-          </a>
-          <a
-            href="tel:+919619901999"
-            className="flex items-center gap-2 hover:text-blue-400 transition-colors duration-200"
-          >
-            +91 8657869659
-          </a>
+          <a href="tel:+919619901999">+91 9619901999</a>
+          <a href="tel:+918657869659">+91 8657869659</a>
         </div>
 
         {!user ? (
@@ -120,9 +121,23 @@ const Navbar = () => {
                   See Profile
                 </button>
 
-                {/* Only users see History */}
-                {role === "user" && (
-                  <button onClick={() => navigate("/history")}>History</button>
+                {/* STUDENT */}
+                {role === "student" && (
+                  <>
+                    <button onClick={() => navigate("/history")}>
+                      History
+                    </button>
+                    <button onClick={() => navigate("/my-activity")}>
+                      My Activity
+                    </button>
+                  </>
+                )}
+
+                {/* PARENT */}
+                {role === "parent" && (
+                  <button onClick={() => navigate("/parent-dashboard")}>
+                    Parent Dashboard
+                  </button>
                 )}
 
                 <button onClick={handleLogout}>Logout</button>
@@ -132,7 +147,9 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Mobile Hamburger */}
+      {/* =========================
+          MOBILE HAMBURGER
+      ========================= */}
       <div
         className="hamburger"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -140,7 +157,9 @@ const Navbar = () => {
         {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </div>
 
-      {/* Mobile Menu */}
+      {/* =========================
+          MOBILE MENU
+      ========================= */}
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <ul>
@@ -150,7 +169,8 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {role === "user" && (
+            {/* STUDENT */}
+            {role === "student" && (
               <li>
                 <NavLink
                   to="/services"
@@ -161,6 +181,19 @@ const Navbar = () => {
               </li>
             )}
 
+            {/* PARENT */}
+            {role === "parent" && (
+              <li>
+                <NavLink
+                  to="/parent-dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+            )}
+
+            {/* CONSULTANT */}
             {role === "consultant" && (
               <li>
                 <NavLink
@@ -172,6 +205,7 @@ const Navbar = () => {
               </li>
             )}
 
+            {/* ADMIN */}
             {role === "admin" && (
               <li>
                 <NavLink
@@ -188,6 +222,7 @@ const Navbar = () => {
                 <li onClick={() => setMobileProfileOpen(!mobileProfileOpen)}>
                   Profile
                 </li>
+
                 {mobileProfileOpen && (
                   <div className="mobile-submenu">
                     <li
@@ -200,49 +235,40 @@ const Navbar = () => {
                       See Profile
                     </li>
 
-                    {role === "user" && (
-                      <li
-                        onClick={() => {
-                          navigate("/history");
-                          setMobileMenuOpen(false);
-                          setMobileProfileOpen(false);
-                        }}
-                      >
-                        History
+                    {/* STUDENT */}
+                    {role === "student" && (
+                      <>
+                        <li onClick={() => navigate("/history")}>
+                          History
+                        </li>
+                        <li onClick={() => navigate("/my-activity")}>
+                          My Activity
+                        </li>
+                      </>
+                    )}
+
+                    {/* PARENT */}
+                    {role === "parent" && (
+                      <li onClick={() => navigate("/parent-dashboard")}>
+                        Parent Dashboard
                       </li>
                     )}
 
-                    <li
-                      onClick={() => {
-                        handleLogout();
-                        setMobileProfileOpen(false);
-                      }}
-                    >
-                      Logout
-                    </li>
+                    <li onClick={handleLogout}>Logout</li>
                   </div>
                 )}
               </div>
             ) : (
               <div className="mobile-profile">
-                <NavLink
-                  to="/login"
-                  className="auth-button"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <NavLink to="/login" className="auth-button">
                   Login
                 </NavLink>
-                <NavLink
-                  to="/register"
-                  className="auth-button register"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
+                <NavLink to="/register" className="auth-button register">
                   Register
                 </NavLink>
                 <NavLink
                   to="/register-consultant"
                   className="auth-button register"
-                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Register as Consultant
                 </NavLink>
@@ -252,19 +278,20 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Logout confirmation popup */}
+      {/* =========================
+          LOGOUT CONFIRMATION
+      ========================= */}
       {showLogoutConfirm && (
         <div className="logout-confirm-overlay">
           <div className="logout-confirm-box">
             <p>Are you sure you want to logout?</p>
             <div className="logout-buttons">
-              <button
-                className="yes-btn bg-red-500 hover:bg-red-600"
-                onClick={confirmLogout}
-              >
+              <button className="yes-btn" onClick={confirmLogout}>
                 Yes
               </button>
-              <button onClick={() => setShowLogoutConfirm(false)}>No</button>
+              <button onClick={() => setShowLogoutConfirm(false)}>
+                No
+              </button>
             </div>
           </div>
         </div>

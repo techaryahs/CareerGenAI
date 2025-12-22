@@ -1,39 +1,78 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  mobile: { type: String, required: true, match: /^[0-9]{10}$/ },
+
+  mobile: {
+    type: String,
+    match: /^[0-9]{10}$/,
+    required: function () {
+      return this.role === "student";
+    }
+  },
+
   password: { type: String, required: true },
 
-  isVerified: { type: Boolean, default: false }, // ✅ For OTP verification
-  otp: { type: String },
-  otpExpiresAt: { type: Date },
+  // ROLE
+  role: {
+    type: String,
+    enum: ["student", "parent"],
+    default: "student"
+  },
 
-  // ✅ Premium access flags
+  // PARENT–STUDENT LINKING
+  parentOf: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
+
+  childOf: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null
+  },
+
+  // OTP
+  isVerified: { type: Boolean, default: false },
+  otp: String,
+  otpExpiresAt: Date,
+
+  // PREMIUM
   isPremium: { type: Boolean, default: false },
-  premiumPlan: { type: String, default: null }, // '1month', '2months', '3months'
-  premiumStartAt: { type: Date, default: null }, // ✅ <-- Add this field
-  premiumExpiresAt: { type: Date, default: null },
+  premiumPlan: String,
+  premiumStartAt: Date,
+  premiumExpiresAt: Date,
 
-  // ✅ Receipt and verification
-  receiptUrl: { type: String, default: null },
+  // RECEIPT
+  receiptUrl: String,
   receiptStatus: {
     type: String,
-    enum: ['pending', 'approved', 'denied'],
-    default: 'pending'
-  }
-}, {
-  timestamps: true
-});
+    enum: ["pending", "approved", "denied"],
+    default: "pending"
+  },
 
-// 🔐 Hash password before save
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+  // =========================
+  // ✅ QUIZ TRACKING ONLY
+  // =========================
+  services: {
+    quiz: {
+      attempted: { type: Boolean, default: false },
+      totalAttempts: { type: Number, default: 0 },
+      bestScore: { type: Number, default: 0 },
+      lastAttemptAt: { type: Date, default: null }
+    }
+  }
+
+}, { timestamps: true });
+
+// PASSWORD HASH
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

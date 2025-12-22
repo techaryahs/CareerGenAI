@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "CareerGenAI Backend",
   "scripts": {
-    "start": "node server.js"
+    "start": "concurrently \"node server.js\" \"cd server && node server.js\"",
+    "dev": "concurrently \"nodemon server.js\" \"cd server && nodemon server.js\"",
+    "backend": "node server.js",
+    "webrtc": "cd server && node server.js"
   },
   "author": "CareerGenAI Team",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^9.2.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

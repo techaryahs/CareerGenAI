@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
-import "../styles/Register.css"; // reuse common styles
+import "../styles/Register.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [, setShowPopup] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
+    setErrorMsg("");
     setIsSubmitting(true);
 
     try {
@@ -20,50 +19,50 @@ const Login = () => {
         `${process.env.REACT_APP_API_URL}/api/auth/login`,
         {
           email: email.trim(),
-          password: password.trim(),
+          password: password.trim()
         }
       );
 
-      const { token, user, role } = res.data;
+      const { token, user } = res.data; // ✅ FIX
+      const role = user.role;           // ✅ FIX
 
-      // -------------------------------
-      // ⭐ SAVE ALL USER DETAILS ⭐
-      // -------------------------------
+      // =========================
+      // SAVE AUTH DATA
+      // =========================
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("userEmail", user.email);
       localStorage.setItem("role", role);
 
-      // ⭐ THE MAIN FIX ⭐
-      localStorage.setItem(
-        "isPremium",
-        user.isPremium ? "true" : "false"
-      );
+      console.log("✅ Logged in user:", user);
 
-      console.log("User:", user);
-      console.log("Role:", role);
-      console.log("Saved isPremium:", user.isPremium);
-
-      // Show success popup
-      setShowPopup(true);
-
-      // -------------------------------
-      // Redirect after 1 sec
-      // -------------------------------
+      // =========================
+      // ROLE BASED REDIRECT
+      // =========================
       setTimeout(() => {
+        // Admin (hardcoded)
         if (
           (email === "arprs9076@gmail.com" && password === "Admin@123") ||
           (email === "careergenai9@gmail.com" && password === "Admin@123")
         ) {
           window.location.href = "/admin-dashboard";
-        } else if (role === "consultant") {
+        }
+        // Consultant
+        else if (role === "consultant") {
           window.location.href = "/consultant-dashboard";
-        } else {
+        }
+        // Parent
+        else if (role === "parent") {
+          window.location.href = "/parent-dashboard";
+        }
+        // Student (default)
+        else {
           window.location.href = "/";
         }
-      }, 1000);
+      }, 800);
+
     } catch (err) {
-      console.error(err.response?.data || err.message);
+      console.error("❌ Login error:", err.response?.data || err.message);
       setErrorMsg(err.response?.data?.error || "Login failed");
     } finally {
       setIsSubmitting(false);
@@ -78,7 +77,6 @@ const Login = () => {
           <h1>Welcome Back 👋</h1>
           <p>
             Login to continue your journey with <b>CareerGenAI</b>.
-            Access your dashboard and explore new opportunities.
           </p>
           <img
             src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
@@ -87,7 +85,7 @@ const Login = () => {
           />
         </div>
 
-        {/* Right Side - Form */}
+        {/* Right Side */}
         <div className="login-box">
           <h2>Sign In</h2>
           <p className="subtitle">Access your CareerGenAI account</p>
@@ -95,11 +93,9 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <div className="form-grid">
               <div style={{ gridColumn: "span 2" }}>
-                <label htmlFor="email">Email</label>
+                <label>Email</label>
                 <input
                   type="email"
-                  id="email"
-                  placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -107,11 +103,9 @@ const Login = () => {
               </div>
 
               <div style={{ gridColumn: "span 2" }}>
-                <label htmlFor="password">Password</label>
+                <label>Password</label>
                 <input
                   type="password"
-                  id="password"
-                  placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -119,8 +113,8 @@ const Login = () => {
               </div>
             </div>
 
-            <button className="sub-btn" disabled={isSubmitting} type="submit">
-              {isSubmitting ? <div className="loader"></div> : "Login"}
+            <button className="sub-btn" disabled={isSubmitting}>
+              {isSubmitting ? "Logging in..." : "Login"}
             </button>
           </form>
 

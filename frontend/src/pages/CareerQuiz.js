@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+
 import {
   ChevronRight,
   ChevronLeft,
@@ -24,7 +26,7 @@ import PremiumPopup from "../components/PremiumPlans";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import React, {useRef } from "react";
+import React, { useRef } from "react";
 
 
 
@@ -223,47 +225,85 @@ const CareerQuiz = () => {
   ];
 
 
-  const calculateResults = () => {
-    let introvertScore = 0;
-    let extrovertScore = 0;
-    const pathScores = {};
+  const calculateResults = async () => {
+  console.log("🧠 calculateResults() CALLED");
 
-    Object.entries(answers).forEach(([id, value]) => {
-      const q = questions.find((x) => x.id === parseInt(id));
-      if (q) {
-        if (q.personality === "Introvert") introvertScore += value;
-        else extrovertScore += value;
+  let introvertScore = 0;
+  let extrovertScore = 0;
+  const pathScores = {};
 
-        q.bestPaths.forEach((path) => {
-          if (!pathScores[path]) pathScores[path] = 0;
-          pathScores[path] += value;
-        });
-      }
-    });
+  Object.entries(answers).forEach(([id, value]) => {
+    const q = questions.find((x) => x.id === parseInt(id));
+    if (q) {
+      if (q.personality === "Introvert") introvertScore += value;
+      else extrovertScore += value;
 
-    const personalityType =
-      introvertScore >= extrovertScore ? "Introvert" : "Extrovert";
+      q.bestPaths.forEach((path) => {
+        if (!pathScores[path]) pathScores[path] = 0;
+        pathScores[path] += value;
+      });
+    }
+  });
 
-    const maxScore = Math.max(...Object.values(pathScores));
-    const percentageScores = Object.entries(pathScores).map(([k, v]) => [
-      k,
-      Math.round((v / maxScore) * 100),
-    ]);
+  const personalityType =
+    introvertScore >= extrovertScore ? "Introvert" : "Extrovert";
 
-    const topPaths = percentageScores.sort(([, a], [, b]) => b - a).slice(0, 5);
+  const maxScore = Math.max(...Object.values(pathScores));
+  const percentageScores = Object.entries(pathScores).map(([k, v]) => [
+    k,
+    Math.round((v / maxScore) * 100),
+  ]);
 
-    const resultData = {
-      personalityType,
-      topPaths,
-      allScores: percentageScores,
-    };
+  const topPaths = [...percentageScores]
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 5);
 
-    // ✅ Save to localStorage
-    localStorage.setItem("careerQuizResult", JSON.stringify(resultData));
-
-    setShowResults(resultData);
-    setCurrentScreen("results");
+  const resultData = {
+    personalityType,
+    topPaths,
+    allScores: percentageScores,
   };
+
+  // ✅ Save locally (UI purpose)
+  localStorage.setItem("careerQuizResult", JSON.stringify(resultData));
+
+  // =========================
+  // 🔥 SAVE QUIZ TO BACKEND
+  // =========================
+  try {
+    const token = localStorage.getItem("token");
+    const API = process.env.REACT_APP_API_URL;
+
+    if (!token) {
+      console.error("❌ Token missing, quiz not saved");
+    } else {
+      const score = Math.max(...percentageScores.map(([, v]) => v));
+
+      console.log("📡 Calling quiz submit API with score:", score);
+
+      await axios.post(
+        `${API}/api/careers/quiz/submit`,
+        { score },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("✅ Quiz submit API SUCCESS");
+    }
+  } catch (error) {
+    console.error("❌ Quiz save failed:", error.response?.data || error.message);
+  }
+
+  // =========================
+  // ✅ UI FLOW (ALWAYS LAST)
+  // =========================
+  setShowResults(resultData);
+  setCurrentScreen("results");
+};
+
 
 
   const startQuiz = () => {
@@ -439,293 +479,291 @@ const CareerQuiz = () => {
 
 
   if (currentScreen === "results") {
-  const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
-  // 🔐 If NOT premium → Show PremiumPopup instead of results
-  if (!user?.isPremium) {
+    // 🔐 If NOT premium → Show PremiumPopup instead of results
+    if (!user?.isPremium) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-black/40">
+          <PremiumPopup
+            onClose={() => navigate("/")}
+            onUpgrade={() => {
+              setShowPremiumPopup(false);
+              window.location.reload();
+            }}
+          />
+        </div>
+      );
+    }
+
+    // ---- PREMIUM USERS CAN SEE RESULTS ----
+    const { topPaths, allScores, personalityType } = showResults;
+    const top5ChartData = [...allScores]
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([name, score]) => ({ name, score }));
+
+    const downloadReport = async () => {
+      if (!reportRef.current) {
+        alert("Report not ready yet. Please try again.");
+        return;
+      }
+
+      try {
+        const canvas = await html2canvas(reportRef.current, {
+          scale: 2,
+          useCORS: true,
+          scrollY: -window.scrollY,
+        });
+
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdf = new jsPDF("p", "mm", "a4");
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("Career_Gen_AI_Report.pdf");
+      } catch (err) {
+        console.error(err);
+        alert("Failed to download report. Please try again.");
+      }
+    };
+
+
+
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black/40">
-        <PremiumPopup
-          onClose={() => navigate("/")}
-          onUpgrade={() => {
-            setShowPremiumPopup(false);
-            window.location.reload();
-          }}
-        />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 sm:px-6 py-8">
+        <div
+          ref={reportRef}
+          className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-10"
+        >
+
+
+          {/* Header */}
+          <div className="text-center mb-10">
+            <Trophy className="w-14 h-14 text-yellow-500 mx-auto mb-3" />
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+              Your Career Quiz Results
+            </h1>
+            <p className="text-gray-600 text-sm sm:text-base">
+              Here are your top career matches and detailed domain scores.
+            </p>
+          </div>
+
+          {/* Top 3 Career Cards */}
+          <div>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 text-center">
+              🌟 Your Ideal Career Domains
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+              {topPaths.slice(0, 3).map(([domain], i) => (
+                <div
+                  key={domain}
+                  className="bg-gradient-to-br from-indigo-50 to-purple-100 border border-indigo-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="text-indigo-600 text-4xl mb-3">
+                    <Trophy className="w-8 h-8 mx-auto" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{domain}</h3>
+                  <p className="text-sm text-gray-600">
+                    {pathDescriptions[domain] || "A field aligned with your strengths and personality."}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* What This Means For You */}
+          <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-10 shadow-sm">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
+              What This Means for You
+            </h3>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              Your responses suggest you have a strong interest in <b>{topPaths[0][0]}</b> and related fields. You’re naturally inclined toward tasks that match your <b>{personalityType}</b> nature. Consider exploring career paths, internships, or academic courses that develop these skills.
+            </p>
+          </div>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            {/* Left: Top 3 Matches (detailed) */}
+            <div>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 flex items-center">
+                <BarChart3 className="w-5 h-5 mr-2" />
+                Top 3 Matches
+              </h2>
+              {topPaths.slice(0, 3).map(([domain, score], i) => (
+                <div
+                  key={domain}
+                  className={`mb-4 p-5 border rounded-xl ${i === 0
+                      ? "border-green-200 bg-green-50"
+                      : i === 1
+                        ? "border-blue-200 bg-blue-50"
+                        : "border-orange-200 bg-orange-50"
+                    }`}
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                      {i + 1}. {domain}
+                    </h3>
+                    <span
+                      className={`font-bold text-base sm:text-lg ${i === 0
+                          ? "text-green-600"
+                          : i === 1
+                            ? "text-blue-600"
+                            : "text-orange-600"
+                        }`}
+                    >
+                      {score}%
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-700">
+                    {pathDescriptions[domain] ||
+                      "A field aligned with your strengths and personality."}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Right: All Domain Scores */}
+            <div>
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 flex items-center">
+                <TrendingUp className="w-5 h-5 mr-2" />
+                All Domain Scores
+              </h2>
+              <div className="space-y-3">
+                {[...allScores]
+                  .sort(([, a], [, b]) => b - a)
+                  .map(([domain, score]) => (
+                    <div
+                      key={domain}
+                      className="flex justify-between items-center bg-gray-50 rounded-lg px-3 py-2"
+                    >
+                      <span className="font-medium text-gray-700 text-sm sm:text-base">
+                        {domain}
+                      </span>
+                      <div className="flex items-center w-32 sm:w-40">
+                        <div className="flex-1 bg-gray-200 h-2 rounded-full mr-2">
+                          <div
+                            className="bg-indigo-500 h-2 rounded-full"
+                            style={{ width: `${score}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-xs sm:text-sm font-semibold text-gray-600">
+                          {score}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Chart Section */}
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 sm:p-8 shadow-sm">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
+              <BarChart3 className="w-5 h-5 mr-2" /> Top 5 Domain Comparison
+            </h3>
+            <div className="w-full min-h-[260px] sm:min-h-[300px]">
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart
+                  data={top5ChartData}
+                  margin={{ top: 20, right: 20, left: 0, bottom: 10 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="name"
+                    tick={{ fill: "#4B5563", fontSize: 12 }}
+                    interval={0}
+                    angle={-10}
+                  />
+                  <YAxis domain={[0, 100]} tick={{ fill: "#4B5563" }} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "white",
+                      borderRadius: "10px",
+                      border: "1px solid #E5E7EB",
+                    }}
+                  />
+                  <Bar dataKey="score" radius={[6, 6, 0, 0]}>
+                    {top5ChartData.map((entry, i) => {
+                      const domainColors = {
+                        "Technology & Engineering": "#6366F1",
+                        "Business & Management": "#EF4444",
+                        "Creative Arts & Design": "#F59E0B",
+                        "Healthcare & Medicine": "#10B981",
+                        "Teaching & Education": "#F97316",
+                        "Law & Public Service": "#3B82F6",
+                        "Environment & Agriculture": "#22C55E",
+                        "Finance & Accounting": "#8B5CF6",
+                        "Sports & Fitness": "#EAB308",
+                        "Media & Communication": "#D946EF",
+                      };
+
+                      return (
+                        <Cell
+                          key={`cell-${i}`}
+                          fill={domainColors[entry.name] || "#9CA3AF"}
+                        />
+                      );
+                    })}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* Next Steps Section */}
+          <div className="bg-gradient-to-r from-green-50 to-emerald-100 border border-green-200 rounded-2xl p-6 mt-8">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 flex items-center">
+              <BookOpen className="w-5 h-5 mr-2 text-green-600" /> Next Steps for You
+            </h3>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 text-sm sm:text-base">
+              <li>Explore online courses related to your top domains.</li>
+              <li>Participate in projects, clubs, or competitions in these fields.</li>
+              <li>Connect with mentors or professionals in your chosen path.</li>
+              <li>Take our <b>Career Interest Form</b> to get personalized guidance.</li>
+            </ul>
+          </div>
+
+          {/* Motivational Quote */}
+          <div className="mt-10 text-center italic text-gray-600 text-sm sm:text-base">
+            “Choose a job you love, and you will never have to work a day in your life.”
+            <br />– Confucius
+          </div>
+
+          {/* Buttons */}
+          <div className="flex justify-center items-center gap-3 sm:gap-4 mt-10 flex-nowrap overflow-hidden">
+            <button
+              onClick={startQuiz}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
+            >
+              Retake Quiz
+            </button>
+            <button
+              onClick={goToHome}
+              className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
+            >
+              Back to Home
+            </button>
+            <button
+              onClick={() => navigate("/interest-form")}
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
+            >
+              Get Assessment
+            </button>
+            <button
+              onClick={downloadReport}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
+            >
+              Download Report
+            </button>
+          </div>
+
+        </div>
       </div>
     );
   }
-
-  // ---- PREMIUM USERS CAN SEE RESULTS ----
-  const { topPaths, allScores, personalityType } = showResults;
-  const top5ChartData = [...allScores]
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, 5)
-    .map(([name, score]) => ({ name, score }));
-
-  const downloadReport = async () => {
-  if (!reportRef.current) {
-    alert("Report not ready yet. Please try again.");
-    return;
-  }
-
-  try {
-    const canvas = await html2canvas(reportRef.current, {
-      scale: 2,
-      useCORS: true,
-      scrollY: -window.scrollY,
-    });
-
-    const imgData = canvas.toDataURL("image/png");
-
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("Career_Gen_AI_Report.pdf");
-  } catch (err) {
-    console.error(err);
-    alert("Failed to download report. Please try again.");
-  }
-};
-
-
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 sm:px-6 py-8">
-      <div
-  ref={reportRef}
-  className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-10"
->
-
-
-        {/* Header */}
-        <div className="text-center mb-10">
-          <Trophy className="w-14 h-14 text-yellow-500 mx-auto mb-3" />
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
-            Your Career Quiz Results
-          </h1>
-          <p className="text-gray-600 text-sm sm:text-base">
-            Here are your top career matches and detailed domain scores.
-          </p>
-        </div>
-
-        {/* Top 3 Career Cards */}
-        <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 text-center">
-            🌟 Your Ideal Career Domains
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            {topPaths.slice(0, 3).map(([domain], i) => (
-              <div
-                key={domain}
-                className="bg-gradient-to-br from-indigo-50 to-purple-100 border border-indigo-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <div className="text-indigo-600 text-4xl mb-3">
-                  <Trophy className="w-8 h-8 mx-auto" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{domain}</h3>
-                <p className="text-sm text-gray-600">
-                  {pathDescriptions[domain] || "A field aligned with your strengths and personality."}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* What This Means For You */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-10 shadow-sm">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
-            What This Means for You
-          </h3>
-          <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-            Your responses suggest you have a strong interest in <b>{topPaths[0][0]}</b> and related fields. You’re naturally inclined toward tasks that match your <b>{personalityType}</b> nature. Consider exploring career paths, internships, or academic courses that develop these skills.
-          </p>
-        </div>
-
-        {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-          {/* Left: Top 3 Matches (detailed) */}
-          <div>
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 flex items-center">
-              <BarChart3 className="w-5 h-5 mr-2" />
-              Top 3 Matches
-            </h2>
-            {topPaths.slice(0, 3).map(([domain, score], i) => (
-              <div
-                key={domain}
-                className={`mb-4 p-5 border rounded-xl ${
-                  i === 0
-                    ? "border-green-200 bg-green-50"
-                    : i === 1
-                    ? "border-blue-200 bg-blue-50"
-                    : "border-orange-200 bg-orange-50"
-                }`}
-              >
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-                    {i + 1}. {domain}
-                  </h3>
-                  <span
-                    className={`font-bold text-base sm:text-lg ${
-                      i === 0
-                        ? "text-green-600"
-                        : i === 1
-                        ? "text-blue-600"
-                        : "text-orange-600"
-                    }`}
-                  >
-                    {score}%
-                  </span>
-                </div>
-                <p className="text-sm text-gray-700">
-                  {pathDescriptions[domain] ||
-                    "A field aligned with your strengths and personality."}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Right: All Domain Scores */}
-          <div>
-            <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-5 flex items-center">
-              <TrendingUp className="w-5 h-5 mr-2" />
-              All Domain Scores
-            </h2>
-            <div className="space-y-3">
-              {[...allScores]
-                .sort(([, a], [, b]) => b - a)
-                .map(([domain, score]) => (
-                  <div
-                    key={domain}
-                    className="flex justify-between items-center bg-gray-50 rounded-lg px-3 py-2"
-                  >
-                    <span className="font-medium text-gray-700 text-sm sm:text-base">
-                      {domain}
-                    </span>
-                    <div className="flex items-center w-32 sm:w-40">
-                      <div className="flex-1 bg-gray-200 h-2 rounded-full mr-2">
-                        <div
-                          className="bg-indigo-500 h-2 rounded-full"
-                          style={{ width: `${score}%` }}
-                        ></div>
-                      </div>
-                      <span className="text-xs sm:text-sm font-semibold text-gray-600">
-                        {score}%
-                      </span>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Chart Section */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 sm:p-8 shadow-sm">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <BarChart3 className="w-5 h-5 mr-2" /> Top 5 Domain Comparison
-          </h3>
-          <div className="w-full min-h-[260px] sm:min-h-[300px]">
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                data={top5ChartData}
-                margin={{ top: 20, right: 20, left: 0, bottom: 10 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fill: "#4B5563", fontSize: 12 }}
-                  interval={0}
-                  angle={-10}
-                />
-                <YAxis domain={[0, 100]} tick={{ fill: "#4B5563" }} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: "white",
-                    borderRadius: "10px",
-                    border: "1px solid #E5E7EB",
-                  }}
-                />
-                <Bar dataKey="score" radius={[6, 6, 0, 0]}>
-                  {top5ChartData.map((entry, i) => {
-                    const domainColors = {
-                      "Technology & Engineering": "#6366F1",
-                      "Business & Management": "#EF4444",
-                      "Creative Arts & Design": "#F59E0B",
-                      "Healthcare & Medicine": "#10B981",
-                      "Teaching & Education": "#F97316",
-                      "Law & Public Service": "#3B82F6",
-                      "Environment & Agriculture": "#22C55E",
-                      "Finance & Accounting": "#8B5CF6",
-                      "Sports & Fitness": "#EAB308",
-                      "Media & Communication": "#D946EF",
-                    };
-
-                    return (
-                      <Cell
-                        key={`cell-${i}`}
-                        fill={domainColors[entry.name] || "#9CA3AF"}
-                      />
-                    );
-                  })}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Next Steps Section */}
-        <div className="bg-gradient-to-r from-green-50 to-emerald-100 border border-green-200 rounded-2xl p-6 mt-8">
-          <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 flex items-center">
-            <BookOpen className="w-5 h-5 mr-2 text-green-600" /> Next Steps for You
-          </h3>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700 text-sm sm:text-base">
-            <li>Explore online courses related to your top domains.</li>
-            <li>Participate in projects, clubs, or competitions in these fields.</li>
-            <li>Connect with mentors or professionals in your chosen path.</li>
-            <li>Take our <b>Career Interest Form</b> to get personalized guidance.</li>
-          </ul>
-        </div>
-
-        {/* Motivational Quote */}
-        <div className="mt-10 text-center italic text-gray-600 text-sm sm:text-base">
-          “Choose a job you love, and you will never have to work a day in your life.”
-          <br />– Confucius
-        </div>
-
-        {/* Buttons */}
-        <div className="flex justify-center items-center gap-3 sm:gap-4 mt-10 flex-nowrap overflow-hidden">
-          <button
-            onClick={startQuiz}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
-          >
-            Retake Quiz
-          </button>
-          <button
-            onClick={goToHome}
-            className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
-          >
-            Back to Home
-          </button>
-          <button
-            onClick={() => navigate("/interest-form")}
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 text-sm sm:text-base"
-          >
-            Get Assessment
-          </button>
-          <button
-            onClick={downloadReport}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md"
-          >
-            Download Report
-          </button>
-        </div>
-
-      </div>
-    </div>
-  );
-}
 
 
 
@@ -788,15 +826,15 @@ const CareerQuiz = () => {
                 <label
                   key={value}
                   className={`flex items-center justify-between w-full border-2 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 cursor-pointer transition-all duration-200 ${isSelected
-                      ? "bg-green-500 border-green-500 text-white shadow-md scale-[1.02]"
-                      : "border-gray-300 hover:border-green-400 bg-white text-gray-800"
+                    ? "bg-green-500 border-green-500 text-white shadow-md scale-[1.02]"
+                    : "border-gray-300 hover:border-green-400 bg-white text-gray-800"
                     }`}
                 >
                   <div className="flex items-center gap-3 w-full">
                     <div
                       className={`flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 ${isSelected
-                          ? "bg-white border-green-500 text-green-600 font-bold"
-                          : "border-gray-300 text-gray-500"
+                        ? "bg-white border-green-500 text-green-600 font-bold"
+                        : "border-gray-300 text-gray-500"
                         }`}
                     >
                       {isSelected ? (
@@ -856,8 +894,8 @@ const CareerQuiz = () => {
               onClick={nextQuestion}
               disabled={!answers[question.id]}
               className={`flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold text-xs sm:text-sm text-white transition-all duration-200 ${!answers[question.id]
-                  ? "bg-indigo-300 cursor-not-allowed"
-                  : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:scale-105 shadow-md"
+                ? "bg-indigo-300 cursor-not-allowed"
+                : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:scale-105 shadow-md"
                 }`}
             >
               {currentQuestion === shuffledQuestions.length - 1

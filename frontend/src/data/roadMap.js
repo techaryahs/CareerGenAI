@@ -1,3 +1,5 @@
+// FINAL MERGED FILE – ALL CAREERS WITH UNIQUE IDS
+
 export const dataScientistData = {
   id: 1,
   "title": "Data Scientist",
@@ -126,10 +128,10 @@ export const dataScientistData = {
     youtube: ["Krish Naik", "Ken Jee", "Data Professor", "Simplilearn"]
   },
   salary: [
-    { "role": "Junior Data Scientist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Data Scientist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Data Scientist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Lead Data Scientist", "experience": "+ years", "salary": "  LPA" }
+    { "role": "Junior Data Scientist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Data Scientist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Data Scientist", "experience": "5–8 years", "salary": "12–20 LPA" },
+    { "role": "Lead Data Scientist", "experience": "8+ years", "salary": "20–35 LPA" }
   ],
   futureTrends: [
     "AI-driven analytics and predictive modeling are becoming mainstream.",
@@ -276,10 +278,10 @@ export const cybersecurityAnalystData = {
     youtube: ["NetworkChuck", "John Hammond", "The Cyber Mentor"]
   },
   salary: [
-    { "role": "Junior Analyst", "experience": "  years", "salary": "  LPA" },
-    { "role": "Security Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Analyst", "experience": "  years", "salary": "  LPA" },
-    { "role": "Security Manager", "experience": "+ years", "salary": "  LPA" }
+    { "role": "Junior Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Security Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Analyst", "experience": "5–8 years", "salary": "12–20 LPA" },
+    { "role": "Security Manager", "experience": "8+ years", "salary": "20–35 LPA" }
   ],
   futureTrends: [
     "Rise in AI-driven threat detection and response.",
@@ -410,9 +412,9 @@ export const gameDeveloperData = {
     youtube: ["Brackeys", "GDC", "Game Maker s Toolkit"]
   },
   salary: [
-    { "role": "Junior Game Developer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Game Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Lead Developer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Game Developer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Game Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Lead Developer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "VR/AR gaming demand is rising.",
@@ -523,9 +525,9 @@ export const aiResearcherData = {
     youtube: ["Two Minute Papers", "Yannic Kilcher", "Sentdex"]
   },
   salary: [
-    { "role": "AI Research Intern", "experience": "  years", "salary": "  LPA" },
-    { "role": "AI Scientist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Researcher", "experience": "+ years", "salary": "  LPA" }
+    { "role": "AI Research Intern", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "AI Scientist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Researcher", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI will dominate automation and creativity.",
@@ -637,9 +639,9 @@ export const blockchainDeveloperData = {
     youtube: ["Dapp University", "EatTheBlocks"]
   },
   salary: [
-    { "role": "Junior Developer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Blockchain Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Lead Developer", "experience": "+ years", "salary": "  LPA" }
+    { "role": "Junior Developer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Blockchain Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Lead Developer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Web and metaverse integration booming.",
@@ -769,10 +771,10 @@ export const ethicalHackerData = {
     youtube: ["NetworkChuck", "HackerSploit", "The Cyber Mentor"]
   },
   salary: [
-    { "role": "Junior Ethical Hacker", "experience": "  years", "salary": "  LPA" },
-    { "role": "Penetration Tester", "experience": "  years", "salary": "  LPA" },
-    { "role": "Security Consultant", "experience": "  years", "salary": "  LPA" },
-    { "role": "Chief Security Officer", "experience": "+ years", "salary": "  LPA" }
+    { "role": "Junior Ethical Hacker", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Penetration Tester", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Security Consultant", "experience": "5–8 years", "salary": "12–20 LPA" },
+    { "role": "Chief Security Officer", "experience": "8+ years", "salary": "20–35 LPA" }
   ],
   futureTrends: [
     "AI and automation in ethical hacking.",
@@ -900,10 +902,10 @@ export const artificialIntelligenceEngineerData = {
     youtube: ["Sentdex", "Two Minute Papers", "Krish Naik"]
   },
   salary: [
-    { "role": "AI Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior AI Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "AI Architect", "experience": "  years", "salary": "  LPA" },
-    { "role": "AI Research Lead", "experience": "+ years", "salary": "  LPA" }
+    { "role": "AI Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Senior AI Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "AI Architect", "experience": "5–8 years", "salary": "12–20 LPA" },
+    { "role": "AI Research Lead", "experience": "8+ years", "salary": "20–35 LPA" }
   ],
   futureTrends: [
     "Generative AI reshaping industries.",
@@ -1028,10 +1030,10 @@ export const artificialIntelligenceEthicsSpecialistData = {
     youtube: ["MIT CSAIL", "TED AI Ethics Talks", "Stanford Online"]
   },
   salary: [
-    { "role": "AI Ethics Associate", "experience": "  years", "salary": "  LPA" },
-    { "role": "AI Policy Advisor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Ethics Researcher", "experience": "  years", "salary": "  LPA" },
-    { "role": "AI Governance Director", "experience": "+ years", "salary": "  LPA" }
+    { "role": "AI Ethics Associate", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "AI Policy Advisor", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Ethics Researcher", "experience": "5–8 years", "salary": "12–20 LPA" },
+    { "role": "AI Governance Director", "experience": "8+ years", "salary": "20–35 LPA" }
   ],
   futureTrends: [
     "Global regulations for responsible AI use.",
@@ -1153,9 +1155,9 @@ export const gameDesignerData = {
     youtube: ["Brackeys", "Game Maker s Toolkit", "Extra Credits"]
   },
   salary: [
-    { "role": "Junior Game Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Game Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Lead Designer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Game Designer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Game Designer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Lead Designer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "VR and AR game experiences are rising.",
@@ -1266,9 +1268,9 @@ export const roboticProcessAutomationRpaDeveloperData = {
     youtube: ["UiPath Official", "Anders Jensen", "RPA Tutorials"]
   },
   salary: [
-    { "role": "RPA Developer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Automation Engineer", "experience": "  years", "salary": "  LPA" },
-    { "role": "RPA Architect", "experience": "  years", "salary": "  LPA" }
+    { "role": "RPA Developer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Automation Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "RPA Architect", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Intelligent automation with AI/ML integration.",
@@ -1385,9 +1387,9 @@ export const dataAnalystData = {
     youtube: ["Alex The Analyst", "Luke Barousse", "Data School"]
   },
   salary: [
-    { "role": "Junior Analyst", "experience": "  years", "salary": "  LPA" },
-    { "role": "Data Analyst", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Analyst", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Data Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Analyst", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-driven analytics and real-time dashboards.",
@@ -1506,9 +1508,9 @@ export const foodTechnologistData = {
     youtube: ["Foodology", "NPTEL Food Science", "CFTRI Official"]
   },
   salary: [
-    { "role": "Junior Technologist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Food Scientist", "experience": "  years", "salary": "  LPA" },
-    { "role": "R&D Manager", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Technologist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Food Scientist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "R&D Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of plant-based and sustainable food innovations.",
@@ -1624,9 +1626,9 @@ export const droneOperatorData = {
     youtube: ["DroneDJ", "Pilot Institute", "DJI Tutorials"]
   },
   salary: [
-    { "role": "Junior Drone Operator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Drone Specialist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Operations Manager", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Drone Operator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Drone Specialist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Operations Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Drone delivery services and logistics automation.",
@@ -1744,9 +1746,9 @@ export const webDeveloperData = {
     youtube: ["Traversy Media", "Fireship", "Web Dev Simplified"]
   },
   salary: [
-    { "role": "Junior Web Developer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Web Developer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Web Engineer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Web Developer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Web Developer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Web Engineer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth of Progressive Web Apps (PWA).",
@@ -1864,9 +1866,9 @@ export const digitalIllustratorData = {
     youtube: ["Aaron Blaise", "RossDraws", "Proko"]
   },
   salary: [
-    { "role": "Junior Illustrator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Digital Illustrator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Concept Artist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Illustrator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Digital Illustrator", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Concept Artist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in NFT and digital art marketplaces.",
@@ -1984,9 +1986,9 @@ export const copywriterData = {
     youtube: ["Alex Cattoni", "Copywriting Course", "Neil Patel"]
   },
   salary: [
-    { "role": "Junior Copywriter", "experience": "  years", "salary": "  LPA" },
-    { "role": "Copywriter", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Copy Strategist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Copywriter", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Copywriter", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Copy Strategist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-assisted writing tools like ChatGPT and Jasper.",
@@ -2104,9 +2106,9 @@ export const graphicDesignerData = {
     youtube: ["The Futur", "Satori Graphics", "CharliMarieTV"]
   },
   salary: [
-    { "role": "Junior Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Graphic Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Visual Designer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Designer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Graphic Designer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Visual Designer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Integration of AI tools in design workflow.",
@@ -2223,9 +2225,9 @@ export const architectData = {
     youtube: ["Show It Better", "X Design Workshop", "Revit Pure"]
   },
   salary: [
-    { "role": "Junior Architect", "experience": "  years", "salary": "  LPA" },
-    { "role": "Architect", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Architect", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Architect", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Architect", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Architect", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of smart and sustainable cities.",
@@ -2337,9 +2339,9 @@ export const chefData = {
     youtube: ["Gordon Ramsay", "Chef Ranveer Brar", "Bon App tit"]
   },
   salary: [
-    { "role": "Commis Chef", "experience": "  years", "salary": "  LPA" },
-    { "role": "Sous Chef", "experience": "  years", "salary": "  LPA" },
-    { "role": "Executive Chef", "experience": "  years", "salary": "  LPA" }
+    { "role": "Commis Chef", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Sous Chef", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Executive Chef", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth of cloud kitchens and food startups.",
@@ -2451,9 +2453,9 @@ export const fashionDesignerData = {
     youtube: ["Justine Leconte", "Zoe Hong", "Fashionary"]
   },
   salary: [
-    { "role": "Junior Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Fashion Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Designer / Creative Head", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Designer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Fashion Designer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Designer / Creative Head", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Sustainable and eco-friendly fashion.",
@@ -2571,9 +2573,9 @@ export const actorData = {
     youtube: ["The Acting Career Center", "StageMilk Acting Lessons", "Film Courage"]
   },
   salary: [
-    { "role": "Theatre Actor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Film/TV Actor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Lead Actor/Performer", "experience": "  years", "salary": "  LPA+" }
+    { "role": "Theatre Actor", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Film/TV Actor", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Lead Actor/Performer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rising OTT opportunities for new actors.",
@@ -2691,9 +2693,9 @@ export const contentWriterData = {
     youtube: ["Neil Patel", "Copywriting Course", "Income School"]
   },
   salary: [
-    { "role": "Junior Content Writer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Content Writer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Content Strategist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Content Writer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Content Writer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Content Strategist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-assisted writing and editing tools.",
@@ -2811,9 +2813,9 @@ export const animatorData = {
     youtube: ["Howard Wimshurst", "Sir Wade Neistadt", "CG Geek"]
   },
   salary: [
-    { "role": "Junior Animator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Animator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Animation Director", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Animator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Animator", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Animation Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth of D and AR/VR animation industries.",
@@ -2930,9 +2932,9 @@ export const interiorDesignerData = {
     youtube: ["DesignCaf  India", "House & Home", "The Local Project"]
   },
   salary: [
-    { "role": "Junior Interior Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Interior Designer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Designer / Creative Head", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Interior Designer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Interior Designer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Designer / Creative Head", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of sustainable and smart interiors.",
@@ -3049,9 +3051,9 @@ export const filmDirectorData = {
     youtube: ["Film Riot", "Lessons from the Screenplay", "Every Frame a Painting"]
   },
   salary: [
-    { "role": "Assistant Director", "experience": "  years", "salary": "  LPA" },
-    { "role": "Film Director", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Director / Producer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Assistant Director", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Film Director", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Director / Producer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth of OTT platforms and digital storytelling.",
@@ -3163,9 +3165,9 @@ export const fashionStylistData = {
     youtube: ["BestDressed", "Styling by Tan France", "Emma Chamberlain Fashion Talks"]
   },
   salary: [
-    { "role": "Assistant Stylist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Fashion Stylist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Celebrity Stylist / Creative Director", "experience": "  years", "salary": "  LPA" }
+    { "role": "Assistant Stylist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Fashion Stylist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Celebrity Stylist / Creative Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of AI-based virtual styling tools.",
@@ -3282,9 +3284,9 @@ export const eventPhotographerData = {
     youtube: ["Peter McKinnon", "Mango Street", "Jessica Kobeissi"]
   },
   salary: [
-    { "role": "Freelance / Assistant Photographer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Professional Photographer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Studio Owner / Senior Photographer", "experience": "  years", "salary": "  LPA" }
+    { "role": "Freelance / Assistant Photographer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Professional Photographer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Studio Owner / Senior Photographer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Drone and  event coverage.",
@@ -3395,9 +3397,9 @@ export const psychologistData = {
     youtube: ["Kati Morton", "Therapy in a Nutshell", "APA Psychology"]
   },
   salary: [
-    { "role": "Counseling Psychologist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Clinical Psychologist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Psychologist / Researcher", "experience": "  years", "salary": "  LPA" }
+    { "role": "Counseling Psychologist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Clinical Psychologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Psychologist / Researcher", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in tele-therapy and online counseling.",
@@ -3491,9 +3493,9 @@ export const pharmacistData = {
     youtube: ["Pharmacy Mentor", "Pharmaguideline", "Dr. Matt & Dr. Mike"]
   },
   salary: [
-    { "role": "Retail/Hospital Pharmacist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Clinical Pharmacist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Pharma Research Scientist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Retail/Hospital Pharmacist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Clinical Pharmacist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Pharma Research Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in personalized medicine.",
@@ -3587,9 +3589,9 @@ export const veterinarianData = {
     youtube: ["Dr. Andy Roark", "Vet Ranch", "VetPrep"]
   },
   salary: [
-    { "role": "Junior Veterinarian", "experience": "  years", "salary": "  LPA" },
-    { "role": "Veterinary Surgeon", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Vet / Researcher", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Veterinarian", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Veterinary Surgeon", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Vet / Researcher", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth in pet care industry.",
@@ -3683,9 +3685,9 @@ export const dietitianData = {
     youtube: ["Abbey Sharp", "Dr. Eric Berg", "Mind Over Munch"]
   },
   salary: [
-    { "role": "Junior Nutritionist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Dietitian / Nutritionist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Consultant / Sports Nutritionist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Nutritionist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Dietitian / Nutritionist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Consultant / Sports Nutritionist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in personalized and genetic-based nutrition.",
@@ -3778,9 +3780,9 @@ export const occupationalTherapistData = {
     youtube: ["OT Miri", "NBCOT", "Sarah Putt OT"]
   },
   salary: [
-    { "role": "Junior Therapist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Occupational Therapist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Rehab Specialist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Therapist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Occupational Therapist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Rehab Specialist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Increase in tele-rehabilitation.",
@@ -3873,9 +3875,9 @@ export const geneticCounselorData = {
     youtube: ["MedCram Genetics", "Nature Video Genetics", "Learn Genetics UoU"]
   },
   salary: [
-    { "role": "Trainee Counselor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Genetic Counselor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Genetic Specialist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Trainee Counselor", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Genetic Counselor", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Genetic Specialist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth in personalized genomics.",
@@ -3993,9 +3995,9 @@ export const fitnessTrainerData = {
     youtube: ["Jeff Nippard", "Athlean-X", "Guru Mann Fitness"]
   },
   salary: [
-    { "role": "Gym Instructor", "experience": "  years", "salary": "  LPA" },
-    { "role": "Certified Personal Trainer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior/Online Coach", "experience": "  years", "salary": "  LPA" }
+    { "role": "Gym Instructor", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Certified Personal Trainer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior/Online Coach", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth of online and virtual fitness coaching.",
@@ -4112,9 +4114,9 @@ export const speechTherapistData = {
     youtube: ["Speech Therapy Talk", "Emma Speech Therapy", "LinguaHealth"]
   },
   salary: [
-    { "role": "Junior Speech Therapist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Clinical Speech Pathologist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Therapist/Consultant", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Speech Therapist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Clinical Speech Pathologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Therapist/Consultant", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Teletherapy and virtual speech sessions.",
@@ -4233,9 +4235,9 @@ export const astronomerData = {
     youtube: ["PBS Space Time", "Fraser Cain", "Kurzgesagt  In a Nutshell"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "  years", "salary": "  LPA" },
-    { "role": "Astronomer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Astrophysicist / Research Head", "experience": "  years", "salary": "  LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Astronomer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Astrophysicist / Research Head", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Space telescope advancements and deep-space missions.",
@@ -4353,9 +4355,9 @@ export const meteorologistData = {
     youtube: ["The Weather Channel", "NASA Earth", "Met Office UK"]
   },
   salary: [
-    { "role": "Weather Analyst", "experience": "  years", "salary": "  LPA" },
-    { "role": "Meteorologist", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Atmospheric Scientist", "experience": "  years", "salary": "  LPA" }
+    { "role": "Weather Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Meteorologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Atmospheric Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI and machine learning in weather forecasting.",
@@ -4492,9 +4494,9 @@ export const specialEducationTeacherData = {
     ]
   },
   salary: [
-    { "role": "Assistant Special Educator", "experience": "  years", "salary": " . LPA" },
-    { "role": "Special Education Teacher", "experience": "  years", "salary": "  LPA" },
-    { "role": "Inclusive Education Coordinator", "experience": "  years", "salary": "  LPA" }
+    { "role": "Assistant Special Educator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Special Education Teacher", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Inclusive Education Coordinator", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growing demand for inclusion in mainstream education.",
@@ -4631,9 +4633,9 @@ export const astronomyEducatorData = {
     ]
   },
   salary: [
-    { "role": "Junior Astronomy Educator", "experience": "  years", "salary": "  LPA" },
-    { "role": "Planetarium Educator / Lecturer", "experience": "  years", "salary": "  LPA" },
-    { "role": "Senior Science Communicator", "experience": "  years", "salary": "  LPA" }
+    { "role": "Junior Astronomy Educator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Planetarium Educator / Lecturer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Science Communicator", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in space awareness through education and outreach programs.",
@@ -4758,9 +4760,9 @@ export const teacherData = {
     youtube: ["Teacher Toolkit", "Edutopia", "TED-Ed"]
   },
   salary: [
-    { "role": "Primary Teacher", "experience": "0-2 years", "salary": "3–4 LPA" },
-    { "role": "High School Teacher", "experience": "3–5 years", "salary": "5–6 LPA" },
-    { "role": "College Lecturer", "experience": "5+ years", "salary": "6–10 LPA" }
+    { "role": "Primary Teacher", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "High School Teacher", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "College Lecturer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Digital classrooms and blended learning.",
@@ -4878,9 +4880,9 @@ export const librarianData = {
     youtube: ["ALA Archives", "Library Tutorials", "E-Library Science"]
   },
   salary: [
-    { "role": "Assistant Librarian", "experience": "0-2 years", "salary": "3–4 LPA" },
-    { "role": "Librarian", "experience": "3–6 years", "salary": "5–6 LPA" },
-    { "role": "Chief Librarian", "experience": "7+ years", "salary": "7–10 LPA" }
+    { "role": "Assistant Librarian", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Librarian", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Librarian", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Digital transformation of libraries.",
@@ -4996,8 +4998,8 @@ export const entrepreneurData = {
     youtube: ["Y Combinator", "GaryVee", "Alex Hormozi"]
   },
   salary: [
-    { "role": "Startup Founder", "experience": "0–3 years", "salary": "Variable" },
-    { "role": "Scale-up CEO", "experience": "4–8 years", "salary": "Variable" }
+    { "role": "Startup Founder", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Scale-up CEO", "experience": "2–5 years", "salary": "6–12 LPA" }
   ],
   futureTrends: [
     "Rise of AI-powered startups.",
@@ -5114,9 +5116,9 @@ export const digitalMarketerData = {
     youtube: ["Neil Patel", "HubSpot", "Marketing Harry"]
   },
   salary: [
-    { "role": "Digital Marketing Executive", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Marketing Manager", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Head of Digital", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Digital Marketing Executive", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Marketing Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Head of Digital", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-based marketing automation.",
@@ -5232,9 +5234,9 @@ export const ecommerceManagerData = {
     youtube: ["Shopify Masters", "Oberlo", "Neil Patel"]
   },
   salary: [
-    { "role": "E-commerce Executive", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "E-commerce Manager", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Head of E-commerce", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "E-commerce Executive", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "E-commerce Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Head of E-commerce", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of D2C brands and social commerce.",
@@ -5351,9 +5353,9 @@ export const publicRelationsSpecialistData = {
     youtube: ["PRWeek", "LinkedIn Learning PR", "Media School"]
   },
   salary: [
-    { "role": "PR Executive", "experience": "0–2 years", "salary": "4–5 LPA" },
-    { "role": "PR Manager", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Communications Director", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "PR Executive", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "PR Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Communications Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Integration of AI in media monitoring.",
@@ -5471,9 +5473,9 @@ export const mechanicalEngineerData = {
     youtube: ["Learn Engineering", "NPTEL Mechanical", "Real Engineering"]
   },
   salary: [
-    { "role": "Junior Engineer", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Mechanical Engineer", "experience": "3–6 years", "salary": "6–9 LPA" },
-    { "role": "Senior Engineer", "experience": "7+ years", "salary": "10–15 LPA" }
+    { "role": "Junior Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mechanical Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Engineer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Adoption of automation and robotics.",
@@ -5588,9 +5590,9 @@ export const civilEngineerData = {
     youtube: ["Civil Guruji", "Engineering Explained", "NPTEL Civil"]
   },
   salary: [
-    { "role": "Junior Engineer", "experience": "0–2 years", "salary": "3–4 LPA" },
-    { "role": "Project Engineer", "experience": "3–6 years", "salary": "6–9 LPA" },
-    { "role": "Senior Project Manager", "experience": "7+ years", "salary": "10–15 LPA" }
+    { "role": "Junior Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Project Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Project Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Smart city development.",
@@ -5705,9 +5707,9 @@ export const biomedicalEngineerData = {
     youtube: ["Biomedical Engineer Hub", "MIT OCW Biomedical", "MedTech Today"]
   },
   salary: [
-    { "role": "Biomedical Engineer", "experience": "0–3 years", "salary": "4–6 LPA" },
-    { "role": "Senior Biomedical Engineer", "experience": "4–8 years", "salary": "8–12 LPA" },
-    { "role": "Biomedical R&D Manager", "experience": "8+ years", "salary": "12–20 LPA" }
+    { "role": "Biomedical Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Senior Biomedical Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Biomedical R&D Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Wearable health devices and IoT in healthcare.",
@@ -5822,9 +5824,9 @@ export const marineEngineerData = {
     youtube: ["Marine Engineering Hub", "Maritime Academy", "NPTEL Ocean Engineering"]
   },
   salary: [
-    { "role": "Junior Marine Engineer", "experience": "0–2 years", "salary": "6–8 LPA" },
-    { "role": "Marine Engineer Officer", "experience": "3–6 years", "salary": "10–15 LPA" },
-    { "role": "Chief Marine Engineer", "experience": "7+ years", "salary": "18–25 LPA" }
+    { "role": "Junior Marine Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Marine Engineer Officer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Marine Engineer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Automation and AI in ship navigation.",
@@ -5950,8 +5952,8 @@ export const lawyerData = {
   },
   salary: [
     { "role": "Junior Associate", "experience": "0–2 years", "salary": "3–6 LPA" },
-    { "role": "Senior Associate", "experience": "3–7 years", "salary": "8–15 LPA" },
-    { "role": "Partner / Legal Head", "experience": "8+ years", "salary": "20–40 LPA" }
+    { "role": "Senior Associate", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Partner / Legal Head", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of cyber and data privacy law.",
@@ -6069,9 +6071,9 @@ export const journalistData = {
     youtube: ["BBC Academy", "DW News Learning", "Al Jazeera English"]
   },
   salary: [
-    { "role": "Trainee Journalist", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Reporter / Editor", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Senior Editor / Correspondent", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Trainee Journalist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Reporter / Editor", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Editor / Correspondent", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of digital and data-driven journalism.",
@@ -6182,9 +6184,9 @@ export const travelBloggerData = {
     youtube: ["Lost LeBlanc", "Sonia's Travels", "Kara and Nate"]
   },
   salary: [
-    { "role": "Freelance Blogger", "experience": "0–2 years", "salary": "Variable" },
-    { "role": "Professional Blogger", "experience": "3–5 years", "salary": "5–10 LPA (via brand deals)" },
-    { "role": "Travel Influencer", "experience": "5+ years", "salary": "10–20 LPA+" }
+    { "role": "Freelance Blogger", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Professional Blogger", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Travel Influencer", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of short-form video travel content.",
@@ -6298,9 +6300,9 @@ export const tourGuideData = {
     youtube: ["Rick Steves' Europe", "Expedia India", "Tourism Academy"]
   },
   salary: [
-    { "role": "Assistant Guide", "experience": "0–2 years", "salary": "2–3 LPA" },
-    { "role": "Tour Guide", "experience": "3–5 years", "salary": "4–6 LPA" },
-    { "role": "Senior Guide / Tour Operator", "experience": "6+ years", "salary": "7–12 LPA" }
+    { "role": "Assistant Guide", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Tour Guide", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Guide / Tour Operator", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Virtual and AR-based guided tours.",
@@ -6412,9 +6414,9 @@ export const airlineCabinCrewData = {
     youtube: ["Cabin Crew Diaries", "Emirates Training", "Aviation Dreams"]
   },
   salary: [
-    { "role": "Flight Attendant", "experience": "0–2 years", "salary": "5–8 LPA" },
-    { "role": "Senior Cabin Crew", "experience": "3–6 years", "salary": "9–12 LPA" },
-    { "role": "Cabin Supervisor", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "Flight Attendant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Senior Cabin Crew", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Cabin Supervisor", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Luxury inflight services growth.",
@@ -6528,9 +6530,9 @@ export const tourismManagerData = {
     youtube: ["Travel Trade News", "WTM Global", "IITTM Official Channel"]
   },
   salary: [
-    { "role": "Assistant Manager", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Tourism Manager", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Senior Manager / Director", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Assistant Manager", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Tourism Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Manager / Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of sustainable tourism and eco-travel.",
@@ -6644,9 +6646,9 @@ export const wildlifePhotographerData = {
     youtube: ["Steve Winter", "Wildlife Chris Bray", "NatGeo Photographers"]
   },
   salary: [
-    { "role": "Freelancer", "experience": "0–2 years", "salary": "Variable" },
-    { "role": "Professional Photographer", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Documentary Filmmaker", "experience": "7+ years", "salary": "10–20 LPA" }
+    { "role": "Freelancer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Professional Photographer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Documentary Filmmaker", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Drone-based photography and VR wildlife storytelling.",
@@ -6759,9 +6761,9 @@ export const artCuratorData = {
     youtube: ["The Art Assignment", "Tate Museum Channel", "Christie's Education"]
   },
   salary: [
-    { "role": "Assistant Curator", "experience": "0–3 years", "salary": "4–6 LPA" },
-    { "role": "Art Curator", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Museum Director", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "Assistant Curator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Art Curator", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Museum Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of digital curation and virtual art galleries.",
@@ -6876,9 +6878,9 @@ export const eventManagerData = {
     youtube: ["EventMB", "Meeting Professionals International", "Event Planning Blueprint"]
   },
   salary: [
-    { "role": "Event Coordinator", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Event Manager", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Senior Event Director", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "Event Coordinator", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Event Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Event Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Virtual and hybrid events growth.",
@@ -6993,9 +6995,9 @@ export const hrManagerData = {
     youtube: ["Josh Bersin", "HR360", "AIHR Academy"]
   },
   salary: [
-    { "role": "HR Executive", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "HR Manager", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "HR Director / CHRO", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "HR Executive", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "HR Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "HR Director / CHRO", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-driven HR analytics and automation.",
@@ -7110,9 +7112,9 @@ export const supplyChainAnalystData = {
     youtube: ["MITx SCM", "SCM Globe", "Lean Academy"]
   },
   salary: [
-    { "role": "Junior Analyst", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Senior Analyst", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Supply Chain Manager", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Junior Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Senior Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Supply Chain Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI-driven demand forecasting.",
@@ -7227,9 +7229,9 @@ export const aiProductManagerData = {
     youtube: ["Google AI", "Ken Jee", "Product School"]
   },
   salary: [
-    { "role": "Associate Product Manager", "experience": "0–2 years", "salary": "10–15 LPA" },
-    { "role": "AI Product Manager", "experience": "3–6 years", "salary": "20–30 LPA" },
-    { "role": "Director / VP of Product (AI)", "experience": "7+ years", "salary": "40–60 LPA" }
+    { "role": "Associate Product Manager", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "AI Product Manager", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Director / VP of Product (AI)", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of GenAI-driven product ecosystems.",
@@ -7345,9 +7347,9 @@ export const sociologistData = {
     youtube: ["CrashCourse Sociology", "Sociology Hub", "TEDx Social Science Talks"]
   },
   salary: [
-    { "role": "Research Associate", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Sociologist / Analyst", "experience": "3–6 years", "salary": "6–9 LPA" },
-    { "role": "Professor / Senior Researcher", "experience": "7+ years", "salary": "10–18 LPA" }
+    { "role": "Research Associate", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Sociologist / Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Professor / Senior Researcher", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Use of AI and big data in sociological research.",
@@ -7462,9 +7464,9 @@ export const criminologistData = {
     youtube: ["Forensic Files", "Crime Time with Dr. Stone", "Criminal Psychology Explained"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Criminologist / Analyst", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Senior Consultant / Professor", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Criminologist / Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Consultant / Professor", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Growth in cybercrime and digital forensics roles.",
@@ -7579,9 +7581,9 @@ export const politicalScientistData = {
     youtube: ["CrashCourse Government", "Council on Foreign Relations", "The Print"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Political Analyst", "experience": "3–6 years", "salary": "7–12 LPA" },
-    { "role": "Policy Director", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Political Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Policy Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise in data-driven policy analysis.",
@@ -7695,9 +7697,9 @@ export const archaeologistData = {
     youtube: ["National Geographic Archaeology", "The British Museum", "Ancient Architects"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Field Archaeologist", "experience": "3–6 years", "salary": "6–9 LPA" },
-    { "role": "Senior Archaeologist / Professor", "experience": "7+ years", "salary": "10–18 LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Field Archaeologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Archaeologist / Professor", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Use of AI and drones in archaeological mapping.",
@@ -7812,9 +7814,9 @@ export const statisticianData = {
     youtube: ["StatQuest", "Brandon Foltz", "Krish Naik"]
   },
   salary: [
-    { "role": "Junior Statistician", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Data/Research Analyst", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Lead Statistician", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Junior Statistician", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Data/Research Analyst", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Lead Statistician", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Integration of AI with statistical modeling.",
@@ -7928,9 +7930,9 @@ export const actuaryData = {
     youtube: ["The Infinite Actuary", "Coaching Actuaries", "Study with Me Actuary"]
   },
   salary: [
-    { "role": "Actuarial Analyst", "experience": "0–3 years", "salary": "6–10 LPA" },
-    { "role": "Associate Actuary", "experience": "4–7 years", "salary": "12–20 LPA" },
-    { "role": "Fellow Actuary / Risk Director", "experience": "8+ years", "salary": "25–50 LPA" }
+    { "role": "Actuarial Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Associate Actuary", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Fellow Actuary / Risk Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Use of AI in risk modeling and forecasting.",
@@ -8041,9 +8043,9 @@ export const urbanPlannerData = {
     youtube: ["City Beautiful", "ArchDaily", "Urban Design 101"]
   },
   salary: [
-    { "role": "Junior Planner", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Urban Planner", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Chief Planner", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Junior Planner", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Urban Planner", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Planner", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Rise of smart city initiatives.",
@@ -8159,8 +8161,8 @@ export const linguistData = {
   },
   salary: [
     { "role": "Junior Linguist", "experience": "0–2 years", "salary": "3–6 LPA" },
-    { "role": "Computational Linguist", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Senior Researcher / Professor", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Computational Linguist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Researcher / Professor", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Integration of linguistics in NLP and AI.",
@@ -8274,8 +8276,8 @@ export const foreignLanguageInterpreterData = {
   },
   salary: [
     { "role": "Junior Translator", "experience": "0–2 years", "salary": "3–6 LPA" },
-    { "role": "Interpreter", "experience": "3–6 years", "salary": "6–10 LPA" },
-    { "role": "Senior Language Specialist", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "Interpreter", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior Language Specialist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Increased demand for multilingual professionals.",
@@ -8386,9 +8388,9 @@ export const airTrafficControllerData = {
     youtube: ["ATC Simulator", "FlightRadar24", "TheFlightChannel"]
   },
   salary: [
-    { "role": "Junior ATC Officer", "experience": "0–3 years", "salary": "8–10 LPA" },
-    { "role": "ATC Controller", "experience": "4–7 years", "salary": "12–18 LPA" },
-    { "role": "Chief Air Traffic Controller", "experience": "8+ years", "salary": "20–30 LPA" }
+    { "role": "Junior ATC Officer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "ATC Controller", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Air Traffic Controller", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Automation in radar monitoring and communication.",
@@ -8499,9 +8501,9 @@ export const armsAndAmmunitionEngineerData = {
     youtube: ["DRDO Official", "Learn Engineering", "Real Engineering"]
   },
   salary: [
-    { "role": "Junior Engineer", "experience": "0–3 years", "salary": "6–10 LPA" },
-    { "role": "Defense Engineer", "experience": "4–7 years", "salary": "12–18 LPA" },
-    { "role": "R&D Lead / Scientist", "experience": "8+ years", "salary": "20–35 LPA" }
+    { "role": "Junior Engineer", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Defense Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "R&D Lead / Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI integration in autonomous weapon systems.",
@@ -8615,9 +8617,9 @@ export const biotechnologistData = {
     youtube: ["Amoeba Sisters", "CrashCourse Biology", "MIT OpenCourseWare"]
   },
   salary: [
-    { "role": "Research Associate", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Biotech Engineer", "experience": "3–6 years", "salary": "7–12 LPA" },
-    { "role": "R&D Lead / Scientist", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Research Associate", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Biotech Engineer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "R&D Lead / Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "CRISPR and gene-editing advancements.",
@@ -8729,9 +8731,9 @@ export const environmentalScientistData = {
     youtube: ["National Geographic", "NASA Earth", "Kurzgesagt"]
   },
   salary: [
-    { "role": "Environmental Analyst", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Sustainability Consultant", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Environmental Scientist", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Environmental Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Sustainability Consultant", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Environmental Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI in environmental modeling.",
@@ -8842,9 +8844,9 @@ export const marineBiologistData = {
     youtube: ["National Geographic Ocean", "Blue Planet", "OceanX"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Marine Biologist", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Research Director", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Marine Biologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Research Director", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Ocean climate and coral restoration research.",
@@ -8955,9 +8957,9 @@ export const forensicScientistData = {
     youtube: ["Forensic Files", "Crime Lab 101", "National Geographic Forensics"]
   },
   salary: [
-    { "role": "Lab Analyst", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Forensic Expert", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Chief Forensic Scientist", "experience": "7+ years", "salary": "12–20 LPA" }
+    { "role": "Lab Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Forensic Expert", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Forensic Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI in evidence matching.",
@@ -9069,9 +9071,9 @@ export const geologistData = {
     youtube: ["GeologyHub", "Earth Science Explained", "National Geographic"]
   },
   salary: [
-    { "role": "Junior Geologist", "experience": "0–3 years", "salary": "5–8 LPA" },
-    { "role": "Field Geologist", "experience": "4–7 years", "salary": "10–15 LPA" },
-    { "role": "Chief Geoscientist", "experience": "8+ years", "salary": "18–25 LPA" }
+    { "role": "Junior Geologist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Field Geologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Chief Geoscientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Geothermal energy exploration.",
@@ -9182,9 +9184,9 @@ export const cartographerData = {
     youtube: ["Esri Events", "Geospatial World", "NASA Earth Data"]
   },
   salary: [
-    { "role": "GIS Analyst", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Cartographer", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "GIS Manager", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "GIS Analyst", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Cartographer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "GIS Manager", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Integration of AR/VR in mapping.",
@@ -9295,9 +9297,9 @@ export const zoologistData = {
     youtube: ["National Geographic", "BBC Earth", "Wildlife SOS"]
   },
   salary: [
-    { "role": "Junior Zoologist", "experience": "0–2 years", "salary": "3–5 LPA" },
-    { "role": "Wildlife Biologist", "experience": "3–6 years", "salary": "7–10 LPA" },
-    { "role": "Conservation Scientist", "experience": "7+ years", "salary": "12–18 LPA" }
+    { "role": "Junior Zoologist", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Wildlife Biologist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Conservation Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI in animal population tracking.",
@@ -9408,9 +9410,9 @@ export const oceanographerData = {
     youtube: ["OceanX", "NASA Ocean Science", "National Geographic Oceans"]
   },
   salary: [
-    { "role": "Research Assistant", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Oceanographer", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Marine Scientist", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Research Assistant", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Oceanographer", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Marine Scientist", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "Ocean data automation and AI analytics.",
@@ -9522,9 +9524,9 @@ export const agriculturalScientistData = {
     youtube: ["FAO", "Krishi Vigyan", "AgriTech India"]
   },
   salary: [
-    { "role": "Research Associate", "experience": "0–2 years", "salary": "4–6 LPA" },
-    { "role": "Agricultural Scientist", "experience": "3–6 years", "salary": "8–12 LPA" },
-    { "role": "Head of R&D / AgriTech Lead", "experience": "7+ years", "salary": "15–25 LPA" }
+    { "role": "Research Associate", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Agricultural Scientist", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Head of R&D / AgriTech Lead", "experience": "5–8 years", "salary": "12–20 LPA" }
   ],
   futureTrends: [
     "AI and IoT in precision agriculture.",
@@ -9616,5 +9618,3244 @@ export const roadmaps = {
   "Oceanographer": oceanographerData,
   "Food Technologist": foodTechnologistData,
   "Agricultural Scientist": agriculturalScientistData,
+};
+
+export const softwaredeveloperData = {
+  id: 83,
+  "title": "Software Developer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Software Developer career roadmap overview.",
+  jobRoles: ["Entry Level Software Developer", "Mid Level Software Developer", "Senior Software Developer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const mobileappdeveloperData = {
+  id: 84,
+  "title": "Mobile App Developer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Mobile App Developer career roadmap overview.",
+  jobRoles: ["Entry Level Mobile App Developer", "Mid Level Mobile App Developer", "Senior Mobile App Developer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const cloudengineerData = {
+  id: 85,
+  "title": "Cloud Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Cloud Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Cloud Engineer", "Mid Level Cloud Engineer", "Senior Cloud Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const devopsengineerData = {
+  id: 86,
+  "title": "DevOps Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "DevOps Engineer career roadmap overview.",
+  jobRoles: ["Entry Level DevOps Engineer", "Mid Level DevOps Engineer", "Senior DevOps Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const qaengineerData = {
+  id: 87,
+  "title": "QA Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "QA Engineer career roadmap overview.",
+  jobRoles: ["Entry Level QA Engineer", "Mid Level QA Engineer", "Senior QA Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const machinelearningengineerData = {
+  id: 88,
+  "title": "Machine Learning Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Machine Learning Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Machine Learning Engineer", "Mid Level Machine Learning Engineer", "Senior Machine Learning Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const deeplearningengineerData = {
+  id: 89,
+  "title": "Deep Learning Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Deep Learning Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Deep Learning Engineer", "Mid Level Deep Learning Engineer", "Senior Deep Learning Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const nlpengineerData = {
+  id: 90,
+  "title": "NLP Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "NLP Engineer career roadmap overview.",
+  jobRoles: ["Entry Level NLP Engineer", "Mid Level NLP Engineer", "Senior NLP Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const computervisionengineerData = {
+  id: 91,
+  "title": "Computer Vision Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Computer Vision Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Computer Vision Engineer", "Mid Level Computer Vision Engineer", "Senior Computer Vision Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const promptengineerData = {
+  id: 92,
+  "title": "Prompt Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Prompt Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Prompt Engineer", "Mid Level Prompt Engineer", "Senior Prompt Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const contentcreatorData = {
+  id: 93,
+  "title": "Content Creator",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Content Creator career roadmap overview.",
+  jobRoles: ["Entry Level Content Creator", "Mid Level Content Creator", "Senior Content Creator"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const screenwriterData = {
+  id: 94,
+  "title": "Screenwriter",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Screenwriter career roadmap overview.",
+  jobRoles: ["Entry Level Screenwriter", "Mid Level Screenwriter", "Senior Screenwriter"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const storyboardartistData = {
+  id: 95,
+  "title": "Storyboard Artist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Storyboard Artist career roadmap overview.",
+  jobRoles: ["Entry Level Storyboard Artist", "Mid Level Storyboard Artist", "Senior Storyboard Artist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const creativedirectorData = {
+  id: 96,
+  "title": "Creative Director",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Creative Director career roadmap overview.",
+  jobRoles: ["Entry Level Creative Director", "Mid Level Creative Director", "Senior Creative Director"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const videoeditorData = {
+  id: 97,
+  "title": "Video Editor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Video Editor career roadmap overview.",
+  jobRoles: ["Entry Level Video Editor", "Mid Level Video Editor", "Senior Video Editor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const photographerData = {
+  id: 98,
+  "title": "Photographer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Photographer career roadmap overview.",
+  jobRoles: ["Entry Level Photographer", "Mid Level Photographer", "Senior Photographer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const doctorData = {
+  id: 99,
+  "title": "Doctor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Doctor career roadmap overview.",
+  jobRoles: ["Entry Level Doctor", "Mid Level Doctor", "Senior Doctor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const nurseData = {
+  id: 100,
+  "title": "Nurse",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Nurse career roadmap overview.",
+  jobRoles: ["Entry Level Nurse", "Mid Level Nurse", "Senior Nurse"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const medicallabtechnicianData = {
+  id: 101,
+  "title": "Medical Lab Technician",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Medical Lab Technician career roadmap overview.",
+  jobRoles: ["Entry Level Medical Lab Technician", "Mid Level Medical Lab Technician", "Senior Medical Lab Technician"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const radiologistData = {
+  id: 102,
+  "title": "Radiologist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Radiologist career roadmap overview.",
+  jobRoles: ["Entry Level Radiologist", "Mid Level Radiologist", "Senior Radiologist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const physiotherapistData = {
+  id: 103,
+  "title": "Physiotherapist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Physiotherapist career roadmap overview.",
+  jobRoles: ["Entry Level Physiotherapist", "Mid Level Physiotherapist", "Senior Physiotherapist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const healthcareadministratorData = {
+  id: 104,
+  "title": "Healthcare Administrator",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Healthcare Administrator career roadmap overview.",
+  jobRoles: ["Entry Level Healthcare Administrator", "Mid Level Healthcare Administrator", "Senior Healthcare Administrator"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const publichealthanalystData = {
+  id: 105,
+  "title": "Public Health Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Public Health Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Public Health Analyst", "Mid Level Public Health Analyst", "Senior Public Health Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const collegelecturerData = {
+  id: 106,
+  "title": "College Lecturer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "College Lecturer career roadmap overview.",
+  jobRoles: ["Entry Level College Lecturer", "Mid Level College Lecturer", "Senior College Lecturer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const onlineeducatorData = {
+  id: 107,
+  "title": "Online Educator",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Online Educator career roadmap overview.",
+  jobRoles: ["Entry Level Online Educator", "Mid Level Online Educator", "Senior Online Educator"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const academiccounselorData = {
+  id: 108,
+  "title": "Academic Counselor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Academic Counselor career roadmap overview.",
+  jobRoles: ["Entry Level Academic Counselor", "Mid Level Academic Counselor", "Senior Academic Counselor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const curriculumdesignerData = {
+  id: 109,
+  "title": "Curriculum Designer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Curriculum Designer career roadmap overview.",
+  jobRoles: ["Entry Level Curriculum Designer", "Mid Level Curriculum Designer", "Senior Curriculum Designer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const educationcontentwriterData = {
+  id: 110,
+  "title": "Education Content Writer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Education Content Writer career roadmap overview.",
+  jobRoles: ["Entry Level Education Content Writer", "Mid Level Education Content Writer", "Senior Education Content Writer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const edtechtrainerData = {
+  id: 111,
+  "title": "EdTech Trainer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "EdTech Trainer career roadmap overview.",
+  jobRoles: ["Entry Level EdTech Trainer", "Mid Level EdTech Trainer", "Senior EdTech Trainer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const charteredaccountantData = {
+  id: 112,
+  "title": "Chartered Accountant",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Chartered Accountant career roadmap overview.",
+  jobRoles: ["Entry Level Chartered Accountant", "Mid Level Chartered Accountant", "Senior Chartered Accountant"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const financialanalystData = {
+  id: 113,
+  "title": "Financial Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Financial Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Financial Analyst", "Mid Level Financial Analyst", "Senior Financial Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const investmentbankerData = {
+  id: 114,
+  "title": "Investment Banker",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Investment Banker career roadmap overview.",
+  jobRoles: ["Entry Level Investment Banker", "Mid Level Investment Banker", "Senior Investment Banker"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const accountantData = {
+  id: 115,
+  "title": "Accountant",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Accountant career roadmap overview.",
+  jobRoles: ["Entry Level Accountant", "Mid Level Accountant", "Senior Accountant"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const auditorData = {
+  id: 116,
+  "title": "Auditor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Auditor career roadmap overview.",
+  jobRoles: ["Entry Level Auditor", "Mid Level Auditor", "Senior Auditor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const riskanalystData = {
+  id: 117,
+  "title": "Risk Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Risk Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Risk Analyst", "Mid Level Risk Analyst", "Senior Risk Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const taxconsultantData = {
+  id: 118,
+  "title": "Tax Consultant",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Tax Consultant career roadmap overview.",
+  jobRoles: ["Entry Level Tax Consultant", "Mid Level Tax Consultant", "Senior Tax Consultant"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const financialplannerData = {
+  id: 119,
+  "title": "Financial Planner",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Financial Planner career roadmap overview.",
+  jobRoles: ["Entry Level Financial Planner", "Mid Level Financial Planner", "Senior Financial Planner"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const stockmarketanalystData = {
+  id: 120,
+  "title": "Stock Market Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Stock Market Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Stock Market Analyst", "Mid Level Stock Market Analyst", "Senior Stock Market Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const researchscientistData = {
+  id: 121,
+  "title": "Research Scientist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Research Scientist career roadmap overview.",
+  jobRoles: ["Entry Level Research Scientist", "Mid Level Research Scientist", "Senior Research Scientist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const chemistData = {
+  id: 122,
+  "title": "Chemist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Chemist career roadmap overview.",
+  jobRoles: ["Entry Level Chemist", "Mid Level Chemist", "Senior Chemist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const physicistData = {
+  id: 123,
+  "title": "Physicist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Physicist career roadmap overview.",
+  jobRoles: ["Entry Level Physicist", "Mid Level Physicist", "Senior Physicist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const microbiologistData = {
+  id: 124,
+  "title": "Microbiologist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Microbiologist career roadmap overview.",
+  jobRoles: ["Entry Level Microbiologist", "Mid Level Microbiologist", "Senior Microbiologist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const electricalengineerData = {
+  id: 125,
+  "title": "Electrical Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Electrical Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Electrical Engineer", "Mid Level Electrical Engineer", "Senior Electrical Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const electronicsengineerData = {
+  id: 126,
+  "title": "Electronics Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Electronics Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Electronics Engineer", "Mid Level Electronics Engineer", "Senior Electronics Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const computerengineerData = {
+  id: 127,
+  "title": "Computer Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Computer Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Computer Engineer", "Mid Level Computer Engineer", "Senior Computer Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const roboticsengineerData = {
+  id: 128,
+  "title": "Robotics Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Robotics Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Robotics Engineer", "Mid Level Robotics Engineer", "Senior Robotics Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const mechatronicsengineerData = {
+  id: 129,
+  "title": "Mechatronics Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Mechatronics Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Mechatronics Engineer", "Mid Level Mechatronics Engineer", "Senior Mechatronics Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const aerospaceengineerData = {
+  id: 130,
+  "title": "Aerospace Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Aerospace Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Aerospace Engineer", "Mid Level Aerospace Engineer", "Senior Aerospace Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const automotiveengineerData = {
+  id: 131,
+  "title": "Automotive Engineer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Automotive Engineer career roadmap overview.",
+  jobRoles: ["Entry Level Automotive Engineer", "Mid Level Automotive Engineer", "Senior Automotive Engineer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const newsreporterData = {
+  id: 132,
+  "title": "News Reporter",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "News Reporter career roadmap overview.",
+  jobRoles: ["Entry Level News Reporter", "Mid Level News Reporter", "Senior News Reporter"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const mediaproducerData = {
+  id: 133,
+  "title": "Media Producer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Media Producer career roadmap overview.",
+  jobRoles: ["Entry Level Media Producer", "Mid Level Media Producer", "Senior Media Producer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const anchorData = {
+  id: 134,
+  "title": "Anchor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Anchor career roadmap overview.",
+  jobRoles: ["Entry Level Anchor", "Mid Level Anchor", "Senior Anchor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const socialmediamanagerData = {
+  id: 135,
+  "title": "Social Media Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Social Media Manager career roadmap overview.",
+  jobRoles: ["Entry Level Social Media Manager", "Mid Level Social Media Manager", "Senior Social Media Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const podcastproducerData = {
+  id: 136,
+  "title": "Podcast Producer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Podcast Producer career roadmap overview.",
+  jobRoles: ["Entry Level Podcast Producer", "Mid Level Podcast Producer", "Senior Podcast Producer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const contentstrategistData = {
+  id: 137,
+  "title": "Content Strategist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Content Strategist career roadmap overview.",
+  jobRoles: ["Entry Level Content Strategist", "Mid Level Content Strategist", "Senior Content Strategist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const uiuxdesignerData = {
+  id: 138,
+  "title": "UI/UX Designer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "UI/UX Designer career roadmap overview.",
+  jobRoles: ["Entry Level UI/UX Designer", "Mid Level UI/UX Designer", "Senior UI/UX Designer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const productdesignerData = {
+  id: 139,
+  "title": "Product Designer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Product Designer career roadmap overview.",
+  jobRoles: ["Entry Level Product Designer", "Mid Level Product Designer", "Senior Product Designer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const motiongraphicsdesignerData = {
+  id: 140,
+  "title": "Motion Graphics Designer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Motion Graphics Designer career roadmap overview.",
+  jobRoles: ["Entry Level Motion Graphics Designer", "Mid Level Motion Graphics Designer", "Senior Motion Graphics Designer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const industrialdesignerData = {
+  id: 141,
+  "title": "Industrial Designer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Industrial Designer career roadmap overview.",
+  jobRoles: ["Entry Level Industrial Designer", "Mid Level Industrial Designer", "Senior Industrial Designer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const businessanalystData = {
+  id: 142,
+  "title": "Business Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Business Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Business Analyst", "Mid Level Business Analyst", "Senior Business Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const productmanagerData = {
+  id: 143,
+  "title": "Product Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Product Manager career roadmap overview.",
+  jobRoles: ["Entry Level Product Manager", "Mid Level Product Manager", "Senior Product Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const operationsmanagerData = {
+  id: 144,
+  "title": "Operations Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Operations Manager career roadmap overview.",
+  jobRoles: ["Entry Level Operations Manager", "Mid Level Operations Manager", "Senior Operations Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const marketingmanagerData = {
+  id: 145,
+  "title": "Marketing Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Marketing Manager career roadmap overview.",
+  jobRoles: ["Entry Level Marketing Manager", "Mid Level Marketing Manager", "Senior Marketing Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const salesmanagerData = {
+  id: 146,
+  "title": "Sales Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Sales Manager career roadmap overview.",
+  jobRoles: ["Entry Level Sales Manager", "Mid Level Sales Manager", "Senior Sales Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const businessconsultantData = {
+  id: 147,
+  "title": "Business Consultant",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Business Consultant career roadmap overview.",
+  jobRoles: ["Entry Level Business Consultant", "Mid Level Business Consultant", "Senior Business Consultant"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const corporatelawyerData = {
+  id: 148,
+  "title": "Corporate Lawyer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Corporate Lawyer career roadmap overview.",
+  jobRoles: ["Entry Level Corporate Lawyer", "Mid Level Corporate Lawyer", "Senior Corporate Lawyer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const legaladvisorData = {
+  id: 149,
+  "title": "Legal Advisor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Legal Advisor career roadmap overview.",
+  jobRoles: ["Entry Level Legal Advisor", "Mid Level Legal Advisor", "Senior Legal Advisor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const complianceofficerData = {
+  id: 150,
+  "title": "Compliance Officer",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Compliance Officer career roadmap overview.",
+  jobRoles: ["Entry Level Compliance Officer", "Mid Level Compliance Officer", "Senior Compliance Officer"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const legalanalystData = {
+  id: 151,
+  "title": "Legal Analyst",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Legal Analyst career roadmap overview.",
+  jobRoles: ["Entry Level Legal Analyst", "Mid Level Legal Analyst", "Senior Legal Analyst"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const judgeData = {
+  id: 152,
+  "title": "Judge",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Judge career roadmap overview.",
+  jobRoles: ["Entry Level Judge", "Mid Level Judge", "Senior Judge"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const companysecretaryData = {
+  id: 153,
+  "title": "Company Secretary",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Company Secretary career roadmap overview.",
+  jobRoles: ["Entry Level Company Secretary", "Mid Level Company Secretary", "Senior Company Secretary"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const contractspecialistData = {
+  id: 154,
+  "title": "Contract Specialist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Contract Specialist career roadmap overview.",
+  jobRoles: ["Entry Level Contract Specialist", "Mid Level Contract Specialist", "Senior Contract Specialist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const pastrychefData = {
+  id: 155,
+  "title": "Pastry Chef",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Pastry Chef career roadmap overview.",
+  jobRoles: ["Entry Level Pastry Chef", "Mid Level Pastry Chef", "Senior Pastry Chef"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const souschefData = {
+  id: 156,
+  "title": "Sous Chef",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Sous Chef career roadmap overview.",
+  jobRoles: ["Entry Level Sous Chef", "Mid Level Sous Chef", "Senior Sous Chef"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const foodstylistData = {
+  id: 157,
+  "title": "Food Stylist",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Food Stylist career roadmap overview.",
+  jobRoles: ["Entry Level Food Stylist", "Mid Level Food Stylist", "Senior Food Stylist"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const foodbloggerData = {
+  id: 158,
+  "title": "Food Blogger",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Food Blogger career roadmap overview.",
+  jobRoles: ["Entry Level Food Blogger", "Mid Level Food Blogger", "Senior Food Blogger"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const restaurantmanagerData = {
+  id: 159,
+  "title": "Restaurant Manager",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Restaurant Manager career roadmap overview.",
+  jobRoles: ["Entry Level Restaurant Manager", "Mid Level Restaurant Manager", "Senior Restaurant Manager"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const culinaryinstructorData = {
+  id: 160,
+  "title": "Culinary Instructor",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Culinary Instructor career roadmap overview.",
+  jobRoles: ["Entry Level Culinary Instructor", "Mid Level Culinary Instructor", "Senior Culinary Instructor"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
+};
+
+export const nutritionchefData = {
+  id: 161,
+  "title": "Nutrition Chef",
+  "category": "TBD",
+  "emoji": " ",
+  "overview": "Nutrition Chef career roadmap overview.",
+  jobRoles: ["Entry Level Nutrition Chef", "Mid Level Nutrition Chef", "Senior Nutrition Chef"],
+  responsibilities: ["Core responsibility 1", "Core responsibility 2"],
+  certifications: ["Relevant degree / certification"],
+  specializations: ["General Specialization"],
+  topColleges: ["Top Institute 1", "Top Institute 2"],
+  topRecruiters: ["Top Company 1", "Top Company 2"],
+  projects: ["Sample project 1", "Sample project 2"],
+  interviewTips: ["Understand fundamentals", "Show projects"],
+  education: ["12th completion", "Bachelor degree"],
+  skills: {
+    technical: ["Core Skill 1", "Core Skill 2"],
+    soft: ["Communication", "Problem Solving"],
+    tools: ["Industry Tool 1"]
+  },
+  roadmap: {
+    beginner: ["Learn basics"],
+    intermediate: ["Build projects"],
+    advanced: ["Specialize"],
+    expert: ["Lead and innovate"]
+  },
+  resources: {
+    courses: ["Online Course 1"],
+    books: ["Standard Book"],
+    communities: ["Professional Community"],
+    youtube: ["Educational Channel"]
+  },
+  salary: [
+    { "role": "Junior", "experience": "0–2 years", "salary": "3–6 LPA" },
+    { "role": "Mid", "experience": "2–5 years", "salary": "6–12 LPA" },
+    { "role": "Senior", "experience": "5–8 years", "salary": "12–20 LPA" }
+  ],
+  futureTrends: ["Industry growth"],
+  "personalityType": "Balanced"
 };
 

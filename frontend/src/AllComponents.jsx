@@ -2503,10 +2503,15 @@ const Template6Alt = () => {
 
 const Router = ({ getTemplateComponent, templates }) => (
   <Routes>
-    {/* <Route path="/" element={<LandingPage templates={templates} />} /> */}
-    <Route path="/builder" element={<ResumeBuilderPage getTemplateComponent={getTemplateComponent} templates={templates} />} />
-    <Route path="/builder/:templateId" element={<ResumeBuilderPage getTemplateComponent={getTemplateComponent} templates={templates} />} />
-
+    <Route
+      path="/builder/:templateId"
+      element={
+        <ResumeBuilderPage
+          getTemplateComponent={getTemplateComponent}
+          templates={templates}
+        />
+      }
+    />
   </Routes>
 );
 

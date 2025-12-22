@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Added for video call navigation
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaUserCircle, FaCalendarCheck, FaHourglassHalf, FaChartBar, FaSignOutAlt } from "react-icons/fa"; // Using react-icons for a modern touch
+import { FaUserCircle, FaCalendarCheck, FaHourglassHalf, FaChartBar, FaSignOutAlt, FaVideo } from "react-icons/fa"; // Added FaVideo
 import "../styles/ConsultantDashboard.css";
 
 const ConsultantDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // ✅ Navigation hook
   const consultant = JSON.parse(localStorage.getItem("user"));
   const consultantId = consultant?.id;
 
@@ -104,7 +106,7 @@ const ConsultantDashboard = () => {
           </div>
           <div className="header-right">
             <div className="user-profile-icon">
-                <FaUserCircle size={28} />
+              <FaUserCircle size={28} />
             </div>
             <button className="logout-btn" onClick={handleLogout}>
               <FaSignOutAlt />
@@ -187,26 +189,48 @@ const ConsultantDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {bookings.map((b) => (
-                    <tr key={b._id}>
-                      <td>{b.date}</td>
-                      <td>{b.time}</td>
-                      <td>{b.userEmail}</td>
-                      <td><span className={`status-badge ${b.status}`}>{b.status}</span></td>
-                      <td className="table-actions">
-                        {b.status === "pending" && (
-                          <>
-                            <button className="table-btn accept-btn" onClick={() => updateBookingStatus(b._id, "accept")}>
-                              Accept
+                  {bookings.map((b) => {
+                    // ✅ Check if booking is valid for video call
+                    const bookingDateTime = new Date(`${b.date} ${b.time}`);
+                    const now = new Date();
+                    const isFutureOrCurrent = bookingDateTime >= now;
+                    const isAccepted = b.status === "accepted";
+
+                    return (
+                      <tr key={b._id}>
+                        <td>{b.date}</td>
+                        <td>{b.time}</td>
+                        <td>{b.userEmail}</td>
+                        <td><span className={`status-badge ${b.status}`}>{b.status}</span></td>
+                        <td className="table-actions">
+                          {b.status === "pending" && (
+                            <>
+                              <button className="table-btn accept-btn" onClick={() => updateBookingStatus(b._id, "accept")}>
+                                Accept
+                              </button>
+                              <button className="table-btn reject-btn" onClick={() => updateBookingStatus(b._id, "reject")}>
+                                Reject
+                              </button>
+                            </>
+                          )}
+                          {/* ✅ Video Call Button for Counselor */}
+                          {isAccepted && isFutureOrCurrent && (
+                            <button
+                              className="table-btn video-call-btn"
+                              onClick={() => navigate(`/video-call/${b._id}`, { state: { booking: b } })}
+                              title="Join Video Call"
+                            >
+                              <FaVideo style={{ marginRight: '6px' }} />
+                              Join Call
                             </button>
-                            <button className="table-btn reject-btn" onClick={() => updateBookingStatus(b._id, "reject")}>
-                              Reject
-                            </button>
-                          </>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                          )}
+                          {isAccepted && !isFutureOrCurrent && (
+                            <span className="text-gray-400 text-sm">Session ended</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

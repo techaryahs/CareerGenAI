@@ -41,6 +41,18 @@ import { ResumeProvider } from './context/ResumeContext';
 import BookSlot from './pages/BookSlot';
 import ForgotPassword from "./pages/ForgotPassword";
 import ConsultantDashboard from './pages/ConsultantDashboard';
+import ParentDashboard from './pages/ParentDashboard';
+import VideoCallPage from './pages/VideoCallPage'; // ✅ WebRTC Video Call
+import MyActivity from './pages/MyActivity';
+
+
+
+import IndiaVsAbroadHome from "./indiavsabroad/pages/Home";
+import IndiaVsAbroadCompare from "./indiavsabroad/pages/CompareResult";
+import IndiaVsAbroad from "./indiavsabroad/pages/IndiaVsAbroad";
+
+// ✅ WebRTC Context Provider
+import { WebRTCProvider } from './webrtc/context/WebRTCContext';
 
 // Import from cleaned AllComponents.jsx
 import { ResumeBuilderPage, Template1, Template2, Template3, Template4, Template5, Template6 } from './AllComponents';
@@ -74,7 +86,7 @@ const Layout = () => {
   const isHomePage = location.pathname === '/';
 
   return (
-    <>
+    <WebRTCProvider>
       <MobileCSS />
       <Navbar />
       <main className="app-content">
@@ -111,13 +123,20 @@ const Layout = () => {
           <Route path="/templates/coverletter-builder" element={<CoverLetterBuilder />} />
           <Route path="/book-slot/:consultantId" element={<BookSlot />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-
+          <Route path="/video-call/:bookingId" element={<PrivateRoute><VideoCallPage /></PrivateRoute>} /> {/* ✅ Video Call Route */}
+          <Route path="/my-activity" element={<PrivateRoute><MyActivity /></PrivateRoute>} />
           {/* 5th to 12th Student Guidance Routes */}
           <Route path="/student-guidance" element={<MainPage />} />
           <Route path="/student-guidance/5th-7th" element={<JuniorGuidance />} />\
           <Route path="/student-guidance/8th-10th" element={<SeniorGuidance />} />
           <Route path="/student-guidance/11th-12th" element={<PostGuidence />} />
           <Route path="/student-guidance/final-report" element={<FinalReportPage />} />
+          <Route path="/parent-dashboard" element={<PrivateRoute><ParentDashboard /></PrivateRoute>} />
+
+          {/* India vs Abroad Routes */}
+          <Route path="/india-vs-abroad" element={<IndiaVsAbroadHome />} />
+          <Route path="/india-vs-abroad/compare" element={<IndiaVsAbroadCompare />} />
+          <Route path="/india-vs-abroad/service" element={<IndiaVsAbroad />} />
 
 
           {/* Premium Resume Builder Route */}
@@ -153,28 +172,28 @@ const Layout = () => {
           {/* ✅ EduTutor Routes */}
           <Route path="/edu" element={<EduHomePage />} />
           {/* STARTING PAGE */}
-        <Route path="/edu" element={<EduHomePage />} />
+          <Route path="/edu" element={<EduHomePage />} />
 
-        {/* CAREER → BRANCH → SEMESTER FLOW */}
-        <Route path="/edu/career" element={<EduCareerSelect />} />
-        <Route path="/edu/branch/:careerId" element={<EduBranchSelect />} />
-        <Route path="/edu/semester/:branchId" element={<EduSemesterSelect />} />
+          {/* CAREER → BRANCH → SEMESTER FLOW */}
+          <Route path="/edu/career" element={<EduCareerSelect />} />
+          <Route path="/edu/branch/:careerId" element={<EduBranchSelect />} />
+          <Route path="/edu/semester/:branchId" element={<EduSemesterSelect />} />
 
-        {/* SUBJECT SELECTION */}
-        <Route path="/edu/subjects/:branchId/:sem" element={<EduSubjectSelect />} />
+          {/* SUBJECT SELECTION */}
+          <Route path="/edu/subjects/:branchId/:sem" element={<EduSubjectSelect />} />
 
-        {/* TUTOR LIST */}
-        <Route path="/edu/tutors" element={<EduTutorList />} />
+          {/* TUTOR LIST */}
+          <Route path="/edu/tutors" element={<EduTutorList />} />
 
-        {/* CART → PAYMENT */}
-        <Route path="/edu/cart" element={<EduCartPage />} />
-        <Route path="/edu/checkout" element={<EduCheckoutPage />} />
-        <Route path="/edu/success" element={<EduSuccessPage />} />
+          {/* CART → PAYMENT */}
+          <Route path="/edu/cart" element={<EduCartPage />} />
+          <Route path="/edu/checkout" element={<EduCheckoutPage />} />
+          <Route path="/edu/success" element={<EduSuccessPage />} />
         </Routes>
       </main>
       {isHomePage && <Footer />}
       <Chatbot />
-    </>
+    </WebRTCProvider>
   );
 };
 

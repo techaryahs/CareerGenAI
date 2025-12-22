@@ -97,6 +97,12 @@ const services = {
       description: "Book one-on-one sessions with certified career experts.",
       path: "/consult",
     },
+    {
+      icon: <FaUniversity />,
+      title: "India vs Abroad",
+      description: "Compare where to study based on your career field.",
+      path: "/india-vs-abroad"
+    }
   ],
 };
 

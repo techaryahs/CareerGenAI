@@ -91,7 +91,7 @@ export default function InterestForm() {
     setCareers([]);
 
     try {
-      const res = await axios.post(`${API}/api/recommend`, {
+      const res = await axios.post(`${API}/api/careers/recommend`, {
         interests: selected
       });
 
@@ -254,10 +254,16 @@ export default function InterestForm() {
                   </div>
                   <Link
                     to="/careerDetail"
+                    state={{
+                      careerTitle: career.title,
+                      roadmapKey: career.roadmapKey   // 🔥 IMPORTANT
+                    }}
                     className="bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200 flex items-center justify-center mx-auto"
                   >
                     Get Roadmap
                   </Link>
+
+
                 </div>
               </div>
             ))}

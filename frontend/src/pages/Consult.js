@@ -15,17 +15,21 @@ const Consult = () => {
 
   useEffect(() => {
     const fetchConsultants = async () => {
-      try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/consultants`);
-        const consultantList = Array.isArray(res.data) ? res.data : res.data.consultants || [];
-        setConsultants(consultantList);
-      } catch (err) {
-        console.error('❌ Failed to fetch consultants:', err.message);
-        setConsultants([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  try {
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_URL}/api/bookings/consultants`
+    );
+
+    // ✅ Backend returns { consultants }
+    setConsultants(res.data.consultants || []);
+  } catch (err) {
+    console.error('❌ Failed to fetch consultants:', err.message);
+    setConsultants([]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
     fetchConsultants();
 
@@ -99,7 +103,7 @@ const Consult = () => {
         )}
       </div>
 
-      {showPremiumPopup && (
+      {showPremiumPopup && ( 
         <PremiumPopup
           onClose={() => setShowPremiumPopup(false)}
           onUpgrade={() => {

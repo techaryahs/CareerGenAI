@@ -1,8 +1,7 @@
-// src/pages/BookSlot.jsx
-import { useEffect, useState, useCallback  } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const BookSlot = () => {
   const { consultantId } = useParams();
@@ -16,13 +15,19 @@ const BookSlot = () => {
   const [isBooking, setIsBooking] = useState(false);
   const [userEmail, setUserEmail] = useState('');
 
-
   const API = process.env.REACT_APP_API_URL;
 
+  /* =========================
+     FETCH BOOKED SLOTS
+  ========================= */
   const fetchBookedSlots = useCallback(async () => {
+    if (!date) return;
     try {
       const res = await axios.get(
-        `${API}/api/booked-slots?consultantId=${consultantId}&date=${date}`
+        `${API}/api/bookings/booked-slots`,
+        {
+          params: { consultantId, date }
+        }
       );
       setBookedTimes(res.data.bookedTimes || []);
     } catch (err) {
@@ -31,77 +36,83 @@ const BookSlot = () => {
     }
   }, [API, consultantId, date]);
 
+  /* =========================
+     INITIAL LOAD
+  ========================= */
   useEffect(() => {
     if (!consultant) {
-      navigate('/consult'); // redirect if consultant data is missing
+      navigate('/consult');
+      return;
     }
-    // Fetch logged-in user's email from localStorage
+
     const userData = JSON.parse(localStorage.getItem('user'));
     if (userData?.email) {
       setUserEmail(userData.email);
     }
-  }, [consultant, navigate, setUserEmail]);
+  }, [consultant, navigate]);
 
   useEffect(() => {
-    if (date) {
-      fetchBookedSlots();
-    }
-  }, [date, fetchBookedSlots]);
+    fetchBookedSlots();
+  }, [fetchBookedSlots]);
 
-
+  /* =========================
+     BOOK SLOT
+  ========================= */
   const handleBooking = async () => {
-  if (!date || !time) return alert('Please select date and time');
-  setIsBooking(true);
-
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      alert('Please log in first');
+    if (!date || !time) {
+      alert('Please select date and time');
       return;
     }
 
-    const userData = JSON.parse(localStorage.getItem('user'));
-    if (!userData) {
-      alert('User data not found. Please log in again.');
-      return;
-    }
+    setIsBooking(true);
 
-    const userEmail = userData.email;
-    const userPhone = userData.mobile;
-    const userName = userData.name || 'User';
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Please log in first');
+        return;
+      }
 
-    const res = await axios.post(
-      `${API}/api/book-consultant`,
-      {
-        consultantId: consultantId,   // ✅ FIXED
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (!userData) {
+        alert('User data not found. Please log in again.');
+        return;
+      }
+
+      const payload = {
+        consultantId,
         consultantEmail: consultant.email,
         consultantName: consultant.name,
         date,
         time,
-        userEmail,
-        userPhone,
-        userName
-      },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+        userEmail: userData.email,
+        userPhone: userData.mobile,
+        userName: userData.name || 'User',
+        userPlan: userData.isPremium ? "Premium" : "Free", // ✅ FIX
+        consultantType: consultant.type || "Free"            // ✅ FIX
+      };
 
-    alert("Appointment booked successfully!");
-    navigate('/history');
-    await fetchBookedSlots();
+      await axios.post(
+        `${API}/api/bookings/book-consultant`,
+        payload,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
-  } catch (err) {
-    console.error("Booking error:", err.response?.data || err);
-    alert(err.response?.data?.message || "Slot already booked");
-  } finally {
-    setIsBooking(false);
-  }
-};
+      alert("✅ Appointment booked successfully!");
+      navigate('/history');
 
+    } catch (err) {
+      console.error("❌ Booking error:", err.response?.data || err);
+      alert(err.response?.data?.message || "Slot already booked");
+    } finally {
+      setIsBooking(false);
+    }
+  };
 
-
-
+  /* =========================
+     AVAILABLE TIME SLOTS
+  ========================= */
   const availableTimes = [
-
     '10:00 AM',
     '11:00 AM',
     '12:00 PM',
@@ -110,20 +121,19 @@ const BookSlot = () => {
     '06:00 PM',
     '07:00 PM',
     '08:00 PM',
-
   ];
 
-  // 🔹 Utility: Check if a slot is in the past for today's date
+  /* =========================
+     PAST SLOT CHECK
+  ========================= */
   const isPastSlot = (slot) => {
     if (!date) return false;
 
     const today = new Date();
     const selected = new Date(date);
 
-    // If selected date is NOT today → no restriction
     if (today.toDateString() !== selected.toDateString()) return false;
 
-    // Convert slot string ("04:30 PM") into a Date
     const [timePart, modifier] = slot.split(" ");
     let [hours, minutes] = timePart.split(":").map(Number);
     if (modifier === "PM" && hours !== 12) hours += 12;
@@ -133,7 +143,7 @@ const BookSlot = () => {
     const slotDate = new Date(selected);
     slotDate.setHours(hours, minutes, 0, 0);
 
-    return slotDate <= today; // true if slot time is in the past
+    return slotDate <= today;
   };
 
   return (

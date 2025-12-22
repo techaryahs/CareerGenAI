@@ -272,6 +272,19 @@ body {
     color: #fff;
 }
 
+/* ✅ Video Call Button */
+.table-btn.video-call-btn {
+    background-color: #2563eb;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-btn.video-call-btn:hover {
+    background-color: #1d4ed8;
+}
+
 /* --- Empty States & Loading --- */
 .empty-state {
   text-align: center;

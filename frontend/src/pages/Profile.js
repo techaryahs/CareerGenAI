@@ -1,22 +1,35 @@
 // src/pages/Profile.js
 import React, { useEffect, useState } from "react";
 import "../styles/Profile.css";
-import { FaUserCircle, FaEnvelope, FaPhone, FaCrown, FaEdit } from "react-icons/fa";
+import {
+  FaUserCircle,
+  FaEnvelope,
+  FaPhone,
+  FaCrown,
+  FaEdit
+} from "react-icons/fa";
 import PageLoader from "../components/PageLoader";
+import ParentRegisterModal from "../components/ParentRegisterModal";
 import axios from "axios";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [pageLoading, setPageLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [showParentModal, setShowParentModal] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     mobile: "",
-    profileImage: null,
+    profileImage: null
   });
+
   const API = process.env.REACT_APP_API_URL;
 
+  /* =========================
+     LOAD USER DATA
+  ========================= */
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setUser(storedUser);
@@ -26,7 +39,7 @@ const Profile = () => {
         name: storedUser.name,
         email: storedUser.email,
         mobile: storedUser.mobile,
-        profileImage: storedUser.profileImage || null,
+        profileImage: storedUser.profileImage || null
       });
     }
 
@@ -35,16 +48,21 @@ const Profile = () => {
   }, []);
 
   if (pageLoading) return <PageLoader />;
-  if (!user)
+
+  if (!user) {
     return (
       <div className="profile-page">
         <p>⚠️ No user data found.</p>
       </div>
     );
+  }
 
+  /* =========================
+     FORM HANDLERS
+  ========================= */
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "profileImage" && files[0]) {
+    if (name === "profileImage" && files?.[0]) {
       setFormData({ ...formData, profileImage: URL.createObjectURL(files[0]) });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -55,12 +73,13 @@ const Profile = () => {
     e.preventDefault();
     try {
       const storedUser = JSON.parse(localStorage.getItem("user"));
+
       const res = await axios.post(`${API}/api/user/update-profile`, {
-        userId: storedUser.id || storedUser._id,
+        userId: storedUser._id || storedUser.id,
         name: formData.name,
         mobile: formData.mobile,
         email: formData.email,
-        profileImage: formData.profileImage,
+        profileImage: formData.profileImage
       });
 
       if (res.data.user) {
@@ -71,10 +90,13 @@ const Profile = () => {
       }
     } catch (err) {
       console.error("Profile update error:", err.response?.data || err.message);
-      alert(err.response?.data?.message || "❌ Failed to update profile");
+      alert("❌ Failed to update profile");
     }
   };
 
+  /* =========================
+     RENDER
+  ========================= */
   return (
     <div className="profile-page">
       {/* 🎨 Floating Emoji Background */}
@@ -87,7 +109,7 @@ const Profile = () => {
       </div>
 
       <div className="profile-container animate-fade-in">
-        {/* Left section - Avatar & name */}
+        {/* LEFT SECTION */}
         <div className="profile-left animate-float">
           <div className="avatar-wrapper">
             {formData.profileImage ? (
@@ -100,24 +122,48 @@ const Profile = () => {
               <FaUserCircle size={120} className="profile-avatar-icon" />
             )}
           </div>
+
           <h2 className="profile-name">👋 Hi, {user.name}!</h2>
-          <p className="profile-tagline">✨ Ready to achieve something great today?</p>
+          <p className="profile-tagline">
+            ✨ Ready to achieve something great today?
+          </p>
+
           <p className={`badges ${user.isPremium ? "premiums" : "frees"}`}>
             <FaCrown className="icon" />
             {user.isPremium ? "Premium User 🚀" : "Free User 🎯"}
           </p>
         </div>
 
-        {/* Right section - Info & Edit */}
+        {/* RIGHT SECTION */}
         <div className="profile-right">
           {!isEditing ? (
             <div className="profile-info">
-              <p><FaEnvelope className="icon" /> {user.email}</p>
-              <p><FaPhone className="icon" /> {user.mobile}</p>
+              <p>
+                <FaEnvelope className="icon" /> {user.email}
+              </p>
+              <p>
+                <FaPhone className="icon" /> {user.mobile}
+              </p>
 
-              <button className="edit-btn" onClick={() => setIsEditing(true)}>
+              <button
+                className="edit-btn"
+                onClick={() => setIsEditing(true)}
+              >
                 <FaEdit /> Edit Profile
               </button>
+
+              {/* ✅ REGISTER PARENT BUTTON (STUDENT ONLY) */}
+              {/* ✅ REGISTER PARENT BUTTON (STUDENT ONLY) */}
+              {(user.role === "student" || !user.role) && !user.childOf && (
+                <button
+                  className="edit-btn mt-3"
+                  style={{ backgroundColor: "#4f46e5", color: "#fff" }}
+                  onClick={() => setShowParentModal(true)}
+                >
+                  👨‍👩‍👧 Register Parent
+                </button>
+              )}
+
             </div>
           ) : (
             <form className="edit-form" onSubmit={handleSave}>
@@ -155,6 +201,16 @@ const Profile = () => {
           )}
         </div>
       </div>
+
+      {/* =========================
+         PARENT REGISTER MODAL
+      ========================= */}
+      {showParentModal && (
+        <ParentRegisterModal
+          studentId={user._id || user.id}
+          onClose={() => setShowParentModal(false)}
+        />
+      )}
     </div>
   );
 };
