@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const ProgressReport = require("./models/ProgressReport");
 
 dotenv.config();
 const app = express();
@@ -17,12 +18,15 @@ app.use(cors());
 // =======================
 mongoose
   .connect(process.env.MONGO_URI)
+  // .then(() => ProgressReport.deleteMany({})) // TEMP: Clear progress reports on server start
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.error("❌ MongoDB error:", err));
 
 // =======================
 // ROUTES
 // =======================
+
+  // TEMP: Clear progress reports on server start
 
 // 🔐 Auth
 app.use("/api/auth", require("./routes/auth.routes"));
@@ -41,6 +45,8 @@ app.use("/api/chat", require("./routes/chat.routes"));
 
 // 📅 Booking & Consultants
 app.use("/api/bookings", require("./routes/booking.routes"));
+
+app.use("/api/progress", require("./routes/progressRoutes"));
 
 // 🧑‍🎤 Profile (IMPORTANT – WAS MISSING)
 app.use("/api", require("./routes/profile.routes"));

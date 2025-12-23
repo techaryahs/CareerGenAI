@@ -1,50 +1,121 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+
+// Components
 import SectionStart from "./SectionStart";
 import SectionDiscover from "./SectionDiscover";
 import SectionQuiz from "./SectionQuiz";
 import SectionResult from "./SectionResult";
+import ProgressSidebar from "../Progress";
 
+// Data
 import { questions, resultsMap } from "./data";
-import { jsPDF } from "jspdf";
-
-import ProgressSidebar from "../Progress";   // ✅ PROGRESS BAR ADDED
 
 export default function Grade5to7Home() {
   const [started, setStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [result, setResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Configuration
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
+  const STAGE_KEY = "stage5to7"; 
+  const CATEGORY_NAME = "Self-Assessment 5th to 7th"; 
 
-  /* ------------------------------------
-        START QUIZ
-  ------------------------------------ */
-  const handleStart = () => {
-    setStarted(true);
-    setCurrentQuestion(0);
-    setAnswers([]);
-    setResult(null);
-  };
-
-  /* ------------------------------------
-        ANSWER CLICK
-  ------------------------------------ */
-  const handleAnswer = (type) => {
-    const updated = [...answers, type];
-    setAnswers(updated);
-
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion((q) => q + 1);
-    } else {
-      calculateResult(updated);
+  // Helper: Get User ID safely
+  const getUserId = () => {
+    try {
+      const stored = localStorage.getItem("user");
+      const user = stored ? JSON.parse(stored) : null;
+      return user?._id || null;
+    } catch (e) {
+      return null;
     }
   };
 
-  /* ------------------------------------
-        CALCULATE FINAL RESULT
-  ------------------------------------ */
-  const calculateResult = (finalAnswers) => {
-    const count = {};
+  // ------------------------------------
+  // 1. ON LOAD: SYNC WITH DB
+  // ------------------------------------
+  useEffect(() => {
+    const initPage = async () => {
+      const userId = getUserId();
+      if (!userId) {
+        setIsLoading(false);
+        return;
+      }
 
+      try {
+        const response = await axios.get(`${API_URL}/api/progress/get-progress/${userId}`);
+        
+        if (response.data.success && response.data.data) {
+          const report = response.data.data;
+
+          // A. Check for COMPLETED Result
+          if (report.stageResults && report.stageResults[STAGE_KEY]) {
+            setResult(report.stageResults[STAGE_KEY]);
+            setIsLoading(false);
+            return;
+          }
+
+          // B. Check for PARTIAL Progress
+          if (report.stageProgress && report.stageProgress[STAGE_KEY]) {
+            const saved = report.stageProgress[STAGE_KEY];
+            // Validate bounds
+            if (saved.currentQuestionIndex > 0 && saved.currentQuestionIndex < questions.length) {
+              setAnswers(saved.answers || []);
+              setCurrentQuestion(saved.currentQuestionIndex);
+              setStarted(true);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Sync Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initPage();
+  }, [API_URL]);
+
+  // ------------------------------------
+  // 2. HANDLE ANSWER
+  // ------------------------------------
+  const handleAnswer = (type) => {
+    const nextIndex = currentQuestion + 1;
+    const updatedAnswers = [...answers, type];
+
+    // 1. Update UI Immediately
+    setAnswers(updatedAnswers);
+
+    if (nextIndex < questions.length) {
+      setCurrentQuestion(nextIndex);
+      
+      // 2. Background Save (Partial)
+      const userId = getUserId();
+      if (userId) {
+        axios.post(`${API_URL}/api/progress/save-quiz-progress`, {
+          userId,
+          stage: STAGE_KEY,
+          currentQuestionIndex: nextIndex,
+          answers: updatedAnswers,
+          totalQuestions: questions.length,
+          categoryName: CATEGORY_NAME
+        }).catch(err => console.error("Background save error:", err));
+      }
+    } else {
+      // 3. Finish Quiz
+      calculateResult(updatedAnswers);
+    }
+  };
+
+  // ------------------------------------
+  // 3. FINISH & SAVE FINAL RESULT
+  // ------------------------------------
+  const calculateResult = async (finalAnswers) => {
+    const count = {};
     finalAnswers.forEach((a) => {
       count[a] = (count[a] || 0) + 1;
     });
@@ -53,75 +124,89 @@ export default function Grade5to7Home() {
       count[a] >= count[b] ? a : b
     );
 
-    setResult(resultsMap[top]);
-  };
+    const finalResult = resultsMap[top];
+    setResult(finalResult);
 
-  /* ------------------------------------
-        PREVIOUS BUTTON
-  ------------------------------------ */
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion((q) => q - 1);
-      setAnswers((a) => a.slice(0, -1));
+    // Save Result to DB
+    const userId = getUserId();
+    if (userId) {
+      try {
+        await axios.post(`${API_URL}/api/progress/save-result`, {
+          userId,
+          stage: STAGE_KEY,
+          resultData: finalResult,
+          categoryName: CATEGORY_NAME
+        });
+      } catch (error) {
+        console.error("Error saving result:", error);
+      }
     }
   };
 
-  /* ------------------------------------
-        DOWNLOAD REPORT
-  ------------------------------------ */
-  const handleDownload = () => {
-    try {
-      const doc = new jsPDF();
-      doc.text("CareerGenAI Report", 20, 20);
-      doc.save("report.pdf");
-    } catch {
-      alert("jsPDF not installed");
+  // ------------------------------------
+  // 4. RETAKE HANDLER
+  // ------------------------------------
+  const handleRetake = async () => {
+    setIsLoading(true);
+    const userId = getUserId();
+
+    if (userId) {
+      try {
+        await axios.post(`${API_URL}/api/progress/reset-progress`, {
+          userId,
+          stage: STAGE_KEY,
+          categoryName: CATEGORY_NAME
+        });
+      } catch (error) {
+        console.error("Reset error:", error);
+      }
     }
+
+    setResult(null);
+    setAnswers([]);
+    setCurrentQuestion(0);
+    setStarted(false);
+    setIsLoading(false);
   };
 
-  const progressPercent = Math.round(
-    ((currentQuestion + 1) / questions.length) * 100
-  );
 
-  /* ------------------------------------
-        FINAL PAGE LAYOUT WITH PROGRESS BAR
-  ------------------------------------ */
+  const handleStart = () => setStarted(true);
+  const progressPercent = Math.round(((currentQuestion) / questions.length) * 100);
+
+  if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex">
-
-      {/* LEFT CONTENT AREA */}
       <div className="w-full md:w-[70%] px-6 py-10">
-
-        {/* START + DISCOVER SCREEN */}
-        {!started && !result && (
+        {result ? (
+          <div className="animate-fade-in">
+            <SectionResult 
+               result={result} 
+               onRetake={handleRetake} 
+            />
+          </div>
+        ) : (
           <>
-            <SectionStart handleStart={handleStart} />
-            <SectionDiscover />
+            {!started ? (
+              <>
+                <SectionStart handleStart={handleStart} />
+                <SectionDiscover />
+              </>
+            ) : (
+              <SectionQuiz
+                questions={questions}
+                currentQuestion={currentQuestion}
+                handleAnswer={handleAnswer}
+                progressPercent={progressPercent}
+              />
+            )}
           </>
-        )}
-
-        {/* RESULT SCREEN */}
-        {result && (
-          <SectionResult result={result} handleDownload={handleDownload} />
-        )}
-
-        {/* QUIZ SCREEN */}
-        {!result && started && (
-          <SectionQuiz
-            questions={questions}
-            currentQuestion={currentQuestion}
-            handleAnswer={handleAnswer}
-            handlePrevious={handlePrevious}
-            progressPercent={progressPercent}
-          />
         )}
       </div>
 
-      {/* RIGHT PROGRESS SIDEBAR */}
       <div className="hidden md:block w-[30%] pr-6">
         <ProgressSidebar />
       </div>
-
     </div>
   );
 }
