@@ -6,15 +6,22 @@ import '../../styles/student/RecentActivity.css';
 const RecentActivity = ({ user }) => {
     const [activities, setActivities] = useState([]);
     const [loading, setLoading] = useState(true);
-    const API = process.env.REACT_APP_API_URL;
+
+    const cleanAPI = React.useMemo(() => {
+        const rawAPI = process.env.REACT_APP_API_URL || "http://localhost:5001";
+        return rawAPI.endsWith("/") ? rawAPI.slice(0, -1) : rawAPI;
+    }, []);
 
     useEffect(() => {
         fetchRecentActivity();
-    }, [user]);
+    }, [user, cleanAPI]);
 
     const fetchRecentActivity = async () => {
         const activityList = [];
+        if (!user?._id) return;
+
         try {
+            // 1. Account Creation
             if (user?.createdAt) {
                 activityList.push({
                     type: 'account',
@@ -24,6 +31,7 @@ const RecentActivity = ({ user }) => {
                 });
             }
 
+            // 2. Legacy Quiz Data
             if (user?.services?.quiz?.lastAttemptAt) {
                 activityList.push({
                     type: 'quiz',
@@ -33,11 +41,12 @@ const RecentActivity = ({ user }) => {
                 });
             }
 
+            // 3. Bookings
             if (user?.email) {
                 try {
-                    const res = await axios.get(`${API}/api/bookings/user/${user.email}`);
+                    const res = await axios.get(`${cleanAPI}/api/bookings/user/${user.email}`);
                     if (res.data && Array.isArray(res.data)) {
-                        res.data.slice(0, 3).forEach(booking => {
+                        res.data.forEach(booking => {
                             activityList.push({
                                 type: 'booking',
                                 title: `Masterclass with ${booking.consultantName}`,
@@ -49,9 +58,42 @@ const RecentActivity = ({ user }) => {
                 } catch (err) { }
             }
 
+            // 4. Live Progress Report Milestones
+            try {
+                const res = await axios.get(`${cleanAPI}/api/progress/get-progress/${user._id}`);
+                if (res.data?.success && res.data.data) {
+                    const report = res.data.data;
+
+                    if (report.stageResults) {
+                        Object.entries(report.stageResults).forEach(([stage, result]) => {
+                            activityList.push({
+                                type: 'assessment',
+                                title: `Completed ${stage.replace('stage', 'Stage ')} Assessment`,
+                                timestamp: new Date(report.updatedAt),
+                                icon: <FaCheckCircle />
+                            });
+                        });
+                    }
+
+                    if (report.stageProgress) {
+                        Object.entries(report.stageProgress).forEach(([stage, prog]) => {
+                            if (prog.currentQuestionIndex > 0) {
+                                activityList.push({
+                                    type: 'progress',
+                                    title: `Advanced in ${stage.replace('stage', 'Stage ')} Quiz`,
+                                    timestamp: new Date(prog.lastUpdated),
+                                    icon: <FaRocket />
+                                });
+                            }
+                        });
+                    }
+                }
+            } catch (err) { }
+
             activityList.sort((a, b) => b.timestamp - a.timestamp);
             setActivities(activityList.slice(0, 5));
         } catch (error) {
+            console.error("Recent activity fetch error:", error);
         } finally {
             setLoading(false);
         }

@@ -27,7 +27,7 @@ const ParentHeader = ({ user, onEditRequest }) => {
             <div className="profile-header-content">
                 <div className="profile-header-left">
                     <div className="profile-avatar-wrapper">
-                        <div className="profile-avatar-container">
+                        <div className={`profile-avatar-container ${user?.isPremium ? 'pro-user' : ''}`}>
                             <div className="avatar-initials">
                                 {getInitials(user?.name)}
                             </div>
@@ -38,6 +38,7 @@ const ParentHeader = ({ user, onEditRequest }) => {
                         <div className="name-badge-grid">
                             <h1 className="profile-name">{user?.name || 'Caring Parent'}</h1>
                             {user?.isVerified && <FaCheckCircle className="badge-verified" title="Verified" />}
+                            {user?.isPremium && <span className="badge-pioneer badge-pro">PRO</span>}
                         </div>
                         <p className="profile-handle">@{user?.email?.split('@')[0] || 'parent'}</p>
 

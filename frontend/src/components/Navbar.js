@@ -57,11 +57,13 @@ const Navbar = () => {
           DESKTOP LINKS
       ========================= */}
       <ul className="navbar-links desktop">
-        <li>
-          <NavLink to="/" end>
-            Home
-          </NavLink>
-        </li>
+        {role !== "teacher" && role !== "parent" && (
+          <li>
+            <NavLink to="/" end>
+              Home
+            </NavLink>
+          </li>
+        )}
 
         {/* STUDENT */}
         {role === "student" && (
@@ -161,11 +163,13 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <FaUserCircle
-              className="profile-icon"
-              size={28}
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-            />
+            <div className={`navbar-profile-wrapper ${user?.isPremium ? 'premium' : ''}`}>
+              <FaUserCircle
+                className="profile-icon"
+                size={28}
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              />
+            </div>
             {dropdownOpen && (
               <div className="dropdown-menu">
                 <button onClick={() => { navigate("/profile"); setDropdownOpen(false); }}>
@@ -222,11 +226,13 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <ul>
-            <li>
-              <NavLink to="/" onClick={() => setMobileMenuOpen(false)}>
-                Home
-              </NavLink>
-            </li>
+            {role !== "teacher" && role !== "parent" && (
+              <li>
+                <NavLink to="/" onClick={() => setMobileMenuOpen(false)}>
+                  Home
+                </NavLink>
+              </li>
+            )}
 
             {/* STUDENT */}
             {role === "student" && (

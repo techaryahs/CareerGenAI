@@ -52,21 +52,64 @@
 
 .heatmap-day-v3 {
     width: 10px;
-    /* Shrunk for stability */
     height: 10px;
     border-radius: 2px;
-    background: var(--border-subtle);
+    background: #e2e8f0;
+    /* level-0 */
     transition: all 0.2s ease;
+}
+
+.heatmap-day-v3.level-1 {
+    background: #dbeafe;
+}
+
+.heatmap-day-v3.level-2 {
+    background: #93c5fd;
+}
+
+.heatmap-day-v3.level-3 {
+    background: #3b82f6;
+}
+
+.heatmap-day-v3.level-4 {
+    background: #1d4ed8;
+}
+
+.legend-box-v3.level-0 {
+    background: #e2e8f0;
+}
+
+.legend-box-v3.level-1 {
+    background: #dbeafe;
+}
+
+.legend-box-v3.level-2 {
+    background: #93c5fd;
+}
+
+.legend-box-v3.level-3 {
+    background: #3b82f6;
+}
+
+.legend-box-v3.level-4 {
+    background: #1d4ed8;
 }
 
 .heatmap-months-v3 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    /* Better spacing than space-between */
     padding-left: 32px;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-sub);
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.heatmap-months-v3 span {
+    flex: 1;
+    text-align: center;
 }
 
 .heatmap-footer-v3 {

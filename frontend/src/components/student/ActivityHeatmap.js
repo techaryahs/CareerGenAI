@@ -6,28 +6,37 @@ import '../../styles/student/ActivityHeatmap.css';
 const ActivityHeatmap = ({ user }) => {
     const [activityDays, setActivityDays] = useState({});
     const [loading, setLoading] = useState(true);
-    const API = process.env.REACT_APP_API_URL;
+
+    const cleanAPI = React.useMemo(() => {
+        const rawAPI = process.env.REACT_APP_API_URL || "http://localhost:5001";
+        return rawAPI.endsWith("/") ? rawAPI.slice(0, -1) : rawAPI;
+    }, []);
 
     useEffect(() => {
         fetchActivityData();
-    }, [user]);
+    }, [user, cleanAPI]);
 
     const fetchActivityData = async () => {
         const dayMap = {};
+        if (!user?._id) return;
+
         try {
+            // 1. Account Creation
             if (user?.createdAt) {
-                const date = new Date(user.createdAt);
-                const dateKey = date.toISOString().split('T')[0];
+                const dateKey = new Date(user.createdAt).toISOString().split('T')[0];
                 dayMap[dateKey] = (dayMap[dateKey] || 0) + 1;
             }
+
+            // 2. Legacy Quiz Data
             if (user?.services?.quiz?.lastAttemptAt) {
-                const date = new Date(user.services.quiz.lastAttemptAt);
-                const dateKey = date.toISOString().split('T')[0];
+                const dateKey = new Date(user.services.quiz.lastAttemptAt).toISOString().split('T')[0];
                 dayMap[dateKey] = (dayMap[dateKey] || 0) + 1;
             }
+
+            // 3. Bookings
             if (user?.email) {
                 try {
-                    const res = await axios.get(`${API}/api/bookings/user/${user.email}`);
+                    const res = await axios.get(`${cleanAPI}/api/bookings/user/${user.email}`);
                     if (res.data && Array.isArray(res.data)) {
                         res.data.forEach(booking => {
                             const date = new Date(booking.createdAt || booking.date);
@@ -37,8 +46,37 @@ const ActivityHeatmap = ({ user }) => {
                     }
                 } catch (err) { }
             }
+
+            // 4. Live Progress Report (Growth Pulse)
+            try {
+                const res = await axios.get(`${cleanAPI}/api/progress/get-progress/${user._id}`);
+                if (res.data?.success && res.data.data) {
+                    const report = res.data.data;
+
+                    // Partial progress updates
+                    if (report.stageProgress) {
+                        Object.values(report.stageProgress).forEach(prog => {
+                            if (prog.lastUpdated) {
+                                const dateKey = new Date(prog.lastUpdated).toISOString().split('T')[0];
+                                dayMap[dateKey] = (dayMap[dateKey] || 0) + 1;
+                            }
+                        });
+                    }
+
+                    // Final results updates
+                    if (report.stageResults) {
+                        Object.values(report.stageResults).forEach(stageRes => {
+                            // If results don't have a specific date, use the report's updatedAt as fallback for activity presence
+                            const dateKey = new Date(report.updatedAt).toISOString().split('T')[0];
+                            dayMap[dateKey] = (dayMap[dateKey] || 0) + 1;
+                        });
+                    }
+                }
+            } catch (err) { }
+
             setActivityDays(dayMap);
         } catch (error) {
+            console.error("Heatmap fetch error:", error);
         } finally {
             setLoading(false);
         }

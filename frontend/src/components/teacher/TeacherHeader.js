@@ -27,7 +27,7 @@ const TeacherHeader = ({ teacher, onEditRequest }) => {
             <div className="profile-header-content">
                 <div className="profile-header-left">
                     <div className="profile-avatar-wrapper">
-                        <div className="profile-avatar-container">
+                        <div className={`profile-avatar-container ${teacher?.isPremium ? 'pro-user' : ''}`}>
                             <div className="avatar-initials">
                                 {getInitials(teacher?.fullName || teacher?.name)}
                             </div>
@@ -41,7 +41,11 @@ const TeacherHeader = ({ teacher, onEditRequest }) => {
                             </h1>
                             {/* ✅ Exact match with student ProfileHeader badge logic */}
                             {teacher?.isVerified && <FaCheckCircle className="badge-verified" title="Verified Expert" />}
-                            <span className="badge-pioneer">Teacher</span>
+                            {teacher?.isPremium ? (
+                                <span className="badge-pioneer badge-pro">PRO</span>
+                            ) : (
+                                <span className="badge-pioneer">Teacher</span>
+                            )}
                         </div>
                         <p className="profile-handle">@{teacher?.teachingField?.fieldName || 'Mentorship Lead'}</p>
 
