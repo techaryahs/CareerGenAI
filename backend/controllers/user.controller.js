@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../models/user");
 
 exports.getPremiumStatus = async (req, res) => {
@@ -15,12 +16,26 @@ exports.getPremiumStatus = async (req, res) => {
 
 exports.getUserByEmail = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.params.email });
+    const email = req.params.email;
+
+    // 🔍 Search sequentially in all roles
+    let user = await User.findOne({ email });
+    let role = 'student';
+
+    if (!user) {
+      user = await require("../models/Consultant").findOne({ email });
+      role = 'consultant';
+    }
+
+    if (!user) {
+      user = await require("../models/Teacher").findOne({ email });
+      role = 'teacher';
+    }
 
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    // ✅ Expiry logic
-    if (user.isPremium && user.premiumExpiresAt && new Date() > user.premiumExpiresAt) {
+    // ✅ Expiry logic for students/parents
+    if (role === 'student' && user.isPremium && user.premiumExpiresAt && new Date() > user.premiumExpiresAt) {
       user.isPremium = false;
       user.premiumPlan = null;
       user.premiumExpiresAt = null;
@@ -87,34 +102,62 @@ exports.activatePremium = async (req, res) => {
 
 exports.updateProfile = async (req, res) => {
   try {
-    const { userId, name, mobile, email, profileImage } = req.body;
+    console.log('📸 Update profile request received');
+    const { userId, email, name, fullName, mobile, phone } = req.body;
 
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
+    if (!userId && !email) {
+      return res.status(400).json({ success: false, message: "UserId or Email is required" });
     }
 
-    if (email && email !== user.email) {
-      const emailExists = await User.findOne({ email });
-      if (emailExists) {
-        return res.status(400).json({ message: "Email is already in use" });
-      }
-      user.email = email;
+    // Load models
+    const Consultant = require("../models/Consultant");
+    const Teacher = require("../models/Teacher");
+
+    // Attempt to find account in all collections
+    let account;
+
+    if (userId && mongoose.Types.ObjectId.isValid(userId)) {
+      account = await User.findById(userId);
+      if (!account) account = await Teacher.findById(userId);
+      if (!account) account = await Consultant.findById(userId);
     }
 
-    user.name = name || user.name;
-    user.mobile = mobile || user.mobile;
-    user.profileImage = profileImage || user.profileImage;
+    if (!account && email) {
+      account = await User.findOne({ email });
+      if (!account) account = await Teacher.findOne({ email });
+      if (!account) account = await Consultant.findOne({ email });
+    }
 
-    const updatedUser = await user.save();
+    if (!account) {
+      console.log('❌ Account not found for update');
+      return res.status(404).json({ success: false, message: "Account not found" });
+    }
+
+    console.log('✅ Account found for update:', account.email);
+
+    // Update common fields
+    if (name) account.name = name;
+    if (fullName) account.fullName = fullName;
+    if (mobile) account.mobile = mobile;
+    if (phone) account.phone = phone;
+
+    // Support both Student (location) and Teacher (offlineLocation) fields
+    if (req.body.bio !== undefined) account.bio = req.body.bio;
+    if (req.body.location !== undefined) account.location = req.body.location;
+    if (req.body.offlineLocation !== undefined) account.offlineLocation = req.body.offlineLocation;
+    if (req.body.portfolio !== undefined) account.portfolio = req.body.portfolio;
+
+    const updatedAccount = await account.save();
+    console.log('✅ Profile updated successfully:', account.email);
 
     res.status(200).json({
+      success: true,
       message: "Profile updated successfully",
-      user: updatedUser
+      user: updatedAccount
     });
 
-  } catch (err) {
-    console.error("Profile update error:", err);
-    res.status(500).json({ message: "Server error while updating profile" });
+  } catch (error) {
+    console.error('❌ Error updating profile:', error);
+    res.status(500).json({ success: false, message: "Server error while updating profile", details: error.message });
   }
 };

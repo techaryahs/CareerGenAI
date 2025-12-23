@@ -1,19 +1,34 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Added for video call navigation
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaUserCircle, FaCalendarCheck, FaHourglassHalf, FaChartBar, FaSignOutAlt, FaVideo } from "react-icons/fa"; // Added FaVideo
+import {
+  FaCalendarCheck,
+  FaHourglassHalf,
+  FaCheckCircle,
+  FaVideo,
+  FaClock,
+  FaEnvelope,
+  FaChartLine,
+  FaTimesCircle
+} from "react-icons/fa";
 import "../styles/ConsultantDashboard.css";
 
 const ConsultantDashboard = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate(); // ✅ Navigation hook
+  const navigate = useNavigate();
   const consultant = JSON.parse(localStorage.getItem("user"));
   const consultantId = consultant?.id;
 
-  // --- Data Fetching and State Management ---
   useEffect(() => {
+    // Check if user is actually a consultant
+    const userRole = localStorage.getItem('role');
+    if (userRole !== 'consultant') {
+      console.log('Not a consultant, redirecting to home');
+      window.location.href = "/";
+      return;
+    }
+
     if (!consultantId) {
       window.location.href = "/login";
       return;
@@ -32,14 +47,12 @@ const ConsultantDashboard = () => {
     fetchBookings();
   }, [consultantId]);
 
-  // --- Derived State (Performance with useMemo) ---
   const bookingSummary = useMemo(() => {
     const pendingCount = bookings.filter(b => b.status === "pending").length;
     const acceptedCount = bookings.filter(b => b.status === "accepted").length;
     const rejectedCount = bookings.filter(b => b.status === "rejected").length;
     const totalBookings = bookings.length;
 
-    // Filter for upcoming bookings (e.g., next 7 days)
     const today = new Date();
     const upcoming = bookings
       .filter(b => b.status === "accepted" && new Date(b.date) >= today)
@@ -47,12 +60,6 @@ const ConsultantDashboard = () => {
 
     return { totalBookings, pendingCount, acceptedCount, rejectedCount, upcoming };
   }, [bookings]);
-
-  // --- Handlers ---
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/login";
-  };
 
   const updateBookingStatus = async (id, action) => {
     try {
@@ -66,177 +73,206 @@ const ConsultantDashboard = () => {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <p>Loading your dashboard...</p>
+      <div className="loading-container-modern">
+        <div className="spinner-modern"></div>
+        <p>Loading dashboard...</p>
       </div>
     );
   }
 
   return (
-    <div className="consultant-dashboard-container">
-      {/* Sidebar for Navigation (Placeholder) */}
-      <aside className="dashboard-sidebar">
-        <div className="logo-section">
-          <FaChartBar size={32} />
-          <h3>Consultant Hub</h3>
+    <div className="consultant-dashboard-modern">
+      <div className="dashboard-max-width">
+
+        {/* Modern Header with Gradient */}
+        <div className="dashboard-header-modern">
+          <div className="header-content-modern">
+            <div>
+              <h1 className="dashboard-title-modern">
+                <FaChartLine className="title-icon" />
+                Consultant Dashboard
+              </h1>
+              <p className="dashboard-subtitle-modern">
+                Welcome back, {consultant?.name || "Consultant"}! Manage your appointments and sessions.
+              </p>
+            </div>
+          </div>
         </div>
-        <nav>
-          <ul>
-            <li className="nav-item active">Dashboard</li>
-            {/* <li className="nav-item">Calendar</li>
-            <li className="nav-item">Clients</li>
-            <li className="nav-item">Settings</li> */}
-          </ul>
-        </nav>
-      </aside>
 
-      {/* Main Content Area */}
-      <main className="dashboard-main">
-        {/* Header */}
-        <motion.header
-          className="dashboard-header"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="header-left">
-            <h1 className="dashboard-title">Dashboard</h1>
-            <p className="welcome-message">Welcome back, {consultant?.name}!</p>
+        {/* Stats Cards */}
+        <div className="stats-grid-modern">
+          <div className="stat-card-modern total">
+            <div className="stat-icon-wrapper">
+              <FaCalendarCheck />
+            </div>
+            <div className="stat-content">
+              <span className="stat-label">Total Bookings</span>
+              <span className="stat-value">{bookingSummary.totalBookings}</span>
+            </div>
           </div>
-          <div className="header-right">
-            <div className="user-profile-icon">
-              <FaUserCircle size={28} />
+
+          <div className="stat-card-modern pending">
+            <div className="stat-icon-wrapper">
+              <FaHourglassHalf />
             </div>
-            <button className="logout-btn" onClick={handleLogout}>
-              <FaSignOutAlt />
-              Logout
-            </button>
+            <div className="stat-content">
+              <span className="stat-label">Pending</span>
+              <span className="stat-value">{bookingSummary.pendingCount}</span>
+            </div>
           </div>
-        </motion.header>
 
-        {/* Info Cards Section */}
-        <section className="info-cards-section">
-          <motion.div className="info-card total-bookings" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.2 }}>
-            <div className="card-icon"><FaCalendarCheck /></div>
-            <div className="card-content">
-              <h4>Total Bookings</h4>
-              <p>{bookingSummary.totalBookings}</p>
+          <div className="stat-card-modern accepted">
+            <div className="stat-icon-wrapper">
+              <FaCheckCircle />
             </div>
-          </motion.div>
-          <motion.div className="info-card pending-bookings" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3 }}>
-            <div className="card-icon"><FaHourglassHalf /></div>
-            <div className="card-content">
-              <h4>Pending</h4>
-              <p>{bookingSummary.pendingCount}</p>
+            <div className="stat-content">
+              <span className="stat-label">Accepted</span>
+              <span className="stat-value">{bookingSummary.acceptedCount}</span>
             </div>
-          </motion.div>
-          <motion.div className="info-card accepted-bookings" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.4 }}>
-            <div className="card-icon"><FaCalendarCheck /></div>
-            <div className="card-content">
-              <h4>Accepted</h4>
-              <p>{bookingSummary.acceptedCount}</p>
-            </div>
-          </motion.div>
-        </section>
+          </div>
 
-        {/* Upcoming Bookings Section */}
-        <section className="upcoming-section">
-          <h3 className="section-title">Upcoming Appointments</h3>
-          <AnimatePresence>
-            {bookingSummary.upcoming.length > 0 ? (
-              <div className="upcoming-list">
-                {bookingSummary.upcoming.slice(0, 3).map((b, index) => (
-                  <motion.div
-                    key={b._id}
-                    className="upcoming-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <div className="upcoming-info">
-                      <div className="upcoming-date">{b.date}</div>
-                      <div className="upcoming-details">
-                        <p className="user-email">{b.userEmail}</p>
-                        <p className="booking-time">{b.time}</p>
-                      </div>
+          <div className="stat-card-modern rejected">
+            <div className="stat-icon-wrapper">
+              <FaTimesCircle />
+            </div>
+            <div className="stat-content">
+              <span className="stat-label">Rejected</span>
+              <span className="stat-value">{bookingSummary.rejectedCount}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Upcoming Appointments */}
+        <div className="section-modern">
+          <h2 className="section-title-modern">
+            <FaClock /> Upcoming Appointments
+          </h2>
+          {bookingSummary.upcoming.length > 0 ? (
+            <div className="upcoming-grid-modern">
+              {bookingSummary.upcoming.slice(0, 4).map((booking) => (
+                <div key={booking._id} className="upcoming-card-modern">
+                  <div className="upcoming-date-badge">
+                    {new Date(booking.date).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric'
+                    })}
+                  </div>
+                  <div className="upcoming-info">
+                    <div className="upcoming-user">
+                      <FaEnvelope className="info-icon" />
+                      <span>{booking.userEmail}</span>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            ) : (
-              <p className="empty-state">No upcoming appointments scheduled.</p>
-            )}
-          </AnimatePresence>
-        </section>
-
-        {/* All Bookings (Interactive Table) Section */}
-        <section className="bookings-section">
-          <h3 className="section-title">All Bookings</h3>
-          {bookings.length === 0 ? (
-            <p className="empty-state">No bookings found.</p>
+                    <div className="upcoming-time">
+                      <FaClock className="info-icon" />
+                      <span>{booking.time}</span>
+                    </div>
+                  </div>
+                  <button
+                    className="join-upcoming-btn"
+                    onClick={() => navigate(`/video-call/${booking._id}`, { state: { booking } })}
+                  >
+                    <FaVideo /> Join Call
+                  </button>
+                </div>
+              ))}
+            </div>
           ) : (
-            <div className="bookings-table-container">
-              <table className="bookings-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>User Email</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookings.map((b) => {
-                    // ✅ Check if booking is valid for video call
-                    const bookingDateTime = new Date(`${b.date} ${b.time}`);
-                    const now = new Date();
-                    const isFutureOrCurrent = bookingDateTime >= now;
-                    const isAccepted = b.status === "accepted";
-
-                    return (
-                      <tr key={b._id}>
-                        <td>{b.date}</td>
-                        <td>{b.time}</td>
-                        <td>{b.userEmail}</td>
-                        <td><span className={`status-badge ${b.status}`}>{b.status}</span></td>
-                        <td className="table-actions">
-                          {b.status === "pending" && (
-                            <>
-                              <button className="table-btn accept-btn" onClick={() => updateBookingStatus(b._id, "accept")}>
-                                Accept
-                              </button>
-                              <button className="table-btn reject-btn" onClick={() => updateBookingStatus(b._id, "reject")}>
-                                Reject
-                              </button>
-                            </>
-                          )}
-                          {/* ✅ Video Call Button for Counselor */}
-                          {isAccepted && isFutureOrCurrent && (
-                            <button
-                              className="table-btn video-call-btn"
-                              onClick={() => navigate(`/video-call/${b._id}`, { state: { booking: b } })}
-                              title="Join Video Call"
-                            >
-                              <FaVideo style={{ marginRight: '6px' }} />
-                              Join Call
-                            </button>
-                          )}
-                          {isAccepted && !isFutureOrCurrent && (
-                            <span className="text-gray-400 text-sm">Session ended</span>
-                          )}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            <div className="empty-state-modern">
+              <FaClock className="empty-icon" />
+              <h3>No Upcoming Appointments</h3>
+              <p>You don't have any scheduled appointments</p>
             </div>
           )}
-        </section>
-      </main>
+        </div>
+
+        {/* All Bookings */}
+        <div className="section-modern">
+          <h2 className="section-title-modern">
+            <FaCalendarCheck /> All Bookings
+          </h2>
+          {bookings.length > 0 ? (
+            <div className="bookings-grid-modern">
+              {bookings.map((booking) => {
+                const bookingDateTime = new Date(`${booking.date} ${booking.time}`);
+                const now = new Date();
+                const isFutureOrCurrent = bookingDateTime >= now;
+                const isAccepted = booking.status === "accepted";
+
+                return (
+                  <div key={booking._id} className="booking-card-modern">
+                    <div className="booking-card-header">
+                      <div className="booking-date-info">
+                        <span className="booking-date">
+                          {new Date(booking.date).toLocaleDateString('en-US', {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric'
+                          })}
+                        </span>
+                        <span className="booking-time">
+                          <FaClock /> {booking.time}
+                        </span>
+                      </div>
+                      <span className={`status-badge-modern ${booking.status}`}>
+                        {booking.status === "pending" && "⏳ Pending"}
+                        {booking.status === "accepted" && "✓ Accepted"}
+                        {booking.status === "rejected" && "✗ Rejected"}
+                      </span>
+                    </div>
+
+                    <div className="booking-card-body">
+                      <div className="booking-user-info">
+                        <FaEnvelope className="user-icon" />
+                        <span>{booking.userEmail}</span>
+                      </div>
+
+                      <div className="booking-actions">
+                        {booking.status === "pending" && (
+                          <div className="action-buttons-group">
+                            <button
+                              className="action-btn accept"
+                              onClick={() => updateBookingStatus(booking._id, "accept")}
+                            >
+                              <FaCheckCircle /> Accept
+                            </button>
+                            <button
+                              className="action-btn reject"
+                              onClick={() => updateBookingStatus(booking._id, "reject")}
+                            >
+                              <FaTimesCircle /> Reject
+                            </button>
+                          </div>
+                        )}
+
+                        {isAccepted && isFutureOrCurrent && (
+                          <button
+                            className="action-btn video-call"
+                            onClick={() => navigate(`/video-call/${booking._id}`, { state: { booking } })}
+                          >
+                            <FaVideo /> Join Video Call
+                          </button>
+                        )}
+
+                        {isAccepted && !isFutureOrCurrent && (
+                          <span className="session-ended">
+                            <FaCheckCircle /> Session Completed
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="empty-state-modern">
+              <FaCalendarCheck className="empty-icon" />
+              <h3>No Bookings Yet</h3>
+              <p>You haven't received any booking requests</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

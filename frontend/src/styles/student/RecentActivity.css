@@ -1,0 +1,62 @@
+/* === PRODUCTION-READY RECENT ACTIVITY (COMPACT) === */
+.timeline-v3 {
+    position: relative;
+    padding-left: 24px;
+}
+
+.timeline-v3::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: var(--border-subtle);
+}
+
+.timeline-item-v3 {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.timeline-item-v3:hover {
+    background: var(--bg-main);
+}
+
+.timeline-marker-v3 {
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    /* Reduced from 24px */
+    height: 18px;
+    background: #fff;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    /* Reduced font size */
+    color: var(--primary);
+}
+
+.timeline-content-v3 h4 {
+    font-size: 13px;
+    /* Reduced from 15px */
+    font-weight: 600;
+    margin: 0 0 1px 0;
+    color: var(--text-main);
+}
+
+.timeline-time-v3 {
+    font-size: 11px;
+    /* Reduced from 12px */
+    color: var(--text-sub);
+    font-weight: 500;
+}

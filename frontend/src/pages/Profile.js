@@ -1,92 +1,70 @@
 // src/pages/Profile.js
 import React, { useEffect, useState } from "react";
 import "../styles/Profile.css";
-import {
-  FaUserCircle,
-  FaEnvelope,
-  FaPhone,
-  FaCrown,
-  FaEdit
-} from "react-icons/fa";
+import axios from "axios";
 import PageLoader from "../components/PageLoader";
 import ParentRegisterModal from "../components/ParentRegisterModal";
-import axios from "axios";
+
+// Import role-specific profile components
+import StudentProfile from "../components/student/StudentProfile";
+import ConsultantProfile from "../components/consultant/ConsultantProfile";
+import TeacherProfile from "../components/teacher/TeacherProfile";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [pageLoading, setPageLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
   const [showParentModal, setShowParentModal] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    profileImage: null
-  });
+  const [role, setRole] = useState(null);
 
   const API = process.env.REACT_APP_API_URL;
 
-  /* =========================
-     LOAD USER DATA
-  ========================= */
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
+    const storedRole = localStorage.getItem("role");
 
-    if (storedUser) {
-      setFormData({
-        name: storedUser.name,
-        email: storedUser.email,
-        mobile: storedUser.mobile,
-        profileImage: storedUser.profileImage || null
-      });
-    }
+    setUser(storedUser);
+    setRole(storedRole);
+
+    // ✅ Fetch fresh data from DB to ensure createdAt is present
+    const fetchFreshUser = async () => {
+      if (storedUser?.email) {
+        try {
+          const res = await axios.get(`${API}/api/user/${storedUser.email}`);
+          if (res.data) {
+            setUser(res.data);
+            localStorage.setItem("user", JSON.stringify(res.data));
+          }
+        } catch (err) {
+          console.error("Fresh user fetch error:", err);
+        }
+      }
+    };
+
+    fetchFreshUser();
 
     const timer = setTimeout(() => setPageLoading(false), 1200);
-    return () => clearTimeout(timer);
+
+    const handleOpenParentModal = () => setShowParentModal(true);
+    window.addEventListener('openParentModal', handleOpenParentModal);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('openParentModal', handleOpenParentModal);
+    };
   }, []);
 
-  if (pageLoading) return <PageLoader />;
-
-  if (!user) {
-    return (
-      <div className="profile-page">
-        <p>⚠️ No user data found.</p>
-      </div>
-    );
-  }
-
-  /* =========================
-     FORM HANDLERS
-  ========================= */
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "profileImage" && files?.[0]) {
-      setFormData({ ...formData, profileImage: URL.createObjectURL(files[0]) });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-
-  const handleSave = async (e) => {
-    e.preventDefault();
+  const handleProfileUpdate = async (updates) => {
     try {
       const storedUser = JSON.parse(localStorage.getItem("user"));
 
       const res = await axios.post(`${API}/api/user/update-profile`, {
         userId: storedUser._id || storedUser.id,
-        name: formData.name,
-        mobile: formData.mobile,
-        email: formData.email,
-        profileImage: formData.profileImage
+        ...updates
       });
 
       if (res.data.user) {
         setUser(res.data.user);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        setIsEditing(false);
-        alert("✅ Profile updated successfully!");
       }
     } catch (err) {
       console.error("Profile update error:", err.response?.data || err.message);
@@ -94,124 +72,36 @@ const Profile = () => {
     }
   };
 
-  /* =========================
-     RENDER
-  ========================= */
+  if (pageLoading) {
+    return <PageLoader />;
+  }
+
   return (
-    <div className="profile-page">
-      {/* 🎨 Floating Emoji Background */}
-      <div className="floating-bg">
-        <span>🎓</span>
-        <span>🚀</span>
-        <span>💡</span>
-        <span>📚</span>
-        <span>✨</span>
-      </div>
-
-      <div className="profile-container animate-fade-in">
-        {/* LEFT SECTION */}
-        <div className="profile-left animate-float">
-          <div className="avatar-wrapper">
-            {formData.profileImage ? (
-              <img
-                src={formData.profileImage}
-                alt="Profile"
-                className="profile-avatar"
-              />
-            ) : (
-              <FaUserCircle size={120} className="profile-avatar-icon" />
-            )}
+    <>
+      <div className="profile-wrapper">
+        {role === "student" && (
+          <StudentProfile user={user} onProfileUpdate={handleProfileUpdate} />
+        )}
+        {role === "consultant" && (
+          <ConsultantProfile user={user} />
+        )}
+        {role === "teacher" && (
+          <TeacherProfile user={user} onProfileUpdate={handleProfileUpdate} />
+        )}
+        {!role && (
+          <div className="no-role-message">
+            <p>Please log in to view your profile</p>
           </div>
-
-          <h2 className="profile-name">👋 Hi, {user.name}!</h2>
-          <p className="profile-tagline">
-            ✨ Ready to achieve something great today?
-          </p>
-
-          <p className={`badges ${user.isPremium ? "premiums" : "frees"}`}>
-            <FaCrown className="icon" />
-            {user.isPremium ? "Premium User 🚀" : "Free User 🎯"}
-          </p>
-        </div>
-
-        {/* RIGHT SECTION */}
-        <div className="profile-right">
-          {!isEditing ? (
-            <div className="profile-info">
-              <p>
-                <FaEnvelope className="icon" /> {user.email}
-              </p>
-              <p>
-                <FaPhone className="icon" /> {user.mobile}
-              </p>
-
-              <button
-                className="edit-btn"
-                onClick={() => setIsEditing(true)}
-              >
-                <FaEdit /> Edit Profile
-              </button>
-
-              {/* ✅ REGISTER PARENT BUTTON (STUDENT ONLY) */}
-              {/* ✅ REGISTER PARENT BUTTON (STUDENT ONLY) */}
-              {(user.role === "student" || !user.role) && !user.childOf && (
-                <button
-                  className="edit-btn mt-3"
-                  style={{ backgroundColor: "#4f46e5", color: "#fff" }}
-                  onClick={() => setShowParentModal(true)}
-                >
-                  👨‍👩‍👧 Register Parent
-                </button>
-              )}
-
-            </div>
-          ) : (
-            <form className="edit-form" onSubmit={handleSave}>
-              <input
-                type="file"
-                name="profileImage"
-                accept="image/*"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter name"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter email"
-              />
-              <input
-                type="text"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleChange}
-                placeholder="Enter mobile"
-              />
-              <button type="submit" className="save-btn">
-                Save Changes
-              </button>
-            </form>
-          )}
-        </div>
+        )}
       </div>
 
-      {/* =========================
-         PARENT REGISTER MODAL
-      ========================= */}
       {showParentModal && (
         <ParentRegisterModal
-          studentId={user._id || user.id}
           onClose={() => setShowParentModal(false)}
+          studentId={user?._id || user?.id}
         />
       )}
-    </div>
+    </>
   );
 };
 

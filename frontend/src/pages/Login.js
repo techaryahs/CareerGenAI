@@ -55,6 +55,10 @@ const Login = () => {
         else if (role === "parent") {
           window.location.href = "/parent-dashboard";
         }
+        // Teacher
+        else if (role === "teacher") {
+          window.location.href = "/teacher-dashboard";
+        }
         // Student (default)
         else {
           window.location.href = "/";

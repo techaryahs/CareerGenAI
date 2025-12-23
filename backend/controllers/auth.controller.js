@@ -4,6 +4,7 @@ const sendEmail = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");                 // ✅ REQUIRED
 const User = require("../models/user");
 const Consultant = require("../models/Consultant"); // ✅ REQUIRED
+const Teacher = require("../models/Teacher");       // ✅ TEACHER MODEL
 
 // ✅ OTP Store (move to top for safety)
 const otpStore = new Map();
@@ -151,7 +152,12 @@ exports.login = async (req, res) => {
     // =========================
     const consultant = !user ? await Consultant.findOne({ email }) : null;
 
-    const account = user || consultant;
+    // =========================
+    // 3️⃣ FIND TEACHER (IF NOT USER OR CONSULTANT)
+    // =========================
+    const teacher = !user && !consultant ? await Teacher.findOne({ email }) : null;
+
+    const account = user || consultant || teacher;
     if (!account) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
@@ -165,18 +171,20 @@ exports.login = async (req, res) => {
     }
 
     // =========================
-    // 🚨 EMAIL VERIFICATION CHECK
+    // 🚨 EMAIL VERIFICATION CHECK (Students/Parents only)
     // =========================
+    // Teachers don't use OTP verification - they use admin verification
     if (user && user.isVerified === false) {
       return res.status(403).json({
         error: "Email not verified. Please verify OTP first."
       });
     }
 
+
     // =========================
     // 4️⃣ ROLE RESOLUTION
     // =========================
-    const role = user ? user.role : "consultant";
+    const role = user ? user.role : (consultant ? "consultant" : "teacher");
 
     // =========================
     // 5️⃣ JWT TOKEN
@@ -195,17 +203,38 @@ exports.login = async (req, res) => {
       token,
       user: {
         _id: account._id,
-        name: account.name,
+        name: role === "teacher" ? account.fullName : account.name,
         email: account.email,
         role,
         isPremium: account.isPremium || false,
         premiumPlan: account.premiumPlan || null,
         premiumStartAt: account.premiumStartAt || null,
         premiumExpiresAt: account.premiumExpiresAt || null,
-        ...(role !== "consultant" && {
+        createdAt: account.createdAt,
+        ...(role === "teacher" && {
+          phone: account.phone || null,
+          experienceYears: account.experienceYears,
+          bio: account.bio || "",
+          careerId: account.careerId,
+          programId: account.programId,
+          selectedSubjects: account.selectedSubjects || [],
+          teachingMode: account.teachingMode,
+          onlinePrice: account.onlinePrice,
+          offlinePrice: account.offlinePrice,
+          offlineLocation: account.offlineLocation,
+          slots: account.slots || [],
+          isVerified: account.isVerified || false
+        }),
+        ...(role !== "consultant" && role !== "teacher" && {
           mobile: account.mobile || null,
-          childOf: account.childOf || null,
-          parentOf: account.parentOf || []
+          parents: account.parents || [],
+          parentOf: account.parentOf || [],
+          // ✅ Profile fields that should persist
+          profileImage: account.profileImage || null,
+          bio: account.bio || "",
+          location: account.location || "",
+          portfolio: account.portfolio || "",
+          isVerified: account.isVerified || false
         })
       }
     });
@@ -339,29 +368,241 @@ exports.registerParent = async (req, res) => {
       return res.status(404).json({ error: "Invalid student account" });
     }
 
+    // 🔍 Max 2 parents check
+    if (student.parents && student.parents.length >= 2) {
+      return res.status(400).json({ error: "Max 2 parents allowed per student" });
+    }
+
+    // 🔐 Hash password (handled by pre-save hook in model)
+
     // ✅ Create parent
     const parent = new User({
       name: parentName,
       email,
-      password,          // hashed by pre-save hook
+      password,
       role: "parent",
-      parentOf: [student._id]
+      parentOf: [student._id],
+      isVerified: false // Parent must verify OTP
     });
 
     await parent.save();
 
-    // ✅ Link student → parent
-    student.childOf = parent._id;
+    // ✅ Link student → parent (Push to array)
+    if (!student.parents) student.parents = [];
+    student.parents.push(parent._id);
     await student.save();
 
+    // 🔢 Generate OTP for Parent
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    otpStore.set(email, otp); // Use original email to match student register style
+
+    console.log(`📌 Parent OTP for ${email}:`, otp);
+
+    // 📧 Send OTP to Parent (EXACT WORKING STYLE)
+    await sendEmail(
+      email,
+      "Verify Parent Account - CareerGenAI",
+      "",
+      `
+      <div style="max-width:600px;margin:auto;font-family:Arial,sans-serif;
+                  background:#ffffff;border-radius:10px;
+                  box-shadow:0 10px 25px rgba(0,0,0,0.1);overflow:hidden;">
+
+        <div style="background:#1e40af;padding:20px;text-align:center;color:white;">
+          <h1 style="margin:0;">CareerGenAI</h1>
+          <p style="margin:5px 0;font-size:14px;">AI Powered Career Guidance</p>
+        </div>
+
+        <div style="padding:30px;color:#0f172a;">
+          <h2>Hello ${parentName}, 👋</h2>
+
+          <p>
+            Your child <b>${student.name}</b> has registered you as a parent on <b>CareerGenAI</b>.
+            Please use the OTP below to verify your account.
+          </p>
+
+          <div style="text-align:center;margin:30px 0;">
+            <span style="
+              display:inline-block;
+              padding:15px 30px;
+              font-size:28px;
+              letter-spacing:6px;
+              background:#f1f5f9;
+              border-radius:8px;
+              color:#1e40af;
+              font-weight:bold;">
+              ${otp}
+            </span>
+          </div>
+
+          <p style="font-size:14px;">
+            ⏰ This OTP is valid for <b>5 minutes</b>.
+          </p>
+
+          <hr style="margin:30px 0;" />
+
+          <p style="font-size:12px;color:#94a3b8;">
+            © ${new Date().getFullYear()} CareerGenAI. All rights reserved.
+          </p>
+        </div>
+      </div>
+      `
+    );
+
     res.status(201).json({
-      message: "Parent registered and linked successfully",
+      message: "Parent registered. OTP sent to parent's email.",
+      email,
       parentId: parent._id
     });
 
   } catch (error) {
-    console.error("❌ Parent Registration Error:", error.message);
+    console.error("❌ Parent Registration Error:", error);
     res.status(500).json({ error: "Server error while registering parent" });
   }
 };
 
+/* =========================
+   REGISTER TEACHER
+========================= */
+exports.registerTeacher = async (req, res) => {
+  try {
+    const {
+      fullName,
+      email,
+      phone,
+      password,
+      experienceYears,
+      bio,
+      teachingField,      // { fieldId, fieldName }
+      program,            // { programId, programName }
+      selectedSubjects,
+      teachingMode,
+      onlinePrice,
+      offlinePrice,
+      offlineLocation,
+      slots,
+      qualificationFile,
+      idProofFile
+    } = req.body;
+
+    // 🔍 Validation - Required Fields
+    if (!fullName || !email || !phone || !password || !experienceYears ||
+      !bio || !teachingField || !program || !teachingMode) {
+      return res.status(400).json({ error: "All required fields must be provided" });
+    }
+
+    // 🔍 Validate structure
+    if (!teachingField?.fieldId || !teachingField?.fieldName) {
+      return res.status(400).json({ error: "Teaching field must include both fieldId and fieldName" });
+    }
+    if (!program?.programId || !program?.programName) {
+      return res.status(400).json({ error: "Program must include both programId and programName" });
+    }
+
+    if (!selectedSubjects || selectedSubjects.length === 0) {
+      return res.status(400).json({ error: "At least one subject must be selected" });
+    }
+
+    if (!slots || slots.length === 0) {
+      return res.status(400).json({ error: "At least one availability slot must be provided" });
+    }
+
+    // 🔍 Validate Teaching Mode & Pricing
+    if (teachingMode === "online" || teachingMode === "both") {
+      if (!onlinePrice) {
+        return res.status(400).json({ error: "Online price is required for online teaching mode" });
+      }
+    }
+
+    if (teachingMode === "offline" || teachingMode === "both") {
+      if (!offlinePrice || !offlineLocation) {
+        return res.status(400).json({ error: "Offline price and location are required for offline teaching mode" });
+      }
+    }
+
+    // 🔍 Check Email Uniqueness Across All Models
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const existingUser = await User.findOne({ email: normalizedEmail });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already registered as student/parent" });
+    }
+
+    const existingConsultant = await Consultant.findOne({ email: normalizedEmail });
+    if (existingConsultant) {
+      return res.status(400).json({ error: "Email already registered as consultant" });
+    }
+
+    const existingTeacher = await Teacher.findOne({ email: normalizedEmail });
+    if (existingTeacher) {
+      return res.status(400).json({ error: "Email already registered as teacher" });
+    }
+
+    // 🔍 Check Phone Uniqueness
+    const existingPhone = await Teacher.findOne({ phone });
+    if (existingPhone) {
+      return res.status(400).json({ error: "Phone number already registered" });
+    }
+
+    // 🔍 Phone Validation (10 digits)
+    if (!/^[0-9]{10}$/.test(phone)) {
+      return res.status(400).json({ error: "Phone number must be 10 digits" });
+    }
+
+    // 👤 Create Teacher
+    const newTeacher = new Teacher({
+      fullName,
+      email: normalizedEmail,
+      phone,
+      password, // Will be hashed by pre-save hook
+      experienceYears: Number(experienceYears),
+      bio,
+      teachingField: {
+        fieldId: teachingField.fieldId,
+        fieldName: teachingField.fieldName
+      },
+      program: {
+        programId: program.programId,
+        programName: program.programName
+      },
+      selectedSubjects,  // Array of subject names
+      teachingMode,
+      onlinePrice: onlinePrice ? Number(onlinePrice) : undefined,
+      offlinePrice: offlinePrice ? Number(offlinePrice) : undefined,
+      offlineLocation: offlineLocation || undefined,
+      slots,
+      qualificationFile: qualificationFile || null,
+      idProofFile: idProofFile || null,
+      isVerified: false,
+      isPremium: false
+    });
+
+    await newTeacher.save();
+
+    // 📤 Response (excluding password)
+    res.status(201).json({
+      message: "Teacher registered successfully. Your profile will be verified soon.",
+      teacher: {
+        _id: newTeacher._id,
+        fullName: newTeacher.fullName,
+        email: newTeacher.email,
+        phone: newTeacher.phone,
+        experienceYears: newTeacher.experienceYears,
+        bio: newTeacher.bio,
+        teachingField: newTeacher.teachingField,
+        program: newTeacher.program,
+        selectedSubjects: newTeacher.selectedSubjects,
+        teachingMode: newTeacher.teachingMode,
+        onlinePrice: newTeacher.onlinePrice,
+        offlinePrice: newTeacher.offlinePrice,
+        offlineLocation: newTeacher.offlineLocation,
+        slots: newTeacher.slots,
+        isVerified: newTeacher.isVerified
+      }
+    });
+
+  } catch (error) {
+    console.error("❌ Teacher Registration Error:", error.message);
+    res.status(500).json({ error: "Server error while registering teacher" });
+  }
+};

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaBars, FaTimes, FaUserCircle, FaUser, FaHistory, FaChartLine, FaSignOutAlt } from "react-icons/fa";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
@@ -11,7 +11,9 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProfileOpen, setMobileProfileOpen] = useState(false);
+  const [registerDropdownOpen, setRegisterDropdownOpen] = useState(false);
   const profileRef = useRef();
+  const registerRef = useRef();
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const handleLogout = () => {
@@ -32,6 +34,9 @@ const Navbar = () => {
       if (profileRef.current && !profileRef.current.contains(e.target)) {
         setDropdownOpen(false);
         setMobileProfileOpen(false);
+      }
+      if (registerRef.current && !registerRef.current.contains(e.target)) {
+        setRegisterDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -79,6 +84,13 @@ const Navbar = () => {
           </li>
         )}
 
+        {/* TEACHER */}
+        {role === "teacher" && (
+          <li>
+            <NavLink to="/teacher-dashboard">Dashboard</NavLink>
+          </li>
+        )}
+
         {/* ADMIN */}
         {role === "admin" && (
           <li>
@@ -101,12 +113,51 @@ const Navbar = () => {
             <NavLink to="/login" className="auth-button">
               Login
             </NavLink>
-            <NavLink to="/register" className="auth-button register">
-              Register
-            </NavLink>
-            <NavLink to="/register-consultant" className="auth-button register">
-              Register as Consultant
-            </NavLink>
+            <div className="register-dropdown-container" ref={registerRef}>
+              <button
+                className="auth-button register"
+                onClick={() => setRegisterDropdownOpen(!registerDropdownOpen)}
+              >
+                Register ▾
+              </button>
+              {registerDropdownOpen && (
+                <div className="register-dropdown-menu">
+                  <NavLink
+                    to="/register"
+                    className="register-dropdown-item"
+                    onClick={() => setRegisterDropdownOpen(false)}
+                  >
+                    <span className="dropdown-icon">👨‍🎓</span>
+                    <div className="dropdown-text">
+                      <span className="dropdown-title">Register as Student</span>
+                      <span className="dropdown-subtitle">Start your career journey</span>
+                    </div>
+                  </NavLink>
+                  <NavLink
+                    to="/register-consultant"
+                    className="register-dropdown-item"
+                    onClick={() => setRegisterDropdownOpen(false)}
+                  >
+                    <span className="dropdown-icon">👔</span>
+                    <div className="dropdown-text">
+                      <span className="dropdown-title">Register as Consultant</span>
+                      <span className="dropdown-subtitle">Guide students to success</span>
+                    </div>
+                  </NavLink>
+                  <NavLink
+                    to="/register-teacher"
+                    className="register-dropdown-item"
+                    onClick={() => setRegisterDropdownOpen(false)}
+                  >
+                    <span className="dropdown-icon">📚</span>
+                    <div className="dropdown-text">
+                      <span className="dropdown-title">Teach With Us</span>
+                      <span className="dropdown-subtitle">Share your knowledge</span>
+                    </div>
+                  </NavLink>
+                </div>
+              )}
+            </div>
           </>
         ) : (
           <>
@@ -117,30 +168,38 @@ const Navbar = () => {
             />
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <button onClick={() => navigate("/profile")}>
-                  See Profile
+                <button onClick={() => { navigate("/profile"); setDropdownOpen(false); }}>
+                  <FaUser />
+                  <span>See Profile</span>
                 </button>
 
                 {/* STUDENT */}
                 {role === "student" && (
                   <>
-                    <button onClick={() => navigate("/history")}>
-                      History
+                    <button onClick={() => { navigate("/history"); setDropdownOpen(false); }}>
+                      <FaHistory />
+                      <span>History</span>
                     </button>
-                    <button onClick={() => navigate("/my-activity")}>
-                      My Activity
+                    <button onClick={() => { navigate("/my-activity"); setDropdownOpen(false); }}>
+                      <FaChartLine />
+                      <span>My Activity</span>
                     </button>
                   </>
                 )}
 
                 {/* PARENT */}
                 {role === "parent" && (
-                  <button onClick={() => navigate("/parent-dashboard")}>
-                    Parent Dashboard
+                  <button onClick={() => { navigate("/parent-dashboard"); setDropdownOpen(false); }}>
+                    <FaChartLine />
+                    <span>Parent Dashboard</span>
                   </button>
                 )}
 
-                <button onClick={handleLogout}>Logout</button>
+                <div className="dropdown-divider"></div>
+                <button onClick={handleLogout} className="logout-btn">
+                  <FaSignOutAlt />
+                  <span>Logout</span>
+                </button>
               </div>
             )}
           </>
@@ -271,6 +330,13 @@ const Navbar = () => {
                   className="auth-button register"
                 >
                   Register as Consultant
+                </NavLink>
+                <NavLink
+                  to="/register-teacher"
+                  className="auth-button register"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Teach With Us
                 </NavLink>
               </div>
             )}

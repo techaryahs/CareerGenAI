@@ -10,7 +10,7 @@ const app = express();
 // MIDDLEWARE
 // =======================
 app.use(cors());
-app.use(express.json());
+
 
 // =======================
 // DATABASE
@@ -48,6 +48,9 @@ app.use("/api", require("./routes/profile.routes"));
 // 👪 Parent
 // 👨‍👩‍👧 Parent Dashboard
 app.use("/api/parent", require("./routes/parent.routes"));
+
+// 👨‍🏫 Teacher
+app.use("/api/teacher", require("./routes/teacher.routes"));
 
 
 

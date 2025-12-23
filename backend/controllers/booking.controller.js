@@ -119,8 +119,35 @@ exports.getUserCounselling = async (req, res) => {
     const bookings = await Booking.find({ userEmail: req.params.email })
       .sort({ date: -1 });
 
-    res.json({ bookings });
-  } catch {
+    // Populate consultant profile images
+    const bookingsWithImages = await Promise.all(
+      bookings.map(async (booking) => {
+        const consultant = await Consultant.findById(booking.consultantId);
+        return {
+          ...booking.toObject(),
+          consultantProfileImage: consultant?.image || null  // Use 'image' field
+        };
+      })
+    );
+
+    res.json({ bookings: bookingsWithImages });
+  } catch (error) {
+    console.error('Error in getUserCounselling:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+/* =========================
+   GET USER BOOKINGS (FOR PROFILE)
+========================= */
+exports.getUserBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find({ userEmail: req.params.email })
+      .sort({ date: -1 });
+
+    res.json(bookings); // Return array directly
+  } catch (error) {
+    console.error('Error fetching user bookings:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };

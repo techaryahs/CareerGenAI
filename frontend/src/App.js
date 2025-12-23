@@ -44,6 +44,8 @@ import ConsultantDashboard from './pages/ConsultantDashboard';
 import ParentDashboard from './pages/ParentDashboard';
 import VideoCallPage from './pages/VideoCallPage'; // ✅ WebRTC Video Call
 import MyActivity from './pages/MyActivity';
+import TeacherRegister from './pages/TeacherRegister'; // ✅ Teacher Registration
+import TeacherDashboard from './pages/TeacherDashboard'; // ✅ Teacher Dashboard
 
 
 
@@ -132,6 +134,8 @@ const Layout = () => {
           <Route path="/student-guidance/11th-12th" element={<PostGuidence />} />
           <Route path="/student-guidance/final-report" element={<FinalReportPage />} />
           <Route path="/parent-dashboard" element={<PrivateRoute><ParentDashboard /></PrivateRoute>} />
+          <Route path="/register-teacher" element={<TeacherRegister />} /> {/* ✅ Teacher Registration */}
+          <Route path="/teacher-dashboard" element={<PrivateRoute><TeacherDashboard /></PrivateRoute>} /> {/* ✅ Teacher Dashboard */}
 
           {/* India vs Abroad Routes */}
           <Route path="/india-vs-abroad" element={<IndiaVsAbroadHome />} />

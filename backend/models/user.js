@@ -28,11 +28,10 @@ const userSchema = new mongoose.Schema({
     ref: "User"
   }],
 
-  childOf: {
+  parents: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    default: null
-  },
+    ref: "User"
+  }],
 
   // OTP
   isVerified: { type: Boolean, default: false },
@@ -52,6 +51,12 @@ const userSchema = new mongoose.Schema({
     enum: ["pending", "approved", "denied"],
     default: "pending"
   },
+
+  // PROFILE DATA
+  profileImage: { type: String, default: null },
+  bio: { type: String, default: "" },
+  location: { type: String, default: "" },
+  portfolio: { type: String, default: "" },
 
   // =========================
   // ✅ QUIZ TRACKING ONLY

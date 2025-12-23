@@ -7,6 +7,7 @@ const authCtrl = require("../controllers/auth.controller");
 // =========================
 router.post("/register", authCtrl.register);              // Student register
 router.post("/register-parent", authCtrl.registerParent); // ✅ Parent register (NEW)
+router.post("/register-teacher", authCtrl.registerTeacher); // ✅ Teacher register (NEW)
 
 router.post("/verify-otp", authCtrl.verifyOtp);
 router.post("/login", authCtrl.login);
