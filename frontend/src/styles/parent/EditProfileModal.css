@@ -1,0 +1,162 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.edit-modal-content {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.close-x {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-x:hover {
+    color: #ef4444;
+}
+
+.edit-form {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group.full-width {
+    grid-column: span 2;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-sub);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group input,
+.input-group textarea {
+    padding: 12px 14px;
+    border: 1.5px solid var(--border-main);
+    border-radius: 12px;
+    font-size: 14px;
+    transition: all 0.2s;
+    background: #f8fafc;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.input-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.modal-actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .edit-form {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group.full-width {
+        grid-column: span 1;
+    }
+
+    .modal-actions {
+        grid-column: span 1;
+    }
+}

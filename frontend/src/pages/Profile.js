@@ -9,6 +9,7 @@ import ParentRegisterModal from "../components/ParentRegisterModal";
 import StudentProfile from "../components/student/StudentProfile";
 import ConsultantProfile from "../components/consultant/ConsultantProfile";
 import TeacherProfile from "../components/teacher/TeacherProfile";
+import ParentProfile from "../components/parent/ParentProfile";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -87,6 +88,9 @@ const Profile = () => {
         )}
         {role === "teacher" && (
           <TeacherProfile user={user} onProfileUpdate={handleProfileUpdate} />
+        )}
+        {role === "parent" && (
+          <ParentProfile user={user} onProfileUpdate={handleProfileUpdate} />
         )}
         {!role && (
           <div className="no-role-message">
