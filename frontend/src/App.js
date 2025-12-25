@@ -96,9 +96,8 @@ import TutorialHome from "./src/pages/Tutorials/TutorialHome";
 import DepartmentView from "./src/pages/Tutorials/DepartmentView";
 import PageDetail from "./src/pages/Tutorials/PageDetail";
 import CategoryView from "./src/pages/Tutorials/CategoryView";
-
-
-
+import ProfilePage from "./components/profilebuilder/ProfilePage";
+import ProfileBuilderNew from "./components/profilebuilder/ProfileBuilderNew";
 
 const Layout = () => {
   const location = useLocation();
@@ -274,11 +273,29 @@ const Layout = () => {
             element={<IndiaVsAbroadCompare />}
           />
           <Route path="/india-vs-abroad/service" element={<IndiaVsAbroad />} />
-
+          <Route path="/profile-builder-new" element={<ProfileBuilderNew />} />
+          <Route
+            path="/linkedin"
+            element={<ProfilePage profileId="linkedin" />}
+          />
+          <Route path="/naukri" element={<ProfilePage profileId="naukri" />} />
+          <Route path="/resume" element={<ProfilePage profileId="resume" />} />
+          <Route path="/github" element={<ProfilePage profileId="github" />} />
+          <Route
+            path="/portfolio"
+            element={<ProfilePage profileId="portfolio" />}
+          />
+          <Route
+            path="/cover-letter"
+            element={<ProfilePage profileId="cover-letter" />}
+          />
           <Route path="/tutorial" element={<TutorialHome />} />
           <Route path="/tutorial/:catId" element={<CategoryView />} />
           <Route path="/tutorial/:catId/:deptId" element={<DepartmentView />} />
-          <Route path="/tutorial/:catId/:deptId/:subId/:pageId" element={<PageDetail />} />
+          <Route
+            path="/tutorial/:catId/:deptId/:subId/:pageId"
+            element={<PageDetail />}
+          />
           {/* Premium Resume Builder Route */}
           <Route
             path="/AllComponents"
@@ -358,7 +375,6 @@ const Layout = () => {
           <Route path="/edu/tutors" element={<EduTutorList />} />
           {/* CART → PAYMENT */}
           <Route path="/edu/cart" element={<EduCartPage />} />
-
           <Route path="/edu/success" element={<EduSuccessPage />} />
         </Routes>
       </main>

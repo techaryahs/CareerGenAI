@@ -1,7 +1,7 @@
 // src/AllComponents.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, X } from "lucide-react";
-import {Routes, Route, useParams} from 'react-router-dom';
+import {Routes, Route, useParams,useNavigate} from 'react-router-dom';
 import jsPDF from 'jspdf';
 // import html2canvas from 'html2canvas';
 import html2pdf from 'html2pdf.js';
@@ -61,6 +61,10 @@ export const defaultResumeData = {
     }
   ]
 };
+
+
+
+  // 3. Return null or a loader while redirecting to avoid flickering
 
 const DownloadButton = () => {
   const [showPremiumPopup, setShowPremiumPopup] = useState(false);
@@ -172,6 +176,17 @@ const ResumeForm = () => {
   const [activeSection, setActiveSection] = useState('personal');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const formRef = useRef(null);
+const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const isPremium = user?.isPremium || false;
+
+  useEffect(() => {
+    // 2. Perform the redirect inside useEffect
+    if (!isPremium) {
+      navigate("/pricing");
+    }
+  }, [isPremium, navigate]);
 
   useEffect(() => {
     // Add viewport meta tag to prevent zooming on mobile
@@ -883,6 +898,7 @@ const Template1 = ({ data }) => {
     education = [],
     skills = [],
     projects = [],
+    certifications= [],
   } = data || {};
 
   const textWrapStyle = {
@@ -1101,6 +1117,27 @@ const Template1 = ({ data }) => {
             ))}
           </section>
         )}
+
+          {certifications.length > 0 && (
+            <section className="trim avoid-break">
+              <h2 className="text-xl font-semibold mb-3 border-b-2 border-black pb-2 text-blue-600">Certifications</h2>
+              <ul className="modern-list">
+                {certifications.map((cert, index) => (
+                  <li key={index} className="wrap" style={{ display: 'block' }}>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-gray-800 text-sm font-medium">{cert.name}</span>
+                      {cert.issued && <span className="text-xs text-gray-500">{cert.issued}</span>}
+                    </div>
+                    {cert.org && <p className="text-gray-600 text-xs mt-1">{cert.org}</p>}
+                    {cert.id && <p className="text-gray-500 text-xs">ID: {cert.id}</p>}
+                    {cert.url && (
+                      <p className="text-blue-600 text-xs wrap">{cert.url}</p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
       </div>
     </div>
   );
