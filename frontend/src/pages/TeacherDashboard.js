@@ -13,28 +13,64 @@ import {
     FaStar,
 } from "react-icons/fa";
 import "../styles/teacher/Dashboard.css";
+import axios from "axios";
 
 export default function TeacherDashboard() {
     const navigate = useNavigate();
     const [teacher, setTeacher] = useState(null);
+    const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        const userData = localStorage.getItem("user");
-        const role = localStorage.getItem("role");
+        const fetchDashboardData = async () => {
+            const userData = localStorage.getItem("user");
+            const role = localStorage.getItem("role");
+            const token = localStorage.getItem("token");
 
-        if (!userData || role !== "teacher") {
-            navigate("/login");
-            return;
-        }
+            if (!userData || role !== "teacher" || !token) {
+                navigate("/login");
+                return;
+            }
 
-        try {
-            const parsedUser = JSON.parse(userData);
-            setTeacher(parsedUser);
-        } catch (error) {
-            console.error("Error parsing user data:", error);
-            navigate("/login");
-        }
+            try {
+                const userObj = JSON.parse(userData);
+
+                // 1. Fetch Fresh Teacher Profile from DB
+                const profileRes = await axios.get(
+                    `${process.env.REACT_APP_API_URL}/api/teacher/${userObj._id}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                setTeacher(profileRes.data);
+
+                // 2. Fetch Bookings
+                fetchBookings(userObj._id);
+
+            } catch (err) {
+                console.error("Dashboard Load Error:", err);
+                if (err.response?.status === 401 || err.response?.status === 404) {
+                    navigate("/login");
+                }
+            }
+        };
+
+        fetchDashboardData();
     }, [navigate]);
+
+    const fetchBookings = async (teacherId) => {
+        try {
+            const token = localStorage.getItem("token");
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/teacher-bookings/${teacherId}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            // Handle both array and object response formats
+            const bookingsData = Array.isArray(res.data) ? res.data : (res.data.bookings || []);
+            setBookings(bookingsData);
+        } catch (err) {
+            console.error("Error fetching bookings:", err);
+            setBookings([]);
+        }
+    };
+
+    console.log("TeacherDashboard Render:", { teacher, bookings });
 
     if (!teacher) {
         return (
@@ -97,7 +133,9 @@ export default function TeacherDashboard() {
                         <FaUsers />
                     </div>
                     <div className="stat-details">
-                        <div className="stat-value">0</div>
+                        <div className="stat-value">
+                            {[...new Set(bookings.map(b => b.userEmail))].length}
+                        </div>
                         <div className="stat-label">Students</div>
                     </div>
                 </div>
@@ -118,8 +156,10 @@ export default function TeacherDashboard() {
                 {/* Profile Card */}
                 <div className="info-card">
                     <div className="card-header">
-                        <FaGraduationCap className="header-icon" />
-                        <h2>Profile Information</h2>
+                        <div className="header-left">
+                            <FaGraduationCap className="header-icon" />
+                            <h2>Profile Information</h2>
+                        </div>
                     </div>
                     <div className="card-body">
                         <div className="info-row">
@@ -144,8 +184,10 @@ export default function TeacherDashboard() {
                 {/* Teaching Details */}
                 <div className="info-card">
                     <div className="card-header">
-                        <FaChartLine className="header-icon" />
-                        <h2>Teaching Details</h2>
+                        <div className="header-left">
+                            <FaChartLine className="header-icon" />
+                            <h2>Teaching Details</h2>
+                        </div>
                     </div>
                     <div className="card-body">
                         {teacher.teachingMode && (
@@ -184,47 +226,80 @@ export default function TeacherDashboard() {
                 </div>
 
                 {/* Subjects */}
-                {teacher.selectedSubjects && teacher.selectedSubjects.length > 0 && (
-                    <div className="info-card full-width">
-                        <div className="card-header">
-                            <FaBookOpen className="header-icon" />
-                            <h2>Your Subjects</h2>
-                        </div>
-                        <div className="card-body">
-                            <div className="subjects-grid">
-                                {teacher.selectedSubjects.map((subject, index) => (
-                                    <div key={index} className="subject-chip">
-                                        {subject}
-                                    </div>
-                                ))}
-                            </div>
+                <div className="info-card full-width">
+                    <div className="card-header">
+                        <div className="header-left">
+                            <FaBookOpen className="card-icon" />
+                            <h3>Subject Expertise</h3>
                         </div>
                     </div>
-                )}
+                    <div className="subjects-container">
+                        <div className="subjects-list">
+                            {(teacher.selectedSubjects || []).map((subject, index) => (
+                                <span key={index} className="subject-tag">
+                                    {subject}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
 
-                {/* Availability */}
-                {teacher.slots && teacher.slots.length > 0 && (
-                    <div className="info-card full-width">
-                        <div className="card-header">
+                {/* Upcoming Appointments */}
+                <div className="info-card full-width">
+                    <div className="card-header">
+                        <div className="header-left">
                             <FaClock className="header-icon" />
-                            <h2>Availability Schedule</h2>
-                        </div>
-                        <div className="card-body">
-                            <div className="slots-grid">
-                                {teacher.slots.map((slot, index) => (
-                                    <div key={index} className="slot-card">
-                                        <div className="slot-day">{slot.day}</div>
-                                        {slot.startTime && slot.endTime && (
-                                            <div className="slot-time">
-                                                {slot.startTime} - {slot.endTime}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
+                            <h2>Upcoming Class Appointments</h2>
                         </div>
                     </div>
-                )}
+                    <div className="card-body">
+                        {bookings.length > 0 ? (
+                            <div className="appointments-table-wrapper">
+                                <table className="appointments-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Mode</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {bookings.map((booking) => (
+                                            <tr key={booking._id}>
+                                                <td>
+                                                    <div className="student-name-cell">
+                                                        <span className="student-initials">
+                                                            {(booking.userName || "U").substring(0, 1).toUpperCase()}
+                                                        </span>
+                                                        {booking.userName}
+                                                    </div>
+                                                </td>
+                                                <td>{booking.date}</td>
+                                                <td>{booking.time}</td>
+                                                <td>
+                                                    <span className={`mode-badge-small ${booking.classMode}`}>
+                                                        {booking.classMode}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span className={`status-pill ${booking.status}`}>
+                                                        {booking.status}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : (
+                            <div className="no-bookings">
+                                <p>No appointments booked yet. Your students' scheduled classes will appear here.</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

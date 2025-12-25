@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FaUsers, FaStar, FaClock, FaCalendar, FaCheckCircle, FaDollarSign } from "react-icons/fa";
+import { FaUsers, FaStar, FaClock, FaCalendar, FaCheckCircle, FaDollarSign, FaHistory } from "react-icons/fa";
 import "../../styles/consultant/Profile.css";
 
 export default function ConsultantProfile({ user }) {
-    const [stats, setStats] = useState({
+    const [stats] = useState({
         totalBookings: 0,
         completedSessions: 0,
         upcomingSessions: 0,
@@ -26,135 +26,138 @@ export default function ConsultantProfile({ user }) {
     }
 
     return (
-        <div className="consultant-profile-container">
-            {/* Hero Section */}
-            <div className="consultant-hero">
-                <div className="hero-content">
-                    <h1>Welcome, {user.name || user.fullName}!</h1>
-                    <p className="consultant-role">Career Consultant</p>
+        <div className="profile-page-wrapper animate-entrance">
+            {/* High-End Hero Section */}
+            <div className="profile-header">
+                <div className="profile-banner">
+                    <div className="banner-pattern" />
+                    <div className="banner-overlay" />
                 </div>
-                <div className="verification-badge">
-                    {user.isVerified ? (
-                        <span className="verified"><FaCheckCircle /> Verified</span>
-                    ) : (
-                        <span className="pending">Pending Verification</span>
-                    )}
+
+                <div className="profile-header-content">
+                    {/* Horizontal Top Row for Mobile */}
+                    <div className="profile-header-top-row">
+                        <div className="profile-avatar-wrapper">
+                            <div className="profile-avatar-container pro-user">
+                                <div className="avatar-initials">
+                                    {(user.name || user.fullName || "C").substring(0, 2).toUpperCase()}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="profile-header-info">
+                            <div className="name-badge-grid">
+                                <h1 className="profile-name">{user.name || user.fullName}!</h1>
+                                <FaCheckCircle className="badge-verified" />
+                                <span className="badge-pro">PRO</span>
+                            </div>
+                            <div className="profile-handle">
+                                Consultant @CareerGenAI
+                            </div>
+
+                            <p className="profile-bio desktop-bio">
+                                Expert Career Consultant dedicated to mapping student potential to global industrial landscapes.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Mobile Bio Below Row */}
+                    <p className="profile-bio mobile-only-bio">
+                        Expert Career Consultant dedicated to mapping student potential to global industrial landscapes.
+                    </p>
+
+                    <div className="profile-meta-row">
+                        <div className="meta-item">
+                            <FaCheckCircle style={{ color: 'var(--primary-light)' }} />
+                            <span>{user.isVerified ? "Verified Expert" : "Verification Pending"}</span>
+                        </div>
+                        <div className="meta-item">
+                            <FaStar style={{ color: '#f59e0b' }} />
+                            <span>{stats.averageRating.toFixed(1)} Rating</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Actions Area */}
+                <div className="header-actions-area">
+                    <button className="btn-premium primary">
+                        <span>Dashbaord</span>
+                    </button>
                 </div>
             </div>
 
             {/* Stats Grid */}
-            <div className="consultant-stats-grid">
-                <div className="stat-card">
-                    <div className="stat-icon purple">
-                        <FaUsers />
-                    </div>
-                    <div className="stat-details">
-                        <div className="stat-value">{stats.totalBookings}</div>
-                        <div className="stat-label">Total Clients</div>
-                    </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon green">
-                        <FaCheckCircle />
-                    </div>
-                    <div className="stat-details">
-                        <div className="stat-value">{stats.completedSessions}</div>
-                        <div className="stat-label">Completed</div>
-                    </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon blue">
-                        <FaCalendar />
-                    </div>
-                    <div className="stat-details">
-                        <div className="stat-value">{stats.upcomingSessions}</div>
-                        <div className="stat-label">Upcoming</div>
-                    </div>
-                </div>
-
-                <div className="stat-card">
-                    <div className="stat-icon orange">
-                        <FaStar />
-                    </div>
-                    <div className="stat-details">
-                        <div className="stat-value">{stats.averageRating.toFixed(1) || "N/A"}</div>
-                        <div className="stat-label">Rating</div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Info Grid */}
-            <div className="consultant-info-grid">
-                {/* Profile Details */}
-                <div className="info-card">
-                    <h2>Profile Information</h2>
-                    <div className="info-list">
-                        <div className="info-row">
-                            <span className="label">Email</span>
-                            <span className="value">{user.email}</span>
+            <div className="profile-layout">
+                <div className="profile-main-column">
+                    <div className="stats-grid-modern">
+                        <div className="stat-card-v3">
+                            <div className="stat-icon-v3"><FaUsers /></div>
+                            <div className="stat-info-v3">
+                                <span className="stat-value-v3">{stats.totalBookings}</span>
+                                <span className="stat-label-v3">Total Clients</span>
+                            </div>
                         </div>
-                        {user.mobile && (
-                            <div className="info-row">
-                                <span className="label">Phone</span>
-                                <span className="value">{user.mobile}</span>
+                        <div className="stat-card-v3">
+                            <div className="stat-icon-v3"><FaCheckCircle /></div>
+                            <div className="stat-info-v3">
+                                <span className="stat-value-v3">{stats.completedSessions}</span>
+                                <span className="stat-label-v3">Completed</span>
                             </div>
-                        )}
-                        {user.specialization && (
-                            <div className="info-row">
-                                <span className="label">Specialization</span>
-                                <span className="value">{user.specialization}</span>
+                        </div>
+                        <div className="stat-card-v3">
+                            <div className="stat-icon-v3"><FaCalendar /></div>
+                            <div className="stat-info-v3">
+                                <span className="stat-value-v3">{stats.upcomingSessions}</span>
+                                <span className="stat-label-v3">Upcoming</span>
                             </div>
-                        )}
-                        {user.experience && (
-                            <div className="info-row">
-                                <span className="label">Experience</span>
-                                <span className="value">{user.experience} years</span>
+                        </div>
+                        <div className="stat-card-v3">
+                            <div className="stat-icon-v3"><FaDollarSign /></div>
+                            <div className="stat-info-v3">
+                                <span className="stat-value-v3">₹{stats.totalEarnings}</span>
+                                <span className="stat-label-v3">Earnings</span>
                             </div>
-                        )}
+                        </div>
                     </div>
-                </div>
 
-                {/* Availability */}
-                <div className="info-card">
-                    <h2><FaClock /> Availability</h2>
-                    <div className="info-list">
-                        {user.availability && user.availability.length > 0 ? (
-                            user.availability.map((slot, idx) => (
-                                <div key={idx} className="availability-slot">
-                                    <span className="day">{slot.day}</span>
-                                    <span className="time">{slot.startTime} - {slot.endTime}</span>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="no-data">No availability set</p>
-                        )}
-                    </div>
-                </div>
-
-                {/* Pricing */}
-                <div className="info-card">
-                    <h2><FaDollarSign /> Pricing</h2>
-                    <div className="info-list">
-                        {user.sessionPrice && (
-                            <div className="info-row">
-                                <span className="label">Session Rate</span>
-                                <span className="price-tag">₹{user.sessionPrice}/session</span>
-                            </div>
-                        )}
-                        <div className="info-row">
-                            <span className="label">Total Earnings</span>
-                            <span className="earnings">₹{stats.totalEarnings}</span>
+                    {/* Availability Card */}
+                    <div className="card-v3" style={{ padding: '24px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)' }}>
+                            <FaClock style={{ color: 'var(--primary-light)' }} /> Availability
+                        </h3>
+                        <div className="availability-grid-modern">
+                            {user.availability && user.availability.length > 0 ? (
+                                user.availability.map((slot, idx) => (
+                                    <div key={idx} className="availability-item-v4">
+                                        <span className="day">{slot.day}</span>
+                                        <span className="time">{slot.startTime} - {slot.endTime}</span>
+                                    </div>
+                                ))
+                            ) : (
+                                <p style={{ color: 'var(--text-sub)', fontSize: '14px' }}>No availability slots set yet.</p>
+                            )}
                         </div>
                     </div>
                 </div>
 
-                {/* Recent Bookings */}
-                <div className="info-card full-width">
-                    <h2>Recent Bookings</h2>
-                    <div className="bookings-list">
-                        <p className="no-data">No bookings yet</p>
+                <div className="profile-side-column">
+                    <div className="card-v3" style={{ padding: '24px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '12px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <FaDollarSign style={{ color: 'var(--primary-light)' }} />
+                            Service Pricing
+                        </h3>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#f8fafc', borderRadius: '12px' }}>
+                            <span style={{ fontWeight: '600', color: '#64748b' }}>Rate / Session</span>
+                            <span style={{ fontSize: '18px', fontWeight: '800', color: 'var(--primary)' }}>₹{user.sessionPrice || "500"}</span>
+                        </div>
+                    </div>
+
+                    <div className="card-v3" style={{ padding: '24px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '12px', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <FaHistory style={{ color: 'var(--primary-light)' }} />
+                            Recent Activity
+                        </h3>
+                        <p style={{ color: 'var(--text-sub)', fontSize: '13px' }}>No recent activity to show.</p>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,9 @@ const Navbar = () => {
       {/* Logo */}
       <div className="navbar-logo">
         <NavLink to="/" className="logo-link">
-          <img src="logo.png" alt="CareerGenAI Logo" className="logo-image" />
+          <div className="logo-container">
+            <img src="careergenai logo.jpeg" alt="CareerGenAI Logo" className="logo-image" />
+          </div>
           <span className="logo-text">CareerGenAI</span>
         </NavLink>
       </div>

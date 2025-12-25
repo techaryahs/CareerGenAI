@@ -21,12 +21,30 @@
   text-decoration: none;
 }
 
-.logo-image {
-  height: 40px;
-  /* adjust as needed */
-  width: auto;
-  margin-right: 8px;
+.logo-container {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+  flex-shrink: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-image {
+  width: 68px;
+  /* Slightly zoomed to fill the circle cleanly */
+  height: 68px;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .logo-text {

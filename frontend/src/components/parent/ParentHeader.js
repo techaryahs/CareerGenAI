@@ -26,48 +26,56 @@ const ParentHeader = ({ user, onEditRequest }) => {
 
             <div className="profile-header-content">
                 <div className="profile-header-left">
-                    <div className="profile-avatar-wrapper">
-                        <div className={`profile-avatar-container ${user?.isPremium ? 'pro-user' : ''}`}>
-                            <div className="avatar-initials">
-                                {getInitials(user?.name)}
+                    {/* Horizontal Top Row for Mobile */}
+                    <div className="profile-header-top-row">
+                        <div className="profile-avatar-wrapper">
+                            <div className={`profile-avatar-container ${user?.isPremium ? 'pro-user' : ''}`}>
+                                <div className="avatar-initials">
+                                    {getInitials(user?.name)}
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="profile-header-info">
+                            <div className="name-badge-grid">
+                                <h1 className="profile-name">{user?.name || 'Caring Parent'}</h1>
+                                {user?.isVerified && <FaCheckCircle className="badge-verified" title="Verified" />}
+                                {user?.isPremium && <span className="badge-pro">PRO</span>}
+                            </div>
+                            <p className="profile-handle">@{user?.email?.split('@')[0] || 'parent'}</p>
+
+                            <p className="profile-bio desktop-bio">
+                                {user?.bio || "Empowering the next generation through guidance, support, and informed career choices."}
+                            </p>
                         </div>
                     </div>
 
-                    <div className="profile-header-info">
-                        <div className="name-badge-grid">
-                            <h1 className="profile-name">{user?.name || 'Caring Parent'}</h1>
-                            {user?.isVerified && <FaCheckCircle className="badge-verified" title="Verified" />}
-                            {user?.isPremium && <span className="badge-pioneer badge-pro">PRO</span>}
+                    {/* Mobile Bio Below Row */}
+                    <p className="profile-bio mobile-only-bio">
+                        {user?.bio || "Empowering the next generation through guidance, support, and informed career choices."}
+                    </p>
+
+                    <div className="profile-meta-row">
+                        <div className="meta-item">
+                            <FaMapMarkerAlt />
+                            <span>{user?.location || 'Global'}</span>
                         </div>
-                        <p className="profile-handle">@{user?.email?.split('@')[0] || 'parent'}</p>
-
-                        <p className="profile-bio">
-                            {user?.bio || "Empowering the next generation through guidance, support, and informed career choices."}
-                        </p>
-
-                        <div className="profile-meta-row">
-                            <div className="meta-item">
-                                <FaMapMarkerAlt />
-                                <span>{user?.location || 'Global'}</span>
-                            </div>
-                            <div className="meta-item">
-                                <FaCalendarAlt />
-                                <span>Joined {formatDate(user?.createdAt)}</span>
-                            </div>
+                        <div className="meta-item">
+                            <FaCalendarAlt />
+                            <span>Joined {formatDate(user?.createdAt)}</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div className="header-actions-area">
-                    <button
-                        className="btn-premium primary"
-                        onClick={onEditRequest}
-                    >
-                        <FaEdit />
-                        <span>Edit Profile</span>
-                    </button>
-                </div>
+            <div className="header-actions-area">
+                <button
+                    className="btn-premium primary"
+                    onClick={onEditRequest}
+                >
+                    <FaEdit />
+                    <span>Edit Profile</span>
+                </button>
             </div>
         </div>
     );

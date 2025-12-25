@@ -1,8 +1,14 @@
 const Booking = require("../models/Booking");
 const Consultant = require("../models/Consultant");
 const User = require("../models/user");
+const Teacher = require("../models/Teacher");
 // const transporter = require("../utils/transporter"); // nodemailer instance
 const sendEmail = require("../utils/sendEmail");     // used in bookConsultant
+
+function escapeRegex(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 
 /* =========================
    BOOK CONSULTANT
@@ -93,6 +99,146 @@ exports.bookConsultant = async (req, res) => {
 };
 
 /* =========================
+   BOOK TEACHER
+========================= */
+exports.bookTeacher = async (req, res) => {
+  try {
+    const {
+      teacherId,
+      teacherEmail,
+      teacherName,
+      date,
+      time,
+      userEmail,
+      userPhone,
+      userName,
+      classMode
+    } = req.body;
+
+    if (!teacherId || !teacherEmail || !date || !time || !userEmail || !classMode) {
+      return res.status(400).json({ message: 'Missing required data' });
+    }
+
+    const alreadyBooked = await Booking.findOne({ teacherId, date, time });
+    if (alreadyBooked) {
+      return res.status(400).json({ message: 'Slot already booked' });
+    }
+
+    const booking = await Booking.create({
+      teacherId,
+      teacherEmail,
+      teacherName,
+      date,
+      time,
+      userEmail,
+      userName,
+      userPhone,
+      bookingType: "teacher",
+      classMode
+    });
+
+    // Notify Teacher
+    await sendEmail(
+      teacherEmail,
+      "New Class Booking",
+      "",
+      `<p>You have a new <b>${classMode}</b> class booking from <b>${userName}</b>.</p>
+       <p>Date: <b>${date}</b></p>
+       <p>Time: <b>${time}</b></p>`
+    );
+
+    // Notify Student
+    await sendEmail(
+      userEmail,
+      "Class Booking Confirmed",
+      "",
+      `<p>Your <b>${classMode}</b> class with <b>${teacherName}</b> is confirmed.</p>`
+    );
+
+    res.json({ message: "Booking successful", booking });
+
+  } catch (err) {
+    console.error("❌ Teacher booking error:", err.message);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+/* =========================
+   SEARCH TEACHERS
+========================= */
+exports.searchTeachers = async (req, res) => {
+  try {
+    const { query, fieldId, programId } = req.query;
+
+    let filter = {}; // Removed isVerified requirement for testing
+    // let filter = { isVerified: true }; // TODO: Re-enable for production
+
+    // Apply field filter
+    if (fieldId && fieldId.trim()) {
+      filter["teachingField.fieldId"] = fieldId.trim();
+    }
+
+    // Apply program filter
+    if (programId && programId.trim()) {
+      filter["program.programId"] = programId.trim();
+    }
+
+    // Apply text search if query provided
+    if (query && query.trim()) {
+      try {
+        const safeQuery = escapeRegex(query.trim());
+        const searchRegex = new RegExp(safeQuery, 'i');
+
+        filter.$or = [
+          { fullName: searchRegex },
+          { bio: searchRegex },
+          { "teachingField.fieldName": searchRegex },
+          { "program.programName": searchRegex },
+          { selectedSubjects: searchRegex }
+        ];
+      } catch (regexErr) {
+        console.error("❌ Regex error:", regexErr);
+        // If regex fails, just search by exact match
+        filter.$or = [
+          { fullName: { $regex: query.trim(), $options: 'i' } },
+          { selectedSubjects: { $regex: query.trim(), $options: 'i' } }
+        ];
+      }
+    }
+
+    const teachers = await Teacher.find(filter).select('-password');
+
+    res.json({ teachers });
+  } catch (err) {
+    console.error("❌ Search error:", err.message);
+    console.error(err.stack);
+    res.status(500).json({
+      message: "Search error",
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    });
+  }
+};
+
+/* =========================
+   GET TEACHER BOOKED SLOTS
+========================= */
+exports.getTeacherBookedSlots = async (req, res) => {
+  try {
+    const { teacherId, date } = req.query;
+    if (!teacherId || !date) {
+      return res.status(400).json({ message: 'Missing teacherId or date' });
+    }
+
+    const bookings = await Booking.find({ teacherId, date });
+    const bookedTimes = bookings.map(b => b.time);
+
+    res.json({ bookedTimes });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+/* =========================
    GET BOOKED SLOTS
 ========================= */
 exports.getBookedSlots = async (req, res) => {
@@ -167,6 +313,19 @@ exports.getConsultantBookings = async (req, res) => {
   const bookings = await Booking.find({ consultantId: req.params.consultantId })
     .sort({ date: 1, time: 1 });
   res.json(bookings);
+};
+
+/* =========================
+   TEACHER BOOKINGS
+========================= */
+exports.getTeacherBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find({ teacherId: req.params.teacherId })
+      .sort({ date: 1, time: 1 });
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching bookings" });
+  }
 };
 
 /* =========================

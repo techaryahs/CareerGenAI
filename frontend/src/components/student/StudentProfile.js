@@ -3,7 +3,6 @@ import ProfileHeader from "./ProfileHeader";
 import CareerStats from "./CareerStats";
 import UpcomingConsultations from "./UpcomingConsultations";
 import CareerInterests from "./CareerInterests";
-import RecentActivity from "./RecentActivity";
 import ActivityHeatmap from "./ActivityHeatmap";
 import EditProfileModal from "./EditProfileModal";
 import "../../styles/student/Profile.css";
@@ -43,7 +42,7 @@ export default function StudentProfile({ user, onProfileUpdate }) {
                 {/* Secondary Column */}
                 <div className="profile-side-column">
                     <CareerInterests user={user} />
-                    <RecentActivity user={user} />
+                    {/* <RecentActivity user={user} /> */}
                 </div>
             </div>
 

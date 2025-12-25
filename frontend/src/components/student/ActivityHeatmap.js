@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaChartLine, FaFire, FaHistory } from 'react-icons/fa';
+import { FaChartLine, FaFire } from 'react-icons/fa';
 import axios from 'axios';
 import '../../styles/student/ActivityHeatmap.css';
 
@@ -12,11 +12,7 @@ const ActivityHeatmap = ({ user }) => {
         return rawAPI.endsWith("/") ? rawAPI.slice(0, -1) : rawAPI;
     }, []);
 
-    useEffect(() => {
-        fetchActivityData();
-    }, [user, cleanAPI]);
-
-    const fetchActivityData = async () => {
+    const fetchActivityData = React.useCallback(async () => {
         const dayMap = {};
         if (!user?._id) return;
 
@@ -80,17 +76,22 @@ const ActivityHeatmap = ({ user }) => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [user, cleanAPI]);
+
+    useEffect(() => {
+        fetchActivityData();
+    }, [fetchActivityData]);
 
     const generateActivityCalendar = () => {
         const weeks = [];
         const today = new Date();
         const startDate = new Date(today);
-        startDate.setDate(today.getDate() - 83);
+        // Show exactly 52 weeks (1 year)
+        startDate.setDate(today.getDate() - (51 * 7));
         const dayOfWeek = startDate.getDay();
         startDate.setDate(startDate.getDate() - dayOfWeek);
 
-        for (let week = 0; week < 12; week++) {
+        for (let week = 0; week < 52; week++) {
             const weekDays = [];
             for (let day = 0; day < 7; day++) {
                 const currentDate = new Date(startDate);
@@ -108,7 +109,26 @@ const ActivityHeatmap = ({ user }) => {
         return weeks;
     };
 
+    const getMonthLabels = (weeks) => {
+        const labels = [];
+        let lastMonth = -1;
+
+        weeks.forEach((week, index) => {
+            const firstDayOfWeek = new Date(week[0].date);
+            const month = firstDayOfWeek.getMonth();
+            if (month !== lastMonth) {
+                labels.push({
+                    name: firstDayOfWeek.toLocaleDateString('en-US', { month: 'short' }),
+                    index: index
+                });
+                lastMonth = month;
+            }
+        });
+        return labels;
+    };
+
     const activityCalendar = generateActivityCalendar();
+    const monthLabels = getMonthLabels(activityCalendar);
     const totalActivities = Object.values(activityDays).reduce((sum, count) => sum + count, 0);
     const activeDays = Object.keys(activityDays).length;
 
@@ -134,31 +154,41 @@ const ActivityHeatmap = ({ user }) => {
             ) : (
                 <>
                     <div className="heatmap-grid-wrapper-v3">
-                        <div className="heatmap-months-v3">
-                            {['3 Months Ago', '2 Months Ago', '1 Month Ago', 'Active'].map((month, i) => (
-                                <span key={i}>{month}</span>
-                            ))}
-                        </div>
-
-                        <div className="heatmap-grid-v3">
-                            <div className="heatmap-labels-v3">
-                                <span>Sun</span>
-                                <span>Tue</span>
-                                <span>Thu</span>
-                                <span>Sat</span>
-                            </div>
-                            <div className="heatmap-weeks-v3">
-                                {activityCalendar.map((week, weekIndex) => (
-                                    <div key={weekIndex} className="heatmap-week-v3">
-                                        {week.map((day, dayIndex) => (
-                                            <div
-                                                key={dayIndex}
-                                                className={`heatmap-day-v3 level-${day.level}`}
-                                                title={`${day.date}: ${day.count} events`}
-                                            />
-                                        ))}
-                                    </div>
+                        <div className="heatmap-grid-inner">
+                            <div className="heatmap-months-v3">
+                                {monthLabels.map((label, i) => (
+                                    <span
+                                        key={i}
+                                        className="month-label-abs"
+                                        style={{
+                                            left: `${label.index * 13}px` // (10px cell + 3px gap)
+                                        }}
+                                    >
+                                        {label.name}
+                                    </span>
                                 ))}
+                            </div>
+
+                            <div className="heatmap-grid-v3">
+                                <div className="heatmap-labels-v3">
+                                    <span>Sun</span>
+                                    <span>Tue</span>
+                                    <span>Thu</span>
+                                    <span>Sat</span>
+                                </div>
+                                <div className="heatmap-weeks-v3">
+                                    {activityCalendar.map((week, weekIndex) => (
+                                        <div key={weekIndex} className="heatmap-week-v3">
+                                            {week.map((day, dayIndex) => (
+                                                <div
+                                                    key={dayIndex}
+                                                    className={`heatmap-day-v3 level-${day.level}`}
+                                                    title={`${day.date}: ${day.count} events`}
+                                                />
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>

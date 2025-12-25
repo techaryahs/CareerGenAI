@@ -11,6 +11,7 @@ import {
   FaUniversity,
   FaFileAlt,
   FaBalanceScale,
+  FaChalkboardTeacher,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -96,6 +97,13 @@ const services = {
       title: "Career Counselling",
       description: "Book one-on-one sessions with certified career experts.",
       path: "/consult",
+    },
+    {
+      icon: <FaChalkboardTeacher />,
+      title: "Find a Teacher",
+      description: "Book home or online classes with expert tutors for any subject.",
+      path: "/edu",
+      badge: "New",
     },
     {
       icon: <FaUniversity />,
@@ -191,11 +199,10 @@ const ServicesPage = () => {
               setActivePhase(phase.name);
               localStorage.setItem("career_active_phase", phase.name);
             }}
-            className={`flex items-center gap-2 px-5 py-2 rounded-full border transition-all ${
-              activePhase === phase.name
-                ? "bg-indigo-600 text-white shadow-lg"
-                : "bg-white text-gray-700 border-gray-300 hover:bg-indigo-50"
-            }`}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full border transition-all ${activePhase === phase.name
+              ? "bg-indigo-600 text-white shadow-lg"
+              : "bg-white text-gray-700 border-gray-300 hover:bg-indigo-50"
+              }`}
           >
             <span className="text-xl">{phase.icon}</span>
             {phase.name}
@@ -285,11 +292,10 @@ const ServicesPage = () => {
           <motion.div
             className="h-2 bg-indigo-600 rounded-full"
             animate={{
-              width: `${
-                ((phases.findIndex((p) => p.name === activePhase) + 1) /
-                  phases.length) *
+              width: `${((phases.findIndex((p) => p.name === activePhase) + 1) /
+                phases.length) *
                 100
-              }%`,
+                }%`,
             }}
             transition={{ duration: 0.5 }}
           />
@@ -322,4 +328,3 @@ const ServicesPage = () => {
 };
 
 export default ServicesPage;
-  

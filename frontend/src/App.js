@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Chatbot from './components/chatbot';
@@ -38,6 +38,7 @@ import GitHubBuilder from './pages/templates/GitHubBuilder';
 import PortfolioBuilder from './pages/templates/PortfolioBuilder';
 import CoverLetterBuilder from './pages/templates/CoverLetterBuilder';
 import { ResumeProvider } from './context/ResumeContext';
+import { BookingProvider } from './EduTutor/context/BookingContext';
 import BookSlot from './pages/BookSlot';
 import ForgotPassword from "./pages/ForgotPassword";
 import ConsultantDashboard from './pages/ConsultantDashboard';
@@ -46,6 +47,9 @@ import VideoCallPage from './pages/VideoCallPage'; // ✅ WebRTC Video Call
 import MyActivity from './pages/MyActivity';
 import TeacherRegister from './pages/TeacherRegister'; // ✅ Teacher Registration
 import TeacherDashboard from './pages/TeacherDashboard'; // ✅ Teacher Dashboard
+import TeacherSearch from './pages/TeacherSearch'; // ✅ Teacher Search
+import BookTeacherSlot from './pages/BookTeacherSlot'; // ✅ Book Teacher Slot
+import PaymentRedirection from './pages/PaymentRedirection'; // ✅ Payment Redirection
 
 
 
@@ -80,7 +84,6 @@ import EduSemesterSelect from "./EduTutor/MainPage/EduSemesterSelect";
 import EduSubjectSelect from "./EduTutor/MainPage/EduSubjectSelect";
 import EduTutorList from "./EduTutor/MainPage/EduTutorList";
 import EduCartPage from "./EduTutor/MainPage/EduCartPage";
-import EduCheckoutPage from "./EduTutor/MainPage/EduCheckoutPage";
 import EduSuccessPage from "./EduTutor/MainPage/EduSuccessPage";
 
 const Layout = () => {
@@ -136,6 +139,9 @@ const Layout = () => {
           <Route path="/parent-dashboard" element={<PrivateRoute><ParentDashboard /></PrivateRoute>} />
           <Route path="/register-teacher" element={<TeacherRegister />} /> {/* ✅ Teacher Registration */}
           <Route path="/teacher-dashboard" element={<PrivateRoute><TeacherDashboard /></PrivateRoute>} /> {/* ✅ Teacher Dashboard */}
+          <Route path="/search-teachers" element={<TeacherSearch />} /> {/* ✅ Teacher Search */}
+          <Route path="/book-teacher/:teacherId" element={<PrivateRoute><BookTeacherSlot /></PrivateRoute>} /> {/* ✅ Book Teacher Slot */}
+          <Route path="/payment-redirection" element={<PrivateRoute><PaymentRedirection /></PrivateRoute>} /> {/* ✅ Payment Redirection */}
 
           {/* India vs Abroad Routes */}
           <Route path="/india-vs-abroad" element={<IndiaVsAbroadHome />} />
@@ -174,25 +180,24 @@ const Layout = () => {
           />
 
           {/* ✅ EduTutor Routes */}
-          <Route path="/edu" element={<EduHomePage />} />
-          {/* STARTING PAGE */}
-          <Route path="/edu" element={<EduHomePage />} />
-
-          {/* CAREER → BRANCH → SEMESTER FLOW */}
-          <Route path="/edu/career" element={<EduCareerSelect />} />
-          <Route path="/edu/branch/:careerId" element={<EduBranchSelect />} />
-          <Route path="/edu/semester/:branchId" element={<EduSemesterSelect />} />
-
-          {/* SUBJECT SELECTION */}
-          <Route path="/edu/subjects/:branchId/:sem" element={<EduSubjectSelect />} />
-
-          {/* TUTOR LIST */}
-          <Route path="/edu/tutors" element={<EduTutorList />} />
-
-          {/* CART → PAYMENT */}
-          <Route path="/edu/cart" element={<EduCartPage />} />
-          <Route path="/edu/checkout" element={<EduCheckoutPage />} />
-          <Route path="/edu/success" element={<EduSuccessPage />} />
+          <Route
+            path="/edu/*"
+            element={
+              <BookingProvider>
+                <Routes>
+                  <Route path="/" element={<EduHomePage />} />
+                  <Route path="career" element={<EduCareerSelect />} />
+                  <Route path="branch/:careerId" element={<EduBranchSelect />} />
+                  <Route path="semester/:branchId" element={<EduSemesterSelect />} />
+                  <Route path="subjects/:branchId/:sem" element={<EduSubjectSelect />} />
+                  <Route path="tutors" element={<EduTutorList />} />
+                  <Route path="cart" element={<EduCartPage />} />
+                  <Route path="checkout" element={<PaymentRedirection />} />
+                  <Route path="success" element={<EduSuccessPage />} />
+                </Routes>
+              </BookingProvider>
+            }
+          />
         </Routes>
       </main>
       {isHomePage && <Footer />}

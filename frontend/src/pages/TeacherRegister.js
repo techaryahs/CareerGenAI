@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TEACHING_FIELDS } from "../data/TeachingFields";
 import { PROGRAMS, getProgramsByField } from "../data/Programs";
-import { SUBJECTS } from "../data/Subjects";
+import { EDU_SUBJECTS } from "../EduTutor/data/EduSubjects";
 import { FaTimesCircle } from "react-icons/fa";
 import "../styles/teacher/TeacherRegisterBase.css";
 import "../styles/teacher/TeacherRegisterForm.css";
@@ -63,16 +63,28 @@ export default function TeacherRegister() {
 
     const subjectSuggestions = useMemo(() => {
         const q = subjectQuery.trim().toLowerCase();
-        const pool = SUBJECTS || [];
-        if (!q) return pool.slice(0, 50);
-        return pool
+        const pool = EDU_SUBJECTS || [];
+
+        // Filter by branch first if possible
+        let filtered = pool;
+        if (form.programId) {
+            // Check if any subjects match the branchId
+            const branchSpecific = pool.filter(s => s.branchId === form.programId);
+            if (branchSpecific.length > 0) {
+                filtered = branchSpecific;
+            }
+        }
+
+        if (!q) return filtered.slice(0, 50);
+
+        return filtered
             .filter(
                 (s) =>
                     s.name.toLowerCase().includes(q) ||
                     (s.tags || []).some((t) => t.toLowerCase().includes(q))
             )
             .slice(0, 50);
-    }, [subjectQuery]);
+    }, [subjectQuery, form.programId]);
 
     // Helpers
     const updateField = (name, value) => {

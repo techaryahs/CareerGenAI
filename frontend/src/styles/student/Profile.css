@@ -1,43 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
-
-/* === DESIGN TOKENS (PRODUCTION LEVEL - COMPACT) === */
+/* === DESIGN TOKENS (RESTORED ORIGINAL THEME) === */
 :root {
     /* Typography */
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    /* Colors - Sophisticated Palette */
-    --primary: #4f46e5;
-    --primary-light: #6366f1;
-    --primary-glow: rgba(79, 70, 229, 0.15);
+    /* Colors - Original Navy/Blue Palette */
+    --primary: #004080;
+    --primary-light: #007acc;
+    --primary-dark: #002d5a;
+    --primary-glow: rgba(0, 64, 128, 0.1);
 
-    --bg-main: #fcfdfe;
+    --accent-blue: #00bfff;
+    --accent-gold: #ffd700;
+
+    --bg-main: #f0f2f5;
     --bg-card: #ffffff;
 
-    --text-main: #0f172a;
-    --text-body: #334155;
-    --text-sub: #64748b;
+    --text-main: #1a202c;
+    --text-body: #4a5568;
+    --text-sub: #718096;
 
-    --border-subtle: #f1f5f9;
+    --border-subtle: #edf2f7;
     --border-main: #e2e8f0;
 
-    /* Spacing Scale - Tightened */
-    --space-xs: 4px;
+    /* Spacing Scale - Extra Compact */
+    --space-xs: 2px;
     --space-sm: 6px;
     --space-md: 10px;
     --space-lg: 16px;
-    --space-xl: 20px;
+    --space-xl: 24px;
 
-    /* Elevation - Professional Shadows (Subtle) */
-    --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-    --shadow-card: 0 2px 4px -1px rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
-    --shadow-hover: 0 8px 12px -3px rgb(0 0 0 / 0.1), 0 3px 5px -2px rgb(0 0 0 / 0.1);
-    --shadow-primary: 0 8px 12px -3px rgba(79, 70, 229, 0.25);
+    /* Shadows - Original Soft Elevation */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 12px rgba(0, 0, 0, 0.08);
+    --shadow-card: 0 1px 6px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-    /* Borders */
-    --radius-sm: 6px;
+    --radius-sm: 4px;
     --radius-md: 10px;
-    --radius-lg: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 50px;
 }
 
 /* === BASE RESET === */
@@ -47,16 +50,29 @@ body {
     background: var(--bg-main);
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
-    /* Reduced base font size */
+    /* Professional standard */
+    line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
+h1 {
+    font-size: 24px !important;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 20px !important;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 16px !important;
+    font-weight: 600;
+}
+
 h4 {
-    font-family: var(--font-heading);
-    color: var(--text-main);
-    letter-spacing: -0.01em;
+    font-size: 14px !important;
+    font-weight: 600;
 }
 
 /* === GLOBAL LAYOUT UTILS === */
@@ -125,8 +141,20 @@ h4 {
 
 /* === MOBILE RESPONSIVE === */
 @media (max-width: 1024px) {
+    .profile-page-wrapper {
+        padding: 0;
+        /* Remove padding for seamless mobile look */
+    }
+
     .profile-layout {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
+        padding: 0 var(--space-md) var(--space-xl);
+        /* Add padding here for content below header */
+    }
+
+    .profile-main-column,
+    .profile-side-column {
         gap: var(--space-md);
     }
 }

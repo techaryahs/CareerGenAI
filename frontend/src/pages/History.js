@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-import { FaCreditCard, FaCalendar, FaVideo, FaEye, FaClock, FaCheckCircle, FaRocket } from 'react-icons/fa';
+import { FaCreditCard, FaCalendar, FaVideo, FaEye, FaClock, FaCheckCircle, FaRocket, FaChalkboardTeacher } from 'react-icons/fa';
 import "../styles/History.css";
 import PageLoader from "../components/PageLoader";
 
@@ -185,7 +185,7 @@ const History = () => {
             onClick={() => setActiveTab("counselling")}
             className={`tab-btn-v4 ${activeTab === "counselling" ? "active" : ""}`}
           >
-            <FaVideo /> Masterclasses
+            <FaVideo /> Classes & Masterclasses
           </button>
         </div>
 
@@ -279,8 +279,10 @@ const History = () => {
                           </div>
                         )}
                         <div className="session-header-info-v4">
-                          <h4>{booking.consultantName || "Career Expert"}</h4>
-                          <span style={{ fontSize: '12px', color: 'var(--text-sub-h)' }}>Consultant</span>
+                          <h4>{(booking.consultantName || booking.teacherName) || "Expert"}</h4>
+                          <span style={{ fontSize: '10px', color: 'var(--text-sub-h)', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', textTransform: 'uppercase', fontWeight: '800' }}>
+                            {booking.bookingType === 'teacher' ? 'Class' : 'Consultation'}
+                          </span>
                         </div>
                         <span className={`badge-v4 ${booking.status}`}>
                           {booking.status}
@@ -295,6 +297,11 @@ const History = () => {
                           <div className="time-item-v4">
                             <FaClock /> {booking.time}
                           </div>
+                          {booking.classMode && (
+                            <div className="time-item-v4 capitalize">
+                              <FaChalkboardTeacher /> {booking.classMode}
+                            </div>
+                          )}
                         </div>
 
                         <div style={{ fontSize: '11px', color: 'var(--text-sub-h)', fontStyle: 'italic' }}>

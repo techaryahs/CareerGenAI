@@ -64,10 +64,13 @@
 
 .mode-badge-v4 {
     padding: 4px 12px;
-    background: var(--teacher-primary);
-    color: white;
+    background: rgba(37, 99, 235, 0.1);
+    /* Light primary background */
+    color: var(--primary);
+    /* High contrast primary text */
+    border: 1px solid var(--primary);
     border-radius: 100px;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
     text-transform: uppercase;
 }

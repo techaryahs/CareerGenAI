@@ -1,24 +1,54 @@
-export const EDU_SEMESTERS = {
-  ce: [1,2,3,4,5,6,7,8],
-  it: [1,2,3,4,5,6,7,8],
-  ai: [1,2,3,4,5,6,7,8],
-  me: [1,2,3,4,5,6,7,8],
-  cv: [1,2,3,4,5,6,7,8],
-  ee: [1,2,3,4,5,6,7,8],
-  el: [1,2,3,4,5,6,7,8],
-  mbbs: [1,2,3,4,5,6,7,8],
-  nursing: [1,2,3,4,5,6,7,8],
-  pharma: [1,2,3,4,5,6,7,8],
-  dental: [1,2,3,4,5,6,7,8],
-  allied: [1,2,3,4,5,6,7,8],
-  bsc_cs: [1,2,3,4,5,6],
-  bsc_it: [1,2,3,4,5,6],
-  bsc_math: [1,2,3,4,5,6],
-  bsc_phy: [1,2,3,4,5,6],
-  bsc_chem: [1,2,3,4,5,6],
-  bsc_bio: [1,2,3,4,5,6],
-  bsc_bt: [1,2,3,4,5,6],
-  bsc_micro: [1,2,3,4,5,6],
-  bsc_env: [1,2,3,4,5,6],
-  bsc_stat: [1,2,3,4,5,6]
-};
+// src/data/EduSemesters.js
+
+/**
+ * Semester configuration for EduTutor
+ *
+ * IMPORTANT:
+ * - Semesters are ADVISORY, not restrictive
+ * - Actual subjects may vary by university
+ * - This file exists only to guide students
+ *
+ * Reference:
+ * - UGC & AICTE allow curriculum flexibility across universities
+ */
+
+export const EDU_SEMESTERS = [
+  {
+    id: "ug_engineering",
+    label: "Undergraduate Engineering",
+    totalSemesters: 8,
+    displaySemesters: [1, 2, 3, 4, 5, 6, 7, 8]
+  },
+  {
+    id: "ug_science",
+    label: "Undergraduate Science (B.Sc)",
+    totalSemesters: 6,
+    displaySemesters: [1, 2, 3, 4, 5, 6]
+  },
+  {
+    id: "pg",
+    label: "Postgraduate (M.Tech / M.Sc / MBA etc.)",
+    totalSemesters: 4,
+    displaySemesters: [1, 2, 3, 4]
+  },
+  {
+    id: "phd",
+    label: "Doctoral (PhD)",
+    totalSemesters: null,
+    displaySemesters: []
+  },
+  {
+    id: "medical",
+    label: "Medical Programs (MBBS & Allied)",
+    totalSemesters: null,
+    displaySemesters: [],
+    note: "Medical programs follow professional phases, not semester-based structure"
+  }
+];
+
+/**
+ * Helper: get semesters by program type
+ * (Used only for UI hints)
+ */
+export const getSemestersByProgram = (programId) =>
+  EDU_SEMESTERS.find(p => p.id === programId);

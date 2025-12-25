@@ -12,13 +12,13 @@
 }
 
 .section-title-v3 {
-    font-size: 15px;
-    /* Reduced from 16px */
+    font-size: 14px;
     font-weight: 700;
     margin: 0;
     display: flex;
     align-items: center;
     gap: 8px;
+    color: var(--text-main);
 }
 
 .icon-box-v3 {
@@ -199,13 +199,38 @@
 
 /* === MOBILE === */
 @media (max-width: 768px) {
+    .section-header-v3 {
+        padding: var(--space-lg) var(--space-md) 0;
+    }
+
+    .bookings-list-v3 {
+        padding: var(--space-md) var(--space-md) var(--space-lg);
+    }
+
     .booking-card-v3 {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px;
         gap: 12px;
     }
 
+    .consultant-profile-v3 {
+        gap: 10px;
+    }
+
+    .avatar-mini-v3 {
+        width: 32px;
+        height: 32px;
+    }
+
     .booking-meta-v3 {
-        justify-content: space-between;
+        display: none;
+        /* Hide secondary meta on narrow mobile to keep it clean */
+    }
+
+    .status-badge-v3 {
+        min-width: 60px;
+        font-size: 9px;
+        padding: 4px 6px;
     }
 }
