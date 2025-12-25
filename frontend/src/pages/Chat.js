@@ -1,225 +1,162 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiSend } from 'react-icons/fi';
-import ReactMarkdown from "react-markdown"; // ⭐ Added for better formatting
+import ReactMarkdown from "react-markdown";
 import '../styles/Chat.css';
 import PremiumPopup from '../components/PremiumPlans';
-import { staticColleges } from '../data/staticColleges';
-import PageLoader from '../components/PageLoader'; // ✅ NEW
+import PageLoader from '../components/PageLoader';
 
 const Chat = () => {
-  const [messages, setMessages] = useState([
-    {
-      sender: 'bot',
-      text: '👋 Hi! I’m your AI Career Assistant. Ask me anything about careers, courses, or colleges.',
-    },
-  ]);
+  const [messages, setMessages] = useState(() => {
+  const savedMessages = localStorage.getItem("career_chat_messages");
+
+  return savedMessages
+    ? JSON.parse(savedMessages)
+    : [
+        {
+          sender: 'bot',
+          text: '👋 Hi! I’m your AI Career Assistant. Ask me anything.',
+        },
+      ];
+});
+
+useEffect(() => {
+  localStorage.setItem(
+    "career_chat_messages",
+    JSON.stringify(messages)
+  );
+}, [messages]);
+
+
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [pageLoading, setPageLoading] = useState(true); 
+  const [pageLoading, setPageLoading] = useState(true);
   const [messageCount, setMessageCount] = useState(0);
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')));
   const [showPremiumPopup, setShowPremiumPopup] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // ✅ SINGLE SOURCE OF API TRUTH
   const API = process.env.REACT_APP_API_URL;
 
-  // ⭐ Detect and extract user's name
-  const detectUserName = (text) => {
-    const pattern = /(my name is|i am|i'm)\s+([A-Za-z ]+)/i;
-    const match = text.match(pattern);
-    if (match) return match[2].trim();
-    return null;
-  };
-
-  // ⭐ Typewriter effect
+  // ======================
+  // TYPEWRITER EFFECT
+  // ======================
   const typeWriter = async (text) => {
     return new Promise((resolve) => {
       let i = 0;
+
+      setMessages(prev => [...prev, { sender: "bot_typing", text: "" }]);
+
       const interval = setInterval(() => {
-        if (i <= text.length) {
-          if (i === 0) {
-            setMessages(prev => [...prev, { sender: "bot_typing", text: "" }]);
-          }
-          setMessages(prev => {
-            const updated = [...prev];
-            updated[updated.length - 1].text = text.substring(0, i);
-            return updated;
-          });
-          i++;
-        } else {
+        i++;
+        setMessages(prev => {
+          const updated = [...prev];
+          updated[updated.length - 1].text = text.substring(0, i);
+          return updated;
+        });
+
+        if (i >= text.length) {
           clearInterval(interval);
-
-          // Replace typing bubble
           setMessages(prev => {
-            const updated = prev.filter(m => m.sender !== "bot_typing");
-            return [...updated, { sender: "bot", text }];
+            const clean = prev.filter(m => m.sender !== "bot_typing");
+            return [...clean, { sender: "bot", text }];
           });
-
           resolve();
         }
       }, 12);
     });
   };
 
-  // Page loader animation
+  // ======================
+  // PAGE LOADER
+  // ======================
   useEffect(() => {
-    const timeout = setTimeout(() => setPageLoading(false), 1200);
+    const timeout = setTimeout(() => setPageLoading(false), 1000);
     return () => clearTimeout(timeout);
   }, []);
 
-  // Keep user info updated
-  useEffect(() => {
-    const localUser = JSON.parse(localStorage.getItem("user"));
-    const savedName = localStorage.getItem("career_user_name");
-
-    // ⭐ Greet user by name
-    if (savedName) {
-      setMessages(prev => [
-        ...prev,
-        { sender: "bot", text: `Welcome back, **${savedName}** 👋` }
-      ]);
-    }
-
-    if (localUser?.email) {
-      fetch(`${API}/api/user/${localUser.email}`)
-        .then(res => res.json())
-        .then(data => {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-        })
-        .catch(err => {
-          console.error("Error fetching user data:", err);
-          setUser(localUser);
-        });
-    }
-  }, [API]);
-
+  // ======================
+  // SCROLL TO BOTTOM
+  // ======================
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // ======================
+  // SEND MESSAGE (API ONLY)
+  // ======================
   const handleSend = async () => {
-    if (!input.trim()) return;
+  if (!input.trim()) return;
 
-    const newCount = messageCount + 1;
+  const newCount = messageCount + 1;
 
-    // Premium message limit
-    if (!user?.isPremium && newCount > 2) {
-      setShowPremiumPopup(true);
-      setInput('');
-      return;
-    }
-    setMessageCount(newCount);
+  // 🔒 Premium limit
+  if (!user?.isPremium && newCount > 2) {
+    setShowPremiumPopup(true);
+    return;
+  }
 
-    // Add user message
-    const userMessage = { sender: 'user', text: input };
-    const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
+  setMessageCount(newCount);
 
-    const inputLC = input.toLowerCase().trim();
-    setInput('');
-    setLoading(true);
+  // 👤 Add user message
+  const userMessage = { sender: 'user', text: input };
+  setMessages(prev => [...prev, userMessage]);
 
-    // ⭐ Greeting detection (improved)
-    const greetings = ["hi", "hii", "hello", "hey", "good morning", "good evening"];
-    if (greetings.some(g => inputLC.includes(g))) {
-      await typeWriter("👋 Hello! How can I help you today?");
-      setLoading(false);
-      return;
-    }
+  setInput('');
+  setLoading(true);
 
-    // ⭐ Detect user name
-    const extractedName = detectUserName(inputLC);
-    if (extractedName) {
-      localStorage.setItem("career_user_name", extractedName);
-
-      await typeWriter(
-        `Nice to meet you, **${extractedName}**! 😊  
-You can ask me about **courses**, **colleges**, **cutoffs**, **fees**, **placement**, or **locations**.`
-      );
-
-      setLoading(false);
-      return;
-    }
-
-    // ⭐ Static college match (your logic untouched)
-    let matchedCollege = staticColleges.find(clg => {
-      const nameLC = clg.name.toLowerCase();
-      const aliasMatch = clg.aliases?.some(alias => inputLC.includes(alias));
-      const nameMatch = inputLC.includes(nameLC) || nameLC.includes(inputLC);
-      return aliasMatch || nameMatch;
+  try {
+    // ✅ SEND WHAT YOUR API EXPECTS
+    const res = await fetch(`${API}/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: userMessage.text
+      }),
     });
 
-    if (matchedCollege) {
-      let cutOffsFormatted = 'No cutoffs available';
-
-      if (matchedCollege.cutOffs && Object.keys(matchedCollege.cutOffs).length > 0) {
-        cutOffsFormatted = Object.entries(matchedCollege.cutOffs)
-          .map(([branch, cutoff]) => `- **${branch}**: ${cutoff || '-'}`)
-          .join('\n');
-      }
-
-      const staticReply = `
-**✅ College Found: ${matchedCollege.name}**
-- 📍 Location: ${matchedCollege.location}
-- 🎓 Courses: ${matchedCollege.course}
-- 🏫 Type: ${matchedCollege.type}
-- 📘 Affiliation: ${matchedCollege.affiliation}
-- 💸 Fees: ${matchedCollege.fees}
-- 📈 Placement Rate: ${matchedCollege.placementRate}
-- 💼 Recruiters: ${matchedCollege.topRecruiters?.join(', ') || '-'}
-- 🧑‍🏫 Faculty: ${matchedCollege.faculty}
-- 🏕️ Campus Life: ${matchedCollege.campusLife}
-- 📝 Entrance Exam: ${matchedCollege.entranceExam}
-- 📅 Admission Deadline: ${matchedCollege.admissionDeadline || '-'}
-- 🌐 Website: ${matchedCollege.website}
-
-### 📊 Branch-wise CutOffs:
-${cutOffsFormatted}
-      `.trim();
-
-      await typeWriter(staticReply);
-      setLoading(false);
-      return;
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
     }
 
-    // ⭐ Backend AI fallback
+    const data = await res.json();
+
+    /**
+     * 🔥 IMPORTANT PART
+     * API returns:
+     * {
+     *   reply: "{ \"model\": \"phi3:mini\", \"response\": \"ACTUAL ANSWER\" }"
+     * }
+     */
+
+    let finalReply = "⚠️ No response from AI.";
+
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const parsed =
+        typeof data.reply === "string"
+          ? JSON.parse(data.reply)
+          : data.reply;
 
-      const res = await fetch(`${API_URL}/api/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: updatedMessages }),
-      });
+      finalReply =
+        parsed.response ||
+        parsed.answer ||
+        finalReply;
 
-      const data = await res.json();
-
-      if (data.reply) {
-        await typeWriter(data.reply);
-      } else {
-        await typeWriter(`
-🤔 I didn’t understand that.
-
-You can ask me about:
-• **Courses**
-• **Colleges**
-• **Cutoffs**
-• **Fees**
-• **Placements**
-• **College locations**
-• **Admission process**
-
-Or introduce yourself like:
-`);
-      }
-    } catch (error) {
-      console.error('Chat API Error:', error);
-      await typeWriter('❌ Error connecting to AI service.');
+    } catch (parseErr) {
+      // fallback if parsing fails
+      finalReply = data.reply;
     }
 
-    setLoading(false);
-  };
+    await typeWriter(finalReply);
+
+  } catch (err) {
+    console.error("Chat API Error:", err);
+    await typeWriter("❌ Unable to connect to AI service.");
+  }
+
+  setLoading(false);
+};
+
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleSend();
@@ -247,7 +184,7 @@ Or introduce yourself like:
 
           {loading && (
             <div className="chat-bubble bot">
-              <div className="bot-response-card">⏳ Typing...</div>
+              <div className="bot-response-card">⏳ Thinking...</div>
             </div>
           )}
 
@@ -263,11 +200,7 @@ Or introduce yourself like:
             onKeyDown={handleKeyPress}
             disabled={loading}
           />
-          <span
-            onClick={handleSend}
-            disabled={loading || !input.trim()}
-            className="send-btn"
-          >
+          <span onClick={handleSend} className="send-btn">
             {loading ? '...' : <FiSend size={20} />}
           </span>
         </div>
