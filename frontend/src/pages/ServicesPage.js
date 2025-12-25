@@ -98,10 +98,16 @@ const services = {
       path: "/consult",
     },
     {
-      icon: <FaUniversity />,
-      title: "India vs Abroad",
-      description: "Compare where to study based on your career field.",
-      path: "/india-vs-abroad"
+      icon: <FaChartLine />,
+      title: "Dropout Support",
+      description: "Get personalized guidance and resources after dropping out.",
+      path: "/services/dropout",
+    },
+    {
+      icon: <FaBalanceScale />,
+      title: "Study Abroad Guidance",
+      description: "Explore study abroad options tailored to your profile.",
+      path: "/services/study-abroad",
     }
   ],
 };

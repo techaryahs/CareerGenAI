@@ -60,6 +60,26 @@ import IndiaVsAbroad from "./indiavsabroad/pages/IndiaVsAbroad";
 // ✅ WebRTC Context Provider
 import { WebRTCProvider } from "./webrtc/context/WebRTCContext";
 
+
+
+//dropout components
+import DropoutHome from "./dropout/pages/Home";
+import DropoutInfo from "./dropout/pages/DropoutInfo";
+import PathChoice from "./dropout/pages/PathChoice";
+import PathDetail from "./dropout/pages/PathDetail";
+import EducationResults from "./dropout/pages/EducationResults";
+import JobResults from "./dropout/pages/JobResults";
+import ActionPlan from "./dropout/pages/ActionPlan";
+
+
+//Study Abroad Components
+import StudyAbroadHome from "./studyAbroad/pages/Home";
+import StudyAbroadProfile from "./studyAbroad/pages/ProfileForm";
+import CountryResults from "./studyAbroad/pages/CountryResults";
+import CourseResults from "./studyAbroad/pages/CourseResults";
+import VisaGuide from "./studyAbroad/pages/VisaGuide";
+import StudyAbroadActionPlan from "./studyAbroad/pages/ActionPlan";
+
 // Import from cleaned AllComponents.jsx
 import {
   ResumeBuilderPage,
@@ -274,11 +294,11 @@ const Layout = () => {
             element={<IndiaVsAbroadCompare />}
           />
           <Route path="/india-vs-abroad/service" element={<IndiaVsAbroad />} />
-      
-           <Route path="/tutorial" element={<TutorialHome />} />
-            <Route path="/tutorial/:catId" element={<CategoryView />} />
-            <Route path="/tutorial/:catId/:deptId" element={<DepartmentView />} />
-            <Route path="/tutorial/:catId/:deptId/:subId/:pageId" element={<PageDetail />} />
+
+          <Route path="/tutorial" element={<TutorialHome />} />
+          <Route path="/tutorial/:catId" element={<CategoryView />} />
+          <Route path="/tutorial/:catId/:deptId" element={<DepartmentView />} />
+          <Route path="/tutorial/:catId/:deptId/:subId/:pageId" element={<PageDetail />} />
           {/* Premium Resume Builder Route */}
           <Route
             path="/AllComponents"
@@ -360,6 +380,28 @@ const Layout = () => {
           <Route path="/edu/cart" element={<EduCartPage />} />
           <Route path="/edu/checkout" element={<EduCheckoutPage />} />
           <Route path="/edu/success" element={<EduSuccessPage />} />
+
+
+          {/* Dropout Service Routes */}
+          <Route path="/services/dropout" element={<DropoutHome />} />
+          <Route path="/services/dropout/info" element={<DropoutInfo />} />
+          <Route path="/services/dropout/path-choice" element={<PathChoice />} />
+          <Route path="/services/dropout/path/:id" element={<PathDetail />} />
+          <Route path="/services/dropout/education-results" element={<EducationResults />} />
+          <Route path="/services/dropout/job-results" element={<JobResults />} />
+          <Route path="/services/dropout/action-plan" element={<ActionPlan />} />
+
+
+          {/* Study Abroad Service Routes */}
+          {/* ================= STUDY ABROAD SERVICE ================= */}
+          <Route path="/services/study-abroad" element={<StudyAbroadHome />} />
+          <Route path="/services/study-abroad/profile" element={<StudyAbroadProfile />} />
+          <Route path="/services/study-abroad/countries" element={<CountryResults />} />
+          <Route path="/services/study-abroad/courses" element={<CourseResults />} />
+          <Route path="/services/study-abroad/visa" element={<VisaGuide />} />
+          <Route path="/services/study-abroad/action-plan" element={<StudyAbroadActionPlan />} />
+
+
         </Routes>
       </main>
       {isHomePage && <Footer />}

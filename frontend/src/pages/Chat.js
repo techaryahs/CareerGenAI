@@ -7,24 +7,24 @@ import PageLoader from '../components/PageLoader';
 
 const Chat = () => {
   const [messages, setMessages] = useState(() => {
-  const savedMessages = localStorage.getItem("career_chat_messages");
+    const savedMessages = localStorage.getItem("career_chat_messages");
 
-  return savedMessages
-    ? JSON.parse(savedMessages)
-    : [
+    return savedMessages
+      ? JSON.parse(savedMessages)
+      : [
         {
           sender: 'bot',
           text: '👋 Hi! I’m your AI Career Assistant. Ask me anything.',
         },
       ];
-});
+  });
 
-useEffect(() => {
-  localStorage.setItem(
-    "career_chat_messages",
-    JSON.stringify(messages)
-  );
-}, [messages]);
+  useEffect(() => {
+    localStorage.setItem(
+      "career_chat_messages",
+      JSON.stringify(messages)
+    );
+  }, [messages]);
 
 
   const [input, setInput] = useState('');
@@ -121,14 +121,9 @@ useEffect(() => {
 
     const data = await res.json();
 
-    /**
-     * 🔥 IMPORTANT PART
-     * API returns:
-     * {
-     *   reply: "{ \"model\": \"phi3:mini\", \"response\": \"ACTUAL ANSWER\" }"
-     * }
-     */
-
+    // ===============================
+    // 🔥 PARSE AI REPLY
+    // ===============================
     let finalReply = "⚠️ No response from AI.";
 
     try {
@@ -140,22 +135,47 @@ useEffect(() => {
       finalReply =
         parsed.response ||
         parsed.answer ||
+        data.reply ||
         finalReply;
 
-    } catch (parseErr) {
-      // fallback if parsing fails
+    } catch {
       finalReply = data.reply;
     }
 
-    await typeWriter(finalReply);
+    // ===============================
+    // ⭐ READ RECOMMENDATIONS
+    // ===============================
+    const suggestions = Array.isArray(data.suggestions)
+      ? data.suggestions
+      : [];
+
+    // ===============================
+    // 🤖 ADD BOT MESSAGE + SUGGESTIONS
+    // ===============================
+    setMessages(prev => [
+      ...prev,
+      {
+        sender: "bot",
+        text: finalReply,
+        suggestions
+      }
+    ]);
 
   } catch (err) {
     console.error("Chat API Error:", err);
-    await typeWriter("❌ Unable to connect to AI service.");
+    setMessages(prev => [
+      ...prev,
+      {
+        sender: "bot",
+        text: "❌ Unable to connect to AI service.",
+        suggestions: []
+      }
+    ]);
   }
 
   setLoading(false);
 };
+
 
 
   const handleKeyPress = (e) => {
@@ -164,17 +184,67 @@ useEffect(() => {
 
   if (pageLoading) return <PageLoader />;
 
+  const handleSuggestionClick = (text) => {
+    setInput(text);
+    setTimeout(() => handleSend(), 100);
+  };
+
+  const clearChat = () => {
+    const ok = window.confirm("Are you sure you want to clear the chat?");
+    if (!ok) return;
+
+    localStorage.removeItem("career_chat_messages");
+
+    setMessages([
+      {
+        sender: 'bot',
+        text: '👋 Hi! I’m your AI Career Assistant. Ask me anything.',
+      },
+    ]);
+
+    setMessageCount(0);
+  };
+
+
+
   return (
     <div className="chat-container">
       <div className="chat-box-wrapper">
-        <div className="chat-header">🎓 CareerGenAI Assistant</div>
+        {/* 🔹 HEADER WITH CLEAR CHAT */}
+        <div className="chat-header">
+          <span>🎓 CareerGenAI Assistant</span>
 
+          <button
+            className="clear-chat-btn"
+            onClick={clearChat}
+            title="Clear chat"
+          >
+            Clear Chat
+          </button>
+        </div>
+
+        {/* 🔹 CHAT BOX */}
         <div className="chat-box">
           {messages.map((msg, idx) => (
             <div key={idx} className={`chat-bubble ${msg.sender}`}>
-              {msg.sender === 'bot' || msg.sender === 'bot_typing' ? (
+              {msg.sender === "bot" ? (
                 <div className="bot-response-card markdown-output">
                   <ReactMarkdown>{msg.text}</ReactMarkdown>
+
+                  {/* 🔹 Suggestions */}
+                  {msg.suggestions && msg.suggestions.length > 0 && (
+                    <div className="suggestions">
+                      {msg.suggestions.map((s, i) => (
+                        <button
+                          key={i}
+                          className="suggestion-chip"
+                          onClick={() => handleSuggestionClick(s)}
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="user-message">{msg.text}</div>
@@ -182,6 +252,7 @@ useEffect(() => {
             </div>
           ))}
 
+          {/* 🔹 TYPING INDICATOR */}
           {loading && (
             <div className="chat-bubble bot">
               <div className="bot-response-card">⏳ Thinking...</div>
@@ -191,6 +262,7 @@ useEffect(() => {
           <div ref={messagesEndRef} />
         </div>
 
+        {/* 🔹 INPUT */}
         <div className="chat-input">
           <input
             type="text"
@@ -205,6 +277,7 @@ useEffect(() => {
           </span>
         </div>
       </div>
+
 
       {showPremiumPopup && (
         <PremiumPopup

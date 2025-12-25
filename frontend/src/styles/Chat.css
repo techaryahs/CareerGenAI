@@ -138,3 +138,47 @@
 .send-btn:hover {
   background: #1e40af;
 }
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.suggestion-chip {
+  background: #f0f4ff;
+  border: 1px solid #d0d9ff;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestion-chip:hover {
+  background: #dbe4ff;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear-chat-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+.clear-chat-btn:hover {
+  background: #f3f3f3;
+  color: #000;
+}
+
