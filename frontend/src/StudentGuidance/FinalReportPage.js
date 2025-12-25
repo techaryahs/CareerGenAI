@@ -24,7 +24,7 @@ export default function FinalReportPage() {
     }
     const fetchReportData = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/progress/get-progress/${userId}`);
+        const res = await axios.get(`${API_URL}api/progress/get-progress/${userId}`);
         if (res.data.success) setReportData(res.data.data);
       } catch (error) {
         console.error("Error fetching report:", error);

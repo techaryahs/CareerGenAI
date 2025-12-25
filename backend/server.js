@@ -43,7 +43,7 @@ app.use("/api/admin", require("./routes/admin.routes"));
 app.use("/api/careers", require("./routes/career.routes"));
 
 // 🤖 Chatbot
-app.use("/api/chat", require("./routes/chat.routes"));
+app.use("/api", require("./routes/chat.routes"));
 
 // 📅 Booking & Consultants
 app.use("/api/bookings", require("./routes/booking.routes"));

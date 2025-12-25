@@ -27,7 +27,7 @@ export default function ProgressSidebar() {
   const fetchProgress = async () => {
     if (!userId) return;
     try {
-      const res = await axios.get(`${API_URL}/api/progress/get-progress/${userId}`);
+      const res = await axios.get(`${API_URL}api/progress/get-progress/${userId}`);
       if (res.data.success) {
         setProgressReport(res.data.data);
       }
