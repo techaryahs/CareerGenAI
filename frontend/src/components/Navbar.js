@@ -70,7 +70,7 @@ const Navbar = () => {
         {/* STUDENT */}
         {role === "student" && (
           <li>
-            <NavLink to="/services">Services</NavLink>
+            <NavLink to="/services">Career Journey</NavLink>
           </li>
         )}
 
@@ -243,7 +243,7 @@ const Navbar = () => {
                   to="/services"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Services
+                  Career Journey
                 </NavLink>
               </li>
             )}

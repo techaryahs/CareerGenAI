@@ -24,7 +24,7 @@ import PremiumPlans from "./components/PremiumPlans";
 import CollegesByLocation from "./pages/CollegesByLocation";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./routes/PrivateRoute";
-import Services from "./pages/ServicesPage";
+import CareerJourney from "./pages/CareerJourney/CareerJourney"; // Optimized Service Page
 import CareerCompare from "./pages/CareerCompare";
 import ResumeBuilder from "./pages/templates/ResumeBuilder";
 import QrPopup from "./components/QrPopup";
@@ -92,6 +92,7 @@ import EduSubjectSelect from "./EduTutor/MainPage/EduSubjectSelect";
 import EduTutorList from "./EduTutor/MainPage/EduTutorList";
 import EduCartPage from "./EduTutor/MainPage/EduCartPage";
 import EduSuccessPage from "./EduTutor/MainPage/EduSuccessPage";
+import { BookingProvider } from "./EduTutor/context/BookingContext";
 import TutorialHome from "./src/pages/Tutorials/TutorialHome";
 import DepartmentView from "./src/pages/Tutorials/DepartmentView";
 import PageDetail from "./src/pages/Tutorials/PageDetail";
@@ -167,7 +168,7 @@ const Layout = () => {
             path="/services"
             element={
               <PrivateRoute>
-                <Services />
+                <CareerJourney />
               </PrivateRoute>
             }
           />
@@ -355,27 +356,25 @@ const Layout = () => {
               </ResumeProvider>
             }
           />
-          {/* ✅ EduTutor Routes */}
-          <Route path="/edu" element={<EduHomePage />} />
-          {/* STARTING PAGE */}
-          <Route path="/edu" element={<EduHomePage />} />
-          {/* CAREER → BRANCH → SEMESTER FLOW */}
-          <Route path="/edu/career" element={<EduCareerSelect />} />
-          <Route path="/edu/branch/:careerId" element={<EduBranchSelect />} />
-          <Route
-            path="/edu/semester/:branchId"
-            element={<EduSemesterSelect />}
-          />
-          {/* SUBJECT SELECTION */}
-          <Route
-            path="/edu/subjects/:branchId/:sem"
-            element={<EduSubjectSelect />}
-          />
-          {/* TUTOR LIST */}
-          <Route path="/edu/tutors" element={<EduTutorList />} />
-          {/* CART → PAYMENT */}
-          <Route path="/edu/cart" element={<EduCartPage />} />
-          <Route path="/edu/success" element={<EduSuccessPage />} />
+          {/* ✅ EduTutor Routes - Wrapped with BookingProvider */}
+          <Route path="/edu/*" element={
+            <BookingProvider>
+              <Routes>
+                <Route index element={<EduHomePage />} />
+                {/* CAREER → BRANCH → SEMESTER FLOW */}
+                <Route path="career" element={<EduCareerSelect />} />
+                <Route path="branch/:careerId" element={<EduBranchSelect />} />
+                <Route path="semester/:branchId" element={<EduSemesterSelect />} />
+                {/* SUBJECT SELECTION */}
+                <Route path="subjects/:branchId/:sem" element={<EduSubjectSelect />} />
+                {/* TUTOR LIST */}
+                <Route path="tutors" element={<EduTutorList />} />
+                {/* CART → PAYMENT */}
+                <Route path="cart" element={<EduCartPage />} />
+                <Route path="success" element={<EduSuccessPage />} />
+              </Routes>
+            </BookingProvider>
+          } />
         </Routes>
       </main>
       {isHomePage && <Footer />}
