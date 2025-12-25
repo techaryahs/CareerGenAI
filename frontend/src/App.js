@@ -99,6 +99,7 @@ import CategoryView from "./src/pages/Tutorials/CategoryView";
 
 
 
+
 const Layout = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -357,7 +358,7 @@ const Layout = () => {
           <Route path="/edu/tutors" element={<EduTutorList />} />
           {/* CART → PAYMENT */}
           <Route path="/edu/cart" element={<EduCartPage />} />
-          <Route path="/edu/checkout" element={<EduCheckoutPage />} />
+
           <Route path="/edu/success" element={<EduSuccessPage />} />
         </Routes>
       </main>
