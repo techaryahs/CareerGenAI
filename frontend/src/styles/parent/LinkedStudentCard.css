@@ -46,3 +46,14 @@
     border-color: var(--primary);
     transform: translateX(4px);
 }
+
+/* === MOBILE === */
+@media (max-width: 640px) {
+    .student-info-summary {
+        gap: 12px;
+    }
+
+    .btn-action-small {
+        width: 100%;
+    }
+}

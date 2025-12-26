@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaCheckCircle, FaMapMarkerAlt, FaEnvelope, FaPhone, FaCalendarAlt, FaEdit } from 'react-icons/fa';
-import '../../styles/student/ProfileHeader.css';
+import { FaCheckCircle, FaMapMarkerAlt, FaPhone, FaCalendarAlt, FaEdit } from 'react-icons/fa';
+import '../../styles/teacher/TeacherHeader.css';
 
 const TeacherHeader = ({ teacher, onEditRequest }) => {
     const formatDate = (dateString) => {
@@ -19,72 +19,71 @@ const TeacherHeader = ({ teacher, onEditRequest }) => {
     };
 
     return (
-        <div className="profile-header animate-entrance">
-            <div className="profile-banner">
+        <div className="teacher-header-v4 animate-entrance">
+            {/* Cover Banner */}
+            <div className="teacher-cover-v4">
                 <div className="banner-overlay" />
             </div>
 
-            <div className="profile-header-content">
-                <div className="profile-header-left">
-                    <div className="profile-avatar-wrapper">
-                        <div className={`profile-avatar-container ${teacher?.isPremium ? 'pro-user' : ''}`}>
-                            <div className="avatar-initials">
-                                {getInitials(teacher?.fullName || teacher?.name)}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="profile-header-info">
-                        <div className="name-badge-grid">
-                            <h1 className="profile-name">
-                                {teacher?.fullName || teacher?.name || 'Expert Educator'}
-                            </h1>
-                            {/* ✅ Exact match with student ProfileHeader badge logic */}
-                            {teacher?.isVerified && <FaCheckCircle className="badge-verified" title="Verified Expert" />}
-                            {teacher?.isPremium ? (
-                                <span className="badge-pioneer badge-pro">PRO</span>
-                            ) : (
-                                <span className="badge-pioneer">Teacher</span>
-                            )}
-                        </div>
-                        <p className="profile-handle">@{teacher?.teachingField?.fieldName || 'Mentorship Lead'}</p>
-
-                        <p className="profile-bio">
-                            {teacher?.bio || "Empowering students through personalized guidance and industrial insights."}
-                        </p>
-
-                        <div className="profile-meta-row">
-                            <div className="meta-item">
-                                <FaMapMarkerAlt />
-                                <span>{teacher?.offlineLocation || teacher?.location || 'Global'}</span>
-                            </div>
-                            <div className="meta-item">
-                                <FaCalendarAlt />
-                                <span>Joined {formatDate(teacher?.createdAt)}</span>
-                            </div>
-                            <div className="meta-item">
-                                <FaEnvelope />
-                                <span style={{ fontSize: '11px' }}>{teacher?.email}</span>
-                            </div>
-                            {teacher?.phone && (
-                                <div className="meta-item">
-                                    <FaPhone />
-                                    <span style={{ fontSize: '11px' }}>{teacher.phone}</span>
+            <div className="teacher-header-content-v4">
+                <div className="teacher-avatar-section-v4">
+                    {/* Horizontal Top Row for Mobile */}
+                    <div className="profile-header-top-row">
+                        <div className="teacher-pfp-wrapper">
+                            <div className={`teacher-pfp-container ${teacher?.isPremium ? 'pro-user' : ''}`}>
+                                <div className="avatar-initials">
+                                    {getInitials(teacher?.fullName || teacher?.name)}
                                 </div>
-                            )}
+                            </div>
+                        </div>
+
+                        <div className="teacher-title-v4">
+                            <div className="name-badge-grid">
+                                <h1>{teacher?.fullName || teacher?.name || 'Expert Educator'}</h1>
+                                {teacher?.isVerified && <FaCheckCircle className="badge-verified" title="Verified Expert" />}
+                                {teacher?.isPremium && <span className="badge-pro">PRO</span>}
+                            </div>
+
+                            <div className="teacher-tagline-v4">
+                                <span>@{teacher?.teachingField?.fieldName || 'Mentorship Lead'}</span>
+                            </div>
+
+                            <p className="teacher-bio-v4 desktop-bio">
+                                {teacher?.bio || "Empowering students through personalized guidance and industrial insights."}
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="header-actions-area">
-                    <button
-                        className="btn-premium primary"
-                        onClick={onEditRequest}
-                    >
-                        <FaEdit />
-                        <span>Edit Profile</span>
-                    </button>
+                {/* Mobile Bio Below Row */}
+                <p className="teacher-bio-v4 mobile-only-bio">
+                    {teacher?.bio || "Empowering students through personalized guidance and industrial insights."}
+                </p>
+
+                <div className="teacher-contact-bar-v4">
+                    <div className="contact-item-v4">
+                        <FaMapMarkerAlt />
+                        <span>{teacher?.offlineLocation || teacher?.location || 'Global'}</span>
+                    </div>
+                    <div className="contact-item-v4">
+                        <FaCalendarAlt />
+                        <span>Joined {formatDate(teacher?.createdAt)}</span>
+                    </div>
+                    {teacher?.phone && (
+                        <div className="contact-item-v4">
+                            <FaPhone />
+                            <span>{teacher.phone}</span>
+                        </div>
+                    )}
                 </div>
+            </div>
+
+            {/* Actions Area moved to root */}
+            <div className="header-actions-area">
+                <button className="btn-premium primary" onClick={onEditRequest}>
+                    <FaEdit />
+                    <span>Edit Profile</span>
+                </button>
             </div>
         </div>
     );

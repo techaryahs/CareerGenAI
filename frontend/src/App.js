@@ -24,7 +24,7 @@ import PremiumPlans from "./components/PremiumPlans";
 import CollegesByLocation from "./pages/CollegesByLocation";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./routes/PrivateRoute";
-import Services from "./pages/ServicesPage";
+import CareerJourney from "./pages/CareerJourney/CareerJourney"; // Optimized Service Page
 import CareerCompare from "./pages/CareerCompare";
 import ResumeBuilder from "./pages/templates/ResumeBuilder";
 import QrPopup from "./components/QrPopup";
@@ -111,14 +111,14 @@ import EduSemesterSelect from "./EduTutor/MainPage/EduSemesterSelect";
 import EduSubjectSelect from "./EduTutor/MainPage/EduSubjectSelect";
 import EduTutorList from "./EduTutor/MainPage/EduTutorList";
 import EduCartPage from "./EduTutor/MainPage/EduCartPage";
-import EduCheckoutPage from "./EduTutor/MainPage/EduCheckoutPage";
 import EduSuccessPage from "./EduTutor/MainPage/EduSuccessPage";
+import { BookingProvider } from "./EduTutor/context/BookingContext";
 import TutorialHome from "./src/pages/Tutorials/TutorialHome";
 import DepartmentView from "./src/pages/Tutorials/DepartmentView";
 import PageDetail from "./src/pages/Tutorials/PageDetail";
 import CategoryView from "./src/pages/Tutorials/CategoryView";
-
-
+import ProfilePage from "./components/profilebuilder/ProfilePage";
+import ProfileBuilderNew from "./components/profilebuilder/ProfileBuilderNew";
 
 const Layout = () => {
   const location = useLocation();
@@ -188,7 +188,7 @@ const Layout = () => {
             path="/services"
             element={
               <PrivateRoute>
-                <Services />
+                <CareerJourney />
               </PrivateRoute>
             }
           />
@@ -299,6 +299,29 @@ const Layout = () => {
           <Route path="/tutorial/:catId" element={<CategoryView />} />
           <Route path="/tutorial/:catId/:deptId" element={<DepartmentView />} />
           <Route path="/tutorial/:catId/:deptId/:subId/:pageId" element={<PageDetail />} />
+          <Route path="/profile-builder-new" element={<ProfileBuilderNew />} />
+          <Route
+            path="/linkedin"
+            element={<ProfilePage profileId="linkedin" />}
+          />
+          <Route path="/naukri" element={<ProfilePage profileId="naukri" />} />
+          <Route path="/resume" element={<ProfilePage profileId="resume" />} />
+          <Route path="/github" element={<ProfilePage profileId="github" />} />
+          <Route
+            path="/portfolio"
+            element={<ProfilePage profileId="portfolio" />}
+          />
+          <Route
+            path="/cover-letter"
+            element={<ProfilePage profileId="cover-letter" />}
+          />
+          <Route path="/tutorial" element={<TutorialHome />} />
+          <Route path="/tutorial/:catId" element={<CategoryView />} />
+          <Route path="/tutorial/:catId/:deptId" element={<DepartmentView />} />
+          <Route
+            path="/tutorial/:catId/:deptId/:subId/:pageId"
+            element={<PageDetail />}
+          />
           {/* Premium Resume Builder Route */}
           <Route
             path="/AllComponents"
@@ -359,27 +382,27 @@ const Layout = () => {
             }
           />
           {/* ✅ EduTutor Routes */}
-          <Route path="/edu" element={<EduHomePage />} />
-          {/* STARTING PAGE */}
-          <Route path="/edu" element={<EduHomePage />} />
-          {/* CAREER → BRANCH → SEMESTER FLOW */}
-          <Route path="/edu/career" element={<EduCareerSelect />} />
-          <Route path="/edu/branch/:careerId" element={<EduBranchSelect />} />
-          <Route
-            path="/edu/semester/:branchId"
-            element={<EduSemesterSelect />}
-          />
+         <Route path="/edu/*" element={
+            <BookingProvider>
+              <Routes>
+                <Route index element={<EduHomePage />} />
+                {/* CAREER → BRANCH → SEMESTER FLOW */}
+                <Route path="career" element={<EduCareerSelect />} />
+                <Route path="branch/:careerId" element={<EduBranchSelect />} />
+                <Route path="semester/:branchId" element={<EduSemesterSelect />} />
           {/* SUBJECT SELECTION */}
           <Route
             path="/edu/subjects/:branchId/:sem"
             element={<EduSubjectSelect />}
           />
-          {/* TUTOR LIST */}
-          <Route path="/edu/tutors" element={<EduTutorList />} />
-          {/* CART → PAYMENT */}
-          <Route path="/edu/cart" element={<EduCartPage />} />
-          <Route path="/edu/checkout" element={<EduCheckoutPage />} />
-          <Route path="/edu/success" element={<EduSuccessPage />} />
+           <Route path="subjects/:branchId/:sem" element={<EduSubjectSelect />} />
+            <Route path="tutors" element={<EduTutorList />} />
+                {/* CART → PAYMENT */}
+                <Route path="cart" element={<EduCartPage />} />
+                <Route path="success" element={<EduSuccessPage />} />
+              </Routes>
+            </BookingProvider>
+          } />
 
 
           {/* Dropout Service Routes */}
@@ -402,6 +425,8 @@ const Layout = () => {
           <Route path="/services/study-abroad/action-plan" element={<StudyAbroadActionPlan />} />
 
 
+          {/* ✅ EduTutor Routes - Wrapped with BookingProvider */}
+          
         </Routes>
       </main>
       {isHomePage && <Footer />}

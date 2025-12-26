@@ -56,7 +56,7 @@ export default function TeacherRegisterStep2({
                 </div>
             </div>
 
-            <div className="form-group-modern full-width">
+            <div className="form-group-modern full-width subject-group">
                 <label>Subjects You Can Teach *</label>
                 <div className="subject-input-wrapper">
                     <input
@@ -66,7 +66,7 @@ export default function TeacherRegisterStep2({
                         onKeyDown={(e) =>
                             e.key === "Enter" && (e.preventDefault(), addSubjectFreeText())
                         }
-                        placeholder="Type to search subjects..."
+                        placeholder="Type to search subjects (e.g. Data Structures)..."
                     />
                     <button
                         type="button"
@@ -76,6 +76,26 @@ export default function TeacherRegisterStep2({
                         Add
                     </button>
                 </div>
+
+                {subjectQuery && subjectSuggestions.length > 0 && (
+                    <div className="suggestions-list-modern">
+                        {subjectSuggestions.map((s) => (
+                            <button
+                                key={s.id}
+                                type="button"
+                                onClick={() => addSubjectBySuggestion(s)}
+                                className="suggestion-item-modern"
+                            >
+                                <span className="suggestion-name">{s.name}</span>
+                                {s.branchId && (
+                                    <span className="suggestion-branch">
+                                        {s.branchId.toUpperCase()}
+                                    </span>
+                                )}
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                 <div className="tags-container-modern">
                     {selectedSubjects.map((s) => (

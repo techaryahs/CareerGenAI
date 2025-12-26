@@ -76,7 +76,13 @@ const teacherSchema = new mongoose.Schema({
 
     // Status
     isVerified: { type: Boolean, default: false },
-    isPremium: { type: Boolean, default: false }
+    isPremium: { type: Boolean, default: false },
+
+    // Payment Info
+    paymentInfo: {
+        upiId: { type: String },
+        paymentLink: { type: String }
+    }
 }, { timestamps: true });
 
 /**
